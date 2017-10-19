@@ -1,0 +1,38 @@
+{
+  "systemName": "Sol",
+  "backdropMaterial": "Blue",
+  "systemOwner":"Terran",
+  "systemPopulated":true,
+  "systemSize": 400,
+  "asteroidsToSpawn":13,
+  "chanceOfPirate":0,
+
+  "numberOfPlanets":3,
+
+  "planets":
+  [ {"planetName": "Earth",
+    "minimapVisible": true,
+    "minimapSize": 3,
+    "xLocation":0,
+    "yLocation":0,
+    "scale":4,
+    "graphic":"Planet3"
+    },
+    {"planetName": "Moon",
+      "minimapVisible": true,
+      "minimapSize": 3,
+      "xLocation":4,
+      "yLocation":4,
+      "scale":1,
+      "graphic":"Planet1"
+    },
+    {"planetName": "Mars",
+      "minimapVisible": true,
+      "minimapSize": 3,
+      "xLocation":12,
+      "yLocation":12,
+      "scale":3.0,
+      "graphic":"Planet8"
+    }
+  ]
+}

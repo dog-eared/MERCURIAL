@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1f14b2e2160e243169f2b265a1f685d8
+timeCreated: 1508204373
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - backdropMaterial: {fileID: 2100000, guid: c0f50627fb45a4713b416bca55e6c424, type: 2}
+  executionOrder: 200
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

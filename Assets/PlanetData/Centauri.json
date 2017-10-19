@@ -1,0 +1,30 @@
+{
+  "systemName": "Centauri",
+  "backdropMaterial": "Purple",
+  "systemOwner":"None",
+  "systemPopulated":false,
+  "systemSize": 300,
+  "asteroidsToSpawn":55,
+  "chanceOfPirate":25,
+
+  "numberOfPlanets":2,
+
+  "planets":
+  [ {"planetName": "Proxima I",
+    "minimapVisible": true,
+    "minimapSize": 3,
+    "xLocation":1,
+    "yLocation":-1,
+    "scale":4,
+    "graphic":"Planet3"
+    },
+    {"planetName": "Proxima II",
+      "minimapVisible": true,
+      "minimapSize": 3,
+      "xLocation":-4 ,
+      "yLocation":-5,
+      "scale":7,
+      "graphic":"Planet1"
+    }
+  ]
+}

@@ -9,6 +9,10 @@ TagManager:
   - PlayerObject
   - SystemEdge
   - Asteroid
+  - GUI_LandedMenu
+  - GUI_CommunicationMenu
+  - GUI_StatsMenu
+  - GUI_SettingsMenu
   layers:
   - Default
   - TransparentFX

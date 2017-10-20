@@ -1,4 +1,5 @@
 # MERCURIAL
+
 ####v.0.001
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
@@ -30,4 +31,9 @@ goods from planet to planet or explore the cosmos.
 4. Star map menu
 5. Player stats screen 
 
-
+##Current Issues:
+1. Hitting Escape/Cancel opens the settings menu if you have no menus open...this is fine,
+except there's no good way out yet.
+2. Need to make sure InputManager for GUI instantiates at runtime so you don't need the 
+Landing menu to be able to interact w. buttons
+3. And buttons should probably do something...at least the cancel button!

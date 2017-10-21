@@ -20,7 +20,7 @@ public class StationVisitMenu : MonoBehaviour {
 	}
 
 	public void LeavePlanet() {
-		menuManager.CloseTopMenu();
+		//menuManager.CloseTopMenu();
 	}
 
 }

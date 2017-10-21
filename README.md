@@ -3,7 +3,7 @@
 ####v.0.001
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
-recreate the classic Mac game [_Escape Velocity_] (http://www.ambrosiasw.com) with more modern, action based
+recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with more modern, action based
 gameplay and stronger characterization.
 
 The player character of Mercurial has just been granted their basic Starpilot's
@@ -37,3 +37,12 @@ except there's no good way out yet.
 2. Need to make sure InputManager for GUI instantiates at runtime so you don't need the 
 Landing menu to be able to interact w. buttons
 3. And buttons should probably do something...at least the cancel button!
+
+
+
+...note to self, make a credits section to link to the placeholder art 
+
+Rawdanitsu -- Planets -- https://opengameart.org/content/2d-planets-0 
+Mysitemyway -- Space backdrops -- http://webtreats.mysitemyway.com/tileable-classic-nebula-space-patterns/
+Skorpio -- Spaceships https://opengameart.org/content/spaceship-8 and other links I need to collect
+

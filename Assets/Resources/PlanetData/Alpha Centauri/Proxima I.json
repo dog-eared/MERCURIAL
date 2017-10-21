@@ -1,0 +1,10 @@
+{ 	"splashImage":"proxima_I.png",
+  	"faction":"Terran",
+  	"buttons": {"Cantina":false,
+		"Trade Depot":false,
+		"Refueling Station":true,
+		"Mission Board":false,
+		"Mechanics":false
+		},
+	"blurb": "The biggest planet in the Alpha Centauri galaxy."
+	}

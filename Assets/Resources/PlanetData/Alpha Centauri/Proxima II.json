@@ -1,0 +1,10 @@
+{ 	"splashImage":"proxima_II.png",
+  	"faction":"Terran",
+  	"buttons": {"Cantina":true,
+		"Trade Depot":true,
+		"Refueling Station":true,
+		"Mission Board":true,
+		"Mechanics":true
+		},
+	"blurb": "The smaller, more inhabited planet in the Alpha Centauri galaxy."
+	}

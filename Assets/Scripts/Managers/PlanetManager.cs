@@ -18,22 +18,13 @@ public class PlanetManager : MonoBehaviour {
 	--
 
 	*/
-
 	public GameObject planetPrefab;
 
-	SystemData data;
+	//SystemData data;
 
 	public SystemData LoadPlanetData(string target) {
-		string filePath = Path.Combine(Application.dataPath, "PlanetData/" + target + ".json");
-
-
-		if (File.Exists(filePath)) {
-			string dataAsJson = File.ReadAllText(filePath);
-			data = JsonUtility.FromJson<SystemData>(dataAsJson);
-			Debug.Log(data.numberOfPlanets);
-		} else {
-			Debug.Log("Can't load game data.");
-		}
+		TextAsset textData = Resources.Load<TextAsset>("SystemData/" + target);
+		SystemData data = JsonUtility.FromJson<SystemData>(textData.text);
 
 		for (var x = 0; x < data.numberOfPlanets; x++) {
 			BuildPlanet(data.planets[x]);

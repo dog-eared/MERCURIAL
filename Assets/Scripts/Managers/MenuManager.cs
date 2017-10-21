@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 
 
@@ -20,6 +21,8 @@ public class MenuManager : MonoBehaviour {
 
 	*/
 
+	SystemManager systemManager;
+
 	DockingBehaviour dockingBehaviour;
 	public float gameTimeScale = 1f;
 	public string gameState = "Normal";
@@ -28,65 +31,103 @@ public class MenuManager : MonoBehaviour {
 	string settingsMenu = "MenuScenes/settings_menu";
 	string statsMenu = "MenuScenes/stats_menu";
 
+	public GameObject landedMenuObject;
+	public GameObject settingsMenuObject;
+	public GameObject statsMenuObject;
+
+	bool settingsOpenedThisFrame = false;
+
 	List<string> openMenus = new List<string>();
 
 	void Awake() {
+		systemManager = GetComponent<SystemManager>();
 		dockingBehaviour = GetComponent<InputManager>().playerShip.GetComponent<DockingBehaviour>();
 		openMenus.Add("Gameplay"); //Saving a headache by having our list always contain minimum count of 1
 				//If we lose this string, the list will return a count of null, not 0 :|
+
+		LoadMenuScenes();
+	}
+
+
+	public void LoadMenuScenes() {
+
+		settingsMenuObject = Instantiate(settingsMenuObject as GameObject, new Vector3(0, 0, 5), Quaternion.identity);
+		settingsMenuObject.name = "SettingsMenu";
+
+		landedMenuObject = Instantiate(landedMenuObject as GameObject, new Vector3(0, 0, 5), Quaternion.identity);
+		landedMenuObject.name = "LandedMenu";
+
+		statsMenuObject = Instantiate(statsMenuObject as GameObject, new Vector3(0, 0, 5), Quaternion.identity);
+		statsMenuObject.name = "StatsMenu";
+
+		settingsMenuObject.SetActive(false);
+		landedMenuObject.SetActive(false);
+		statsMenuObject.SetActive(false);
+
 	}
 
 	public bool PlanetMenuOpen() {
 
-		if (dockingBehaviour.planetTarget == "Earth") {
-			Time.timeScale = 0;
-
-			SceneManager.LoadScene(landingMenu, LoadSceneMode.Additive);
-			openMenus.Add(landingMenu);
-			Debug.Log(openMenus[openMenus.Count - 1]);
-			return true;
-
-		} else if (dockingBehaviour.planetTarget == "Mars") {
-			Debug.Log("Landing on Mars is ill advised because the surface is shite");
-		} else if (dockingBehaviour.planetTarget == "Moon") {
-			Debug.Log("The moon isn't worth docking on");
-		} else {
-			Debug.Log("Nowhere to land!");
+		//Make sure you can't land with a menu open.
+		if (openMenus[openMenus.Count - 1] != "Gameplay") {
+			return false;
 		}
+
+		//First, check if we can find the proper json file...
+		if (File.Exists(Application.dataPath + "/Resources/PlanetData/" + systemManager.systemName + "/"
+				+ dockingBehaviour.planetTarget + ".json")) {
+					landedMenuObject.SetActive(true);
+					openMenus.Add("landedMenuObject");
+					Time.timeScale = 0;
+					return true;
+				} else {
+					Debug.Log("No file found!");
+				}
 		return false;
 	}
 
 
 	public bool SettingsMenuOpen() {
+		//Activate the menu!
+		settingsMenuObject.SetActive(true);
+		openMenus.Add("settingsMenuObject");
 		Time.timeScale = 0;
+		return true;
+}
 
-		SceneManager.LoadScene(settingsMenu, LoadSceneMode.Additive);
-		openMenus.Add(settingsMenu);
-		Debug.Log(openMenus[openMenus.Count - 1]);
+
+	public bool StatsMenuOpen() {
+		//Activate the menu!
+		statsMenuObject.SetActive(true);
+		openMenus.Add("statsMenuObject");
+		Time.timeScale = 0;
 		return true;
 	}
 
 
-	public bool StatsMenuOpen() {
-		if (!(openMenus.Contains(statsMenu))) {
-			Time.timeScale = 0;
-
-			SceneManager.LoadScene(statsMenu, LoadSceneMode.Additive);
-			openMenus.Add(statsMenu);
-			Debug.Log(openMenus[openMenus.Count - 1]);
-			return true;
-		}
-		return false;
-	}
-
-
 	public void CloseTopMenu() {
-		if (openMenus.Count != 1) {
-			string sceneToUnload = openMenus[openMenus.Count - 1];
-			Debug.Log(sceneToUnload + " <-- unloading");
-			SceneManager.UnloadScene(openMenus[openMenus.Count - 1]);
+
+		if (openMenus.Count > 1) {
+			string menuToClose = openMenus[openMenus.Count - 1];
+			Debug.Log(menuToClose + " <-- unloading");
+
+			/*
+			Can we find a way to make menuToClose point at the variable we want to
+			affect?
+
+			ie something like this.menuToClose.SetActive(false);
+
+			*/
+
+			if (menuToClose == "landedMenuObject") {
+				landedMenuObject.SetActive(false);
+			} else if (menuToClose == "settingsMenuObject") {
+				settingsMenuObject.SetActive(false);
+			} else if (menuToClose == "statsMenuObject") {
+				statsMenuObject.SetActive(false);
+			}
+
 			openMenus.RemoveAt((openMenus.Count - 1));
-			Debug.Log("Count is now: " + openMenus.Count);
 
 			if (openMenus.Count == 1) {
 				Time.timeScale = gameTimeScale;
@@ -99,10 +140,10 @@ public class MenuManager : MonoBehaviour {
 	void Update() {
 
 		if (openMenus[openMenus.Count - 1] == "Gameplay" && Input.GetButtonDown("Cancel")) {
-			Debug.Log(openMenus.Contains(settingsMenu));
 			SettingsMenuOpen();
+			settingsOpenedThisFrame = true;
 		}
-		
+
 		if (Input.GetKeyDown("p")) {
 			Debug.Log("Count:" + openMenus.Count);
 
@@ -111,23 +152,20 @@ public class MenuManager : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown("l") && !(openMenus.Contains(landingMenu)))  {
-			Debug.Log(openMenus.Contains(landingMenu));
+		if (Input.GetButtonDown("Land") && !(openMenus.Contains(landingMenu)))  {
 			PlanetMenuOpen();
 		}
 
-
-
-		if (Input.GetKeyDown("i") && !(openMenus.Contains(statsMenu))) {
-			Debug.Log(openMenus.Contains(statsMenu));
+		if (Input.GetButtonDown("Stats") && !(openMenus.Contains(statsMenu))) {
 			StatsMenuOpen();
 		}
 
-		if (openMenus[openMenus.Count - 1] != "Gameplay" && Input.GetButtonDown("Cancel")) {
+		if (openMenus[openMenus.Count - 1] != "Gameplay" && Input.GetButtonDown("Cancel") && !settingsOpenedThisFrame) {
 				Debug.Log(openMenus[openMenus.Count - 1]);
 				CloseTopMenu();
 		}
 
+		settingsOpenedThisFrame = false;
 
 	}
 

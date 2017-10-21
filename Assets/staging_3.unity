@@ -346,6 +346,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTimeScale: 1
   gameState: Normal
+  landedMenuObject: {fileID: 1551899372280260, guid: 00830005780ea4221871eb6ee1ed50b6,
+    type: 2}
+  settingsMenuObject: {fileID: 1610221996196972, guid: 4bcdcfe45b35e4725a72ed284e38ee86,
+    type: 2}
+  statsMenuObject: {fileID: 1878743337580212, guid: 1a078f9d38b38454bbaee4904247cf67,
+    type: 2}
 --- !u!114 &1192814994
 MonoBehaviour:
   m_ObjectHideFlags: 0

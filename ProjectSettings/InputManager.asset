@@ -346,7 +346,7 @@ InputManager:
     descriptiveName: Player Stats Menu
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: e
+    positiveButton: i
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000

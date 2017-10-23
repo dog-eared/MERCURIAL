@@ -51,10 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Behaviour\Movement\InertialessMovement.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\Movement\PhysicsMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Projectiles\BulletDestroy.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\InertialessMovement.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\PhysicsMovement.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\ShipChassis.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EmptyDefenseSlot.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\RollModule.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ShipDefense.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\EmptyWeaponSlot.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\HeavyBlaster.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\LightBlaster.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\ShipWeapon.cs" />
      <Compile Include="Assets\Scripts\Data\PilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />

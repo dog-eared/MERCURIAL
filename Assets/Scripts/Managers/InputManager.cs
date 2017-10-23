@@ -19,43 +19,66 @@ public class InputManager : MonoBehaviour {
 
 	SystemManager systemManager;
 
-	InertialessMovement inertialessMovement;
+	ShipChassis shipChassis;
 
 	void Awake () {
 		playerObject = GameObject.FindWithTag("PlayerObject");
 		playerShip = playerObject.transform.GetChild(0).gameObject;
 		systemManager = GetComponent<SystemManager>();
 
-		if (playerShip.GetComponent<InertialessMovement>()) {
-			inertialessMovement = playerShip.GetComponent<InertialessMovement>();
+		if (playerShip.GetComponent<ShipChassis>()) {
+			shipChassis = playerShip.GetComponent<ShipChassis>();
+			Debug.Log("Got chassis");
+		} else {
+			Debug.Log("No chassis found.");
 		}
 
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (inertialessMovement != null) {
+		shipChassis.horizontalInput = -Input.GetAxis("Horizontal");
 
-		inertialessMovement.horizontalInput = -Input.GetAxis("Horizontal");
-
-			if (Input.GetAxis("Vertical") > 0) {
-				inertialessMovement.thrustersOn = true;
-				inertialessMovement.brakesOn = false;
-			} else if (Input.GetAxis("Vertical") < 0) {
-				inertialessMovement.thrustersOn = false;
-				inertialessMovement.brakesOn = true;
-			} else {
-				inertialessMovement.thrustersOn = inertialessMovement.brakesOn = false;
-			}
-
-
+		if (Input.GetAxis("Vertical") > 0) {
+			shipChassis.thrustersOn = true;
+			shipChassis.brakesOn = false;
+		} else if (Input.GetAxis("Vertical") < 0) {
+			shipChassis.thrustersOn = false;
+			shipChassis.brakesOn = true;
+		} else {
+			shipChassis.thrustersOn = shipChassis.brakesOn = false;
 		}
+
+		if (Input.GetButtonDown("Fire1")) {
+			shipChassis.shipWeapons[0].FireButtonPressed();
+		}
+
+		if (Input.GetButtonUp("Fire1")) {
+			shipChassis.shipWeapons[0].FireButtonReleased();
+		}
+
+		if (Input.GetButtonDown("Fire2")) {
+			shipChassis.shipWeapons[1].FireButtonPressed();
+		}
+
+		if (Input.GetButtonUp("Fire2")) {
+			shipChassis.shipWeapons[1].FireButtonReleased();
+		}
+
+		if (Input.GetButtonDown("Fire3")) {
+			shipChassis.shipWeapons[2].FireButtonPressed();
+		}
+
+		if (Input.GetButtonUp("Fire3")) {
+			shipChassis.shipWeapons[2].FireButtonReleased();
+		}
+
 
 		if (Input.GetKeyDown("1")) {
 			systemManager.LoadSystemData("Sol");
 		} else if (Input.GetKeyDown("2")) {
 			systemManager.LoadSystemData("Centauri");
 		}
-
 	}
+
 }

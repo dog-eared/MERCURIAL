@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LightBlaster : ShipWeapon {
+
+
+
+
+	override public void FireButtonPressed() {
+		Debug.Log(weaponName + " pressed");
+	}
+
+	override public void FireButtonReleased() {
+		Debug.Log(weaponName + " released");
+	}
+
+}
+
+
+public float rateOfFire = 1f;
+public float bulletLifespan = 3f;
+
+GameObject projectile
+
+float timeSinceLastShot;

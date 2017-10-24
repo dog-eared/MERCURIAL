@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 409322466}
   - component: {fileID: 409322467}
   - component: {fileID: 409322472}
+  - component: {fileID: 409322473}
   m_Layer: 13
   m_Name: pirate_fighter
   m_TagString: Ship
@@ -305,6 +306,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Light Blaster
+  rateOfFire: 1
+  bulletLifespan: 3
+  projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
+  bulletPoolPrefab: {fileID: 0}
+--- !u!114 &409322473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409322464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f7717affffe47c3a739a6f6887acf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  rateOfFire: 1
+  bulletLifespan: 3
+  projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
+  bulletPoolPrefab: {fileID: 0}
 --- !u!1001 &751528928
 Prefab:
   m_ObjectHideFlags: 0

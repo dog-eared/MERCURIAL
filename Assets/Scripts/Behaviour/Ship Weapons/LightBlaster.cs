@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightBlaster : ShipWeapon {
+public class LightBlaster : ProjectileWeapon {
 
-	public string weaponName = "Light Blaster";
+	public override void Awake() {
 
-	public float rateOfFire = 1f;
-	float timeSinceLastShot = 0f;
+		weaponName = "Light Blaster";
+		rateOfFire = 2f;
+		bulletLifespan = 6f;
 
+		//GameObject projectile;
 
-	override public void FireButtonPressed() {
-		Debug.Log(weaponName + " pressed");
-	}
-
-	override public void FireButtonReleased() {
-		Debug.Log(weaponName + " released");
+		base.Awake();
 	}
 
 }

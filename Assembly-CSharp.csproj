@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EmptyDefenseSlot.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\RollModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ShipDefense.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\ProjectileWeapon.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\EmptyWeaponSlot.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\HeavyBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\LightBlaster.cs" />

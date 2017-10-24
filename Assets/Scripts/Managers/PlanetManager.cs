@@ -18,30 +18,23 @@ public class PlanetManager : MonoBehaviour {
 	--
 
 	*/
+
+
 	public GameObject planetPrefab;
 
-	//SystemData data;
-
-	public SystemData LoadPlanetData(string target) {
-		TextAsset textData = Resources.Load<TextAsset>("SystemData/" + target);
-		SystemData data = JsonUtility.FromJson<SystemData>(textData.text);
-
-		for (var x = 0; x < data.numberOfPlanets; x++) {
-			BuildPlanet(data.planets[x]);
-		}
-
-		return data;
-	}
 
 
-	private void BuildPlanet(Planet planetToBuild) {
+	public void BuildPlanet(Planet planetToBuild) {
 		GameObject newPlanet = Instantiate(planetPrefab, new Vector3(planetToBuild.xLocation, planetToBuild.xLocation, 1), Quaternion.identity);
 		PlanetData newPlanetData = newPlanet.GetComponent<PlanetData>();
 
 		newPlanet.transform.localScale = new Vector3(planetToBuild.scale, planetToBuild.scale, 1);
 
 		newPlanetData.planetName = planetToBuild.planetName;
-		newPlanetData.graphic = planetToBuild.graphic;
+		newPlanetData.mapGraphic = planetToBuild.mapGraphic;
+		newPlanetData.buttons = planetToBuild.buttons;
+
+		Debug.Log(newPlanetData.buttons + " : BUTTONS");
 
 		newPlanetData.UpdatePlanetDisplay();
 	}
@@ -60,25 +53,28 @@ public class SystemData {
 
 	public string systemName;
 	public string backdropMaterial; //Important this string, not Material. It will be cast as a material at assignment to PlanetData;
-	public float systemSize;
 	public string systemOwner;
 	public bool systemPopulated;
+	public float systemSize;
 	public int asteroidsToSpawn;
 	public float chanceOfPirate;
 
-
-	public int numberOfPlanets;
-	public Planet[] planets;
+	public List<string> planets;
 }
 
 [System.Serializable]
 public class Planet {
 	//Each piece of data we use MUST be defined in this class.
 	public string planetName = "Unknown Planet";
-	public string graphic;
-	public bool minimapVisible;
 	public int minimapSize;
 	public float xLocation;
 	public float yLocation;
 	public float scale;
+	public string mapGraphic;
+	//Data for landing:
+	public string landingGraphic;
+	public List<bool> buttons;
+	//public string blurb;
+
+
 }

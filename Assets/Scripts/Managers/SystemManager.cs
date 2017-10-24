@@ -28,13 +28,14 @@ public class SystemManager : MonoBehaviour {
 	BackdropScroller backdrop;
 	AsteroidManager asteroids;
 	PlanetManager planetManager;
+	SystemData systemData;
+
 
 	public GameObject systemBoundary;
 
 	//SystemData should probably be in this file, not PlanetManager;
 	//Refactor later?
 
-	SystemData systemData;
 
 	void Awake() {
 		mainCam = Camera.main;
@@ -42,12 +43,32 @@ public class SystemManager : MonoBehaviour {
 		asteroids = GetComponent<AsteroidManager>();
 		planetManager = GetComponent<PlanetManager>();
 
-		LoadSystemData("Sol");
+		systemData = LoadSystemData("Sol");
 	}
 
-	public void LoadSystemData(string target) {
+
+	public SystemData LoadSystemData(string target) {
 		WipeCurrentSystem();
-		systemData = planetManager.LoadPlanetData(target);
+
+		TextAsset systemText = Resources.Load<TextAsset>("SystemData/" + target);
+		SystemData data = JsonUtility.FromJson<SystemData>(systemText.text);
+
+		SetSystemManager(data);
+
+		for (var x = 0; x < data.planets.Count; x++) {
+			Debug.Log("PlanetData/" + data.systemName + "/" +  data.planets[x]);
+			TextAsset newPlanetText = Resources.Load<TextAsset>("PlanetData/" + data.systemName + "/" +  data.planets[x]);
+			Planet newPlanet = JsonUtility.FromJson<Planet>(newPlanetText.text);
+			planetManager.BuildPlanet(newPlanet);
+		}
+
+
+		return data;
+
+	}
+
+
+	public void SetSystemManager(SystemData systemData) {
 
 		//Set all system data here
 		//Can I refactor to simplify??
@@ -62,6 +83,7 @@ public class SystemManager : MonoBehaviour {
 		InitializeArea();
 	}
 
+
 	void WipeCurrentSystem() {
 		GameObject[] toWipe = GameObject.FindGameObjectsWithTag("Asteroid");
 		WipeObjects(toWipe);
@@ -70,6 +92,7 @@ public class SystemManager : MonoBehaviour {
 		toWipe = GameObject.FindGameObjectsWithTag("SystemEdge");
 		WipeObjects(toWipe);
 	}
+
 
 	void WipeObjects(GameObject[] toWipe) {
 		for (var x = 0; x < toWipe.Length; x++) {
@@ -100,3 +123,9 @@ public class SystemManager : MonoBehaviour {
 	}
 
 }
+
+
+/*
+FOR INFO ABOUT SystemData, see PLANET MANAGER!
+
+*/

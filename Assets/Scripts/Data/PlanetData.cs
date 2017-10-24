@@ -18,9 +18,12 @@ public class PlanetData : MonoBehaviour {
 	MeshRenderer meshRenderer;
 
 	public string planetName;
-	public bool minimapVisible;
 	public int minimapSize;
-	public string graphic;
+	public string mapGraphic;
+
+	string blurb;
+
+	public List<bool> buttons;
 
 	void Awake() {
 		meshRenderer = GetComponent<MeshRenderer>();
@@ -29,8 +32,8 @@ public class PlanetData : MonoBehaviour {
 
 	public void UpdatePlanetDisplay() {
 		this.name = planetName;
-		this.meshRenderer.material = Resources.Load("Visuals/Planets/" + graphic, typeof(Material)) as Material;
+		this.meshRenderer.material = Resources.Load("Visuals/Planets/" + mapGraphic, typeof(Material)) as Material;
 		//Evidently there's no clean way to set material except by manually finding it in Resources
-	}
 
+	}
 }

@@ -1,0 +1,19 @@
+{
+	"planetName":"Luna",
+	"minimapSize": 3,
+  "xLocation":4,
+  "yLocation":4,
+  "scale":1,
+  "mapGraphic":"Planet1",
+	"landingGraphic":"luna.png",
+
+	"buttons": {	"Cantina":false,
+								"Trade Depot":false,
+								"Refueling Station":false,
+								"Mission Board":false,
+								"Mechanics":false
+	},
+
+	"blurb": "The Moon is an astronomical body that orbits planet Earth, being Earth's only permanent natural satellite. It is the fifth-largest natural satellite in the Solar System, and the largest among planetary satellites relative to the size of the planet that it orbits (its primary). Following Jupiter's satellite Io, the Moon is second-densest satellite among those whose densities are known. In literature, especially science fiction, ‘Luna’ is used to distinguish it from other moons, while in poetry, the name has been used to denote personification of our moon.",
+
+	}

@@ -24,15 +24,11 @@ public class ShipData : MonoBehaviour {
 		this.name = shipName;
 	}
 
-	void Update() {
-		if (Input.GetKeyDown("x")) {
-			Death();
-		}
-	}
 
 	void Death() {
 		Instantiate(explosionAnimation, new Vector3(transform.position.x, transform.position.y, 2), Quaternion.identity);
 		Destroy(gameObject);
 	}
+
 
 }

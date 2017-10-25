@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EmptyDefenseSlot : ShipDefense {
 
-
-	public string defenseName = "Empty Defense Slot";
+	void Awake() {
+		defenseName = "Empty Slot";
+	}
 
 }

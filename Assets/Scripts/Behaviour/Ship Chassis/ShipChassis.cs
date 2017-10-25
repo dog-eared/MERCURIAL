@@ -30,11 +30,12 @@ public abstract class ShipChassis : MonoBehaviour {
 	public float currentThrust;
 
 	public List<ShipWeapon> shipWeapons = new List<ShipWeapon>();
-	public ShipDefense[] shipDefenses;
+	public List<ShipDefense> shipDefenses = new List<ShipDefense>();
 
 
-	void Awake() {
+	public virtual void Awake() {
 		var weaponsToAdd = GetComponents<ShipWeapon>();
+		var defensesToAdd = GetComponents<ShipDefense>();
 
 		for (var x = 0; x < weaponsToAdd.Length; x++) {
 			shipWeapons.Add(weaponsToAdd[x]);
@@ -45,7 +46,16 @@ public abstract class ShipChassis : MonoBehaviour {
 			shipWeapons.Add(x);
 		}
 
-		shipDefenses = GetComponents<ShipDefense>();
+		for (var x = 0; x < defensesToAdd.Length; x++) {
+			shipDefenses.Add(defensesToAdd[x]);
+		}
+
+		while (shipDefenses.Count < 2) {
+			var x = gameObject.AddComponent(typeof(EmptyDefenseSlot)) as EmptyDefenseSlot;
+			shipDefenses.Add(x);
+		}
+
+		shipDefenses[1].direction = "right";
 
 	}
 

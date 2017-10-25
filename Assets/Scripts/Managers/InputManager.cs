@@ -17,14 +17,18 @@ public class InputManager : MonoBehaviour {
 	public GameObject playerObject;
 	public GameObject playerShip;
 
+
 	SystemManager systemManager;
 
 	ShipChassis shipChassis;
+	CameraBehaviour gameCameraBehaviour;
 
 	void Awake () {
 		playerObject = GameObject.FindWithTag("PlayerObject");
 		playerShip = playerObject.transform.GetChild(0).gameObject;
 		systemManager = GetComponent<SystemManager>();
+
+		gameCameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
 
 		if (playerShip.GetComponent<ShipChassis>()) {
 			shipChassis = playerShip.GetComponent<ShipChassis>();
@@ -49,6 +53,23 @@ public class InputManager : MonoBehaviour {
 			shipChassis.thrustersOn = shipChassis.brakesOn = false;
 		}
 
+		if (Input.GetButtonDown("DefenseL")) {
+			shipChassis.shipDefenses[0].DefenseButtonPressed();
+		}
+
+		if (Input.GetButtonUp("DefenseL")) {
+			shipChassis.shipDefenses[0].DefenseButtonReleased();
+		}
+
+		if (Input.GetButtonDown("DefenseR")) {
+			shipChassis.shipDefenses[1].DefenseButtonPressed();
+		}
+
+		if (Input.GetButtonUp("DefenseR")) {
+			shipChassis.shipDefenses[1].DefenseButtonReleased();
+		}
+
+
 		if (Input.GetButtonDown("Fire1")) {
 			shipChassis.shipWeapons[0].FireButtonPressed();
 		}
@@ -71,6 +92,14 @@ public class InputManager : MonoBehaviour {
 
 		if (Input.GetButtonUp("Fire3")) {
 			shipChassis.shipWeapons[2].FireButtonReleased();
+		}
+
+		if (Input.GetKey("+") || (Input.GetKey("=")) ) {
+			gameCameraBehaviour.ZoomIn();
+		}
+
+		if (Input.GetKey("-")) {
+			gameCameraBehaviour.ZoomOut();
 		}
 
 

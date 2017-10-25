@@ -55,14 +55,17 @@ public class StatsMenuBehaviour : MonoBehaviour {
 
 
 	public void UpdatePlayerPilotData() {
-		if (playerPilotData != null) {
+		if (playerPilotData != null && shipData != null) {
 			skillsValuesText.text = 				 playerPilotData.combatSkill
 											+ "\n" + playerPilotData.diplomacySkill
 											+ "\n" + playerPilotData.intimidationSkill
 											+ "\n" + playerPilotData.mechanicsSkill
 											+ "\n" + playerPilotData.thriftSkill;
+
 			pilotNameText.text = "PILOT: " + playerPilotData.firstName + " " + playerPilotData.lastName;
-			callsignText.text = playerPilotData.callsign;
+
+			callsignText.text = playerPilotData.callsign + ", Captain of the " + shipData.shipName;
+
 		} else {
 			Debug.Log("Player pilot data could not be loaded!");
 		}

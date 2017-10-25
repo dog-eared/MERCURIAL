@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 409322468}
   - component: {fileID: 409322466}
   - component: {fileID: 409322467}
+  - component: {fileID: 409322472}
+  - component: {fileID: 409322473}
   m_Layer: 13
   m_Name: pirate_fighter
   m_TagString: Ship
@@ -160,7 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae7faa75a6ac4fb39b73032a0418670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attemptingDocking: 0
   planetTarget: 
 --- !u!114 &409322467
 MonoBehaviour:
@@ -170,12 +171,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 409322464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08dff9e08e0149fd9aca78d82c5454b, type: 3}
+  m_Script: {fileID: 11500000, guid: ff001e3f28563423f8521e68c12ca517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 300
-  acceleration: 0.3
-  deacceleration: 0.6
+  acceleration: 200
+  deacceleration: 0.44
   maximumSpeed: 13
   thrustersOn: 0
   brakesOn: 0
@@ -293,6 +294,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &409322472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409322464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4a95a3a34404d008d8181ae5366c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: left
+  defenseName: Roll Module
+  buttonBeingHeld: 0
+  rollSpeed: 7
+--- !u!114 &409322473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409322464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4a95a3a34404d008d8181ae5366c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: right
+  defenseName: Defense
+  buttonBeingHeld: 0
+  rollSpeed: 7
 --- !u!1001 &751528928
 Prefab:
   m_ObjectHideFlags: 0
@@ -597,14 +628,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Tom
   lastName: Cruise
-  callSign: Maverick
+  callsign: Maverick
   possessive: his
   singular: he
-  intimidationSkill: 0
-  diplomacySkill: 0
-  thriftSkill: 0
   combatSkill: 0
+  diplomacySkill: 0
+  intimidationSkill: 0
   mechanicsSkill: 0
+  thriftSkill: 0
 --- !u!1 &1738330211
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +649,7 @@ GameObject:
   - component: {fileID: 1738330213}
   - component: {fileID: 1738330212}
   - component: {fileID: 1738330217}
+  - component: {fileID: 1738330218}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -711,3 +743,17 @@ MonoBehaviour:
   playerShip: {fileID: 409322464}
   mainCam: {fileID: 1738330215}
   scrollSpeedReduction: 24
+--- !u!114 &1738330218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1738330211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c731a80195084f8881f6885c0820503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomIncrement: 0.07
+  zoomOut: 8
+  zoomIn: 3.5

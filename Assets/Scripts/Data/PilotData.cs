@@ -21,4 +21,6 @@ public class PilotData : MonoBehaviour {
 	public float intimidationSkill = 0;
 	public float mechanicsSkill = 0;
 	public float thriftSkill = 0;
+
+	List<string> pilotExperiences;
 }

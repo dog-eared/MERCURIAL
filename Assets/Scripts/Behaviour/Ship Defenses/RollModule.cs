@@ -11,5 +11,19 @@ public class RollModule : ShipDefense {
 
 
 	*/
-	
+
+	public float rollSpeed = 0.3f;
+
+	void Awake() {
+		defenseName = "Roll Module : " + direction;
+	}
+
+	void FixedUpdate() {
+		if (buttonBeingHeld && direction == "left") {
+			transform.Translate(Vector3.right * -1 * rollSpeed * Time.deltaTime);
+		} else if (buttonBeingHeld) {
+			transform.Translate(Vector3.right * rollSpeed * Time.deltaTime);
+		}
+	}
+
 }

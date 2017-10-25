@@ -10,11 +10,20 @@ public class ShipDefense : MonoBehaviour {
 
 	*/
 
+	public string direction = "left";
+
 	public string defenseName = "Defense";
 
-	public void ActivateDefense(bool toRight, float force) {
-		Debug.Log("Defense: " + defenseName + " triggered");
-		Debug.Log("Fired right: " + toRight + "with force: " + force);
+	public bool buttonBeingHeld = false;
+
+	public virtual void DefenseButtonPressed() {
+		Debug.Log("Defense Pressed");
+		buttonBeingHeld = true;
+	}
+
+	public virtual void DefenseButtonReleased() {
+		Debug.Log("Defense Release");
+		buttonBeingHeld = false;
 	}
 
 }

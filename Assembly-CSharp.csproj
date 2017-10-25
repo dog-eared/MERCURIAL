@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
@@ -59,6 +61,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\PhysicsMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\ShipChassis.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EmptyDefenseSlot.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ForesightModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\RollModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ShipDefense.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\ProjectileWeapon.cs" />

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/staging_3.unity
+- path: Assets/MenuScenes/stats_menu_2.unity
   isLoaded: 1
   isActive: 1

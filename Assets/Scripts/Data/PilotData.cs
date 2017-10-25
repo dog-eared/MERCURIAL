@@ -7,7 +7,7 @@ public class PilotData : MonoBehaviour {
 	[Header("Name")]
 	public string firstName = "Tom";
 	public string lastName = "Cruise";
-	public string callSign = "Maverick";
+	public string callsign = "Maverick";
 
 	[Space(10)]
 	[Header("Pronouns:")]
@@ -16,9 +16,9 @@ public class PilotData : MonoBehaviour {
 
 	[Space(10)]
 	[Header("Skills:")]
-	public float intimidationSkill = 0;
-	public float diplomacySkill = 0;
-	public float thriftSkill = 0;
 	public float combatSkill = 0;
+	public float diplomacySkill = 0;
+	public float intimidationSkill = 0;
 	public float mechanicsSkill = 0;
+	public float thriftSkill = 0;
 }

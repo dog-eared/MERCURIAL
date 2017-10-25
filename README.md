@@ -1,6 +1,6 @@
 # MERCURIAL
 
-#### v.0.002
+#### v.0.003
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
 recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with modern gameplay that reflects the last 15 years since EV:Nova, a more indepth campaign and stronger pilot characterization.
@@ -19,7 +19,7 @@ goods from planet to planet or explore the cosmos.
 6. Placeholder planet menu and behaviour
 7. Skeleton of weapons/defenses addons added
 
-## GOALS FOR NEXT BUILD
+## GOALS FOR NEXT (REAL) BUILD
 1. Basic NPC ships with simple movement.
 2. Simple laser weapon for ships
 3. Health and shields systems for ships
@@ -27,17 +27,12 @@ goods from planet to planet or explore the cosmos.
 ## GOALS FOR LATER
 1. Jumping btwn star systems
 2. Flesh out landing on planets
-3. Planet Menu should display data from planet
+3. Planet Menu should display data from planet, including sub windows
 4. Star map menu
-5. Player stats screen 
+5. Player stats screen -- Started, need to integrate but the beginnings of the scene are in the MenuScenes folder
 
-## Current Issues:
-1. Hitting Escape/Cancel opens the settings menu if you have no menus open...this is fine,
-except there's no good way out yet.
-2. Need to make sure InputManager for GUI instantiates at runtime so you don't need the 
-Landing menu to be able to interact w. buttons
-3. And buttons should probably do something...at least the cancel button!
-
+## Current Tasks:
+1. Make sure menus load proper data. Stats menu has started
 
 
 ...note to self, make a credits section to link to the placeholder art 

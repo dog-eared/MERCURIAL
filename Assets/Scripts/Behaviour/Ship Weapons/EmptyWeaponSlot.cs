@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EmptyWeaponSlot : ShipWeapon {
 
-	public string weaponName = "No Weapon";
+	void Awake() {
+		weaponName = "Empty Slot";
+	}
 
 	override public void FireButtonPressed() {
 	}

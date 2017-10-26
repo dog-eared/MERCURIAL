@@ -17,18 +17,25 @@ public class InputManager : MonoBehaviour {
 	public GameObject playerObject;
 	public GameObject playerShip;
 
+	public float defenseActivationThreshold; //How far the horizontal input needs to be to trigger
+																					 //defense addon powers
 
 	SystemManager systemManager;
 
 	ShipChassis shipChassis;
 	CameraBehaviour gameCameraBehaviour;
+	public ShipStateBehaviour shipState;
+
+
 
 	void Awake () {
 		playerObject = GameObject.FindWithTag("PlayerObject");
 		playerShip = playerObject.transform.GetChild(0).gameObject;
 		systemManager = GetComponent<SystemManager>();
+		shipState = playerShip.GetComponent<ShipStateBehaviour>();
 
 		gameCameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
+
 
 		if (playerShip.GetComponent<ShipChassis>()) {
 			shipChassis = playerShip.GetComponent<ShipChassis>();
@@ -41,8 +48,25 @@ public class InputManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		shipChassis.horizontalInput = -Input.GetAxis("Horizontal");
 
+		/*Rotation*/
+		//Kept separate from defenses below in order to ensure rotates cut off when
+		//axis input is zero.
+		if (shipState.GetTopState() == "NormalState") {
+			shipChassis.horizontalInput = -Input.GetAxis("Horizontal");
+		}
+
+		/*Movement while Defenses are active*/
+		if (Input.GetAxis("Horizontal") <= -defenseActivationThreshold) {
+			shipChassis.shipDefenses[0].DefenseRotateLeft();
+			shipChassis.shipDefenses[1].DefenseRotateLeft();
+		} else if (Input.GetAxis("Horizontal") >= defenseActivationThreshold) {
+			shipChassis.shipDefenses[0].DefenseRotateRight();
+			shipChassis.shipDefenses[1].DefenseRotateRight();
+		}
+
+
+		/*Thrust and Brakes*/
 		if (Input.GetAxis("Vertical") > 0) {
 			shipChassis.thrustersOn = true;
 			shipChassis.brakesOn = false;
@@ -53,6 +77,8 @@ public class InputManager : MonoBehaviour {
 			shipChassis.thrustersOn = shipChassis.brakesOn = false;
 		}
 
+
+		/*Activating/Deactivating Defenses L R*/
 		if (Input.GetButtonDown("DefenseL")) {
 			shipChassis.shipDefenses[0].DefenseButtonPressed();
 		}
@@ -70,6 +96,7 @@ public class InputManager : MonoBehaviour {
 		}
 
 
+		/* Firing Weapons */
 		if (Input.GetButtonDown("Fire1")) {
 			shipChassis.shipWeapons[0].FireButtonPressed();
 		}
@@ -93,7 +120,9 @@ public class InputManager : MonoBehaviour {
 		if (Input.GetButtonUp("Fire3")) {
 			shipChassis.shipWeapons[2].FireButtonReleased();
 		}
+		
 
+		/* Camera Control */
 		if (Input.GetKey("+") || (Input.GetKey("=")) ) {
 			gameCameraBehaviour.ZoomIn();
 		}
@@ -103,6 +132,7 @@ public class InputManager : MonoBehaviour {
 		}
 
 
+		/*Debug!!*/
 		if (Input.GetKeyDown("1")) {
 			systemManager.LoadSystemData("Sol");
 		} else if (Input.GetKeyDown("2")) {

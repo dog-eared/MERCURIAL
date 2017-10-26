@@ -17,13 +17,25 @@ public class ShipDefense : MonoBehaviour {
 	public bool buttonBeingHeld = false;
 
 	public virtual void DefenseButtonPressed() {
-		Debug.Log("Defense Pressed");
+		Debug.Log(defenseName + "Defense Pressed");
 		buttonBeingHeld = true;
 	}
 
 	public virtual void DefenseButtonReleased() {
-		Debug.Log("Defense Release");
+		Debug.Log(defenseName + "Defense Release");
 		buttonBeingHeld = false;
+	}
+
+	public virtual void DefenseRotateLeft() {
+		if (buttonBeingHeld) {
+			Debug.Log(defenseName + "D + R left");
+		}
+	}
+
+	public virtual void DefenseRotateRight() {
+		if (buttonBeingHeld) {
+			Debug.Log(defenseName + "D + R right");
+		}
 	}
 
 }

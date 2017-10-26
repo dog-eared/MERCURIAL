@@ -128,8 +128,7 @@ GameObject:
   - component: {fileID: 409322468}
   - component: {fileID: 409322466}
   - component: {fileID: 409322467}
-  - component: {fileID: 409322472}
-  - component: {fileID: 409322473}
+  - component: {fileID: 409322474}
   m_Layer: 13
   m_Name: pirate_fighter
   m_TagString: Ship
@@ -294,7 +293,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &409322472
+--- !u!114 &409322474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -302,28 +301,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 409322464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4a95a3a34404d008d8181ae5366c9c, type: 3}
+  m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: left
-  defenseName: Roll Module
-  buttonBeingHeld: 0
-  rollSpeed: 7
---- !u!114 &409322473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409322464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4a95a3a34404d008d8181ae5366c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: right
-  defenseName: Defense
-  buttonBeingHeld: 0
-  rollSpeed: 7
 --- !u!1001 &751528928
 Prefab:
   m_ObjectHideFlags: 0
@@ -446,6 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1612165919}
   playerShip: {fileID: 409322464}
+  defenseActivationThreshold: 0.75
+  shipState: {fileID: 0}
 --- !u!114 &1192814992
 MonoBehaviour:
   m_ObjectHideFlags: 0

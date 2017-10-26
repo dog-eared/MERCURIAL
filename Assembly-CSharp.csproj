@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Player\ShipStateBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Projectiles\BulletDestroy.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\InertialessMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\PhysicsMovement.cs" />

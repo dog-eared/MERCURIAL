@@ -12,18 +12,59 @@ public class RollModule : ShipDefense {
 
 	*/
 
-	public float rollSpeed = 0.3f;
+	public float rollTime = 1f;
+	public float rollSpeed = 0.01f;
+
+	bool rollingLeft;
+	bool rollingRight;
+
+	float rollFinishTime = 0f;
+	ShipStateBehaviour shipState;
+
 
 	void Awake() {
 		defenseName = "Roll Module : " + direction;
+		shipState = GetComponent<ShipStateBehaviour>();
+	}
+
+
+	bool CheckBothRolls() {
+		return (rollingLeft || rollingRight);
+	}
+
+
+	void StopRolling() {
+		rollingLeft = rollingRight = false;
+		shipState.RemoveState("Rolling");
+		rollFinishTime = Time.time;
+	}
+
+
+	public override void DefenseRotateLeft() {
+		if (CheckBothRolls() == false && buttonBeingHeld) {
+			Debug.Log("Starting to add roll");
+			shipState.AddState("Rolling");
+			rollingLeft = true;
+			Invoke("StopRolling", rollTime);
+		}
+	}
+
+	public override void DefenseRotateRight() {
+		if (CheckBothRolls() == false && buttonBeingHeld) {
+			Debug.Log("Starting to add roll");
+			shipState.AddState("Rolling", 2f);
+			rollingRight = true;
+			Invoke("StopRolling", rollTime);
+		}
 	}
 
 	void FixedUpdate() {
-		if (buttonBeingHeld && direction == "left") {
-			transform.Translate(Vector3.right * -1 * rollSpeed * Time.deltaTime);
-		} else if (buttonBeingHeld) {
-			transform.Translate(Vector3.right * rollSpeed * Time.deltaTime);
-		}
+
+			if (rollingLeft) {
+				transform.Translate(Vector3.right * -rollSpeed);
+			} else if (rollingRight) {
+				transform.Translate(Vector3.right * rollSpeed);
+			}
 	}
 
 }

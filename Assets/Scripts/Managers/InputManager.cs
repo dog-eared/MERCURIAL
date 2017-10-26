@@ -49,13 +49,6 @@ public class InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		/*Rotation*/
-		//Kept separate from defenses below in order to ensure rotates cut off when
-		//axis input is zero.
-		if (shipState.GetTopState() == "NormalState") {
-			shipChassis.horizontalInput = -Input.GetAxis("Horizontal");
-		}
-
 		/*Movement while Defenses are active*/
 		if (Input.GetAxis("Horizontal") <= -defenseActivationThreshold) {
 			shipChassis.shipDefenses[0].DefenseRotateLeft();
@@ -65,62 +58,80 @@ public class InputManager : MonoBehaviour {
 			shipChassis.shipDefenses[1].DefenseRotateRight();
 		}
 
-
-		/*Thrust and Brakes*/
-		if (Input.GetAxis("Vertical") > 0) {
-			shipChassis.thrustersOn = true;
-			shipChassis.brakesOn = false;
-		} else if (Input.GetAxis("Vertical") < 0) {
-			shipChassis.thrustersOn = false;
-			shipChassis.brakesOn = true;
+		if (shipState.GetTopState().canMove == true) {
+			/*Thrust and Brakes*/
+			if (Input.GetAxis("Vertical") > 0) {
+				shipChassis.thrustersOn = true;
+				shipChassis.brakesOn = false;
+			} else if (Input.GetAxis("Vertical") < 0) {
+				shipChassis.thrustersOn = false;
+				shipChassis.brakesOn = true;
+			} else {
+				shipChassis.thrustersOn = shipChassis.brakesOn = false;
+			}
 		} else {
-			shipChassis.thrustersOn = shipChassis.brakesOn = false;
+			shipChassis.thrustersOn = false;
+			shipChassis.brakesOn = false;
 		}
-
 
 		/*Activating/Deactivating Defenses L R*/
-		if (Input.GetButtonDown("DefenseL")) {
-			shipChassis.shipDefenses[0].DefenseButtonPressed();
+		if (shipState.GetTopState().canDefend == true) {
+			if (Input.GetButtonDown("DefenseL")) {
+				shipChassis.shipDefenses[0].DefenseButtonPressed();
+			}
+
+			if (Input.GetButtonDown("DefenseR")) {
+				shipChassis.shipDefenses[1].DefenseButtonPressed();
+			}
+
 		}
+
+		/* Releasing our buttons is outside the canDefend so they don't get stuck
+		down  */
 
 		if (Input.GetButtonUp("DefenseL")) {
 			shipChassis.shipDefenses[0].DefenseButtonReleased();
-		}
-
-		if (Input.GetButtonDown("DefenseR")) {
-			shipChassis.shipDefenses[1].DefenseButtonPressed();
 		}
 
 		if (Input.GetButtonUp("DefenseR")) {
 			shipChassis.shipDefenses[1].DefenseButtonReleased();
 		}
 
-
-		/* Firing Weapons */
-		if (Input.GetButtonDown("Fire1")) {
-			shipChassis.shipWeapons[0].FireButtonPressed();
+		/*Rotation*/
+		//Kept separate from defenses below in order to ensure rotates cut off when
+		//axis input is zero.
+		if (shipState.GetTopState().canRotate == true) {
+			shipChassis.horizontalInput = -Input.GetAxis("Horizontal");
+		} else {
+			shipChassis.horizontalInput = 0;
 		}
 
-		if (Input.GetButtonUp("Fire1")) {
-			shipChassis.shipWeapons[0].FireButtonReleased();
-		}
+		if (shipState.GetTopState().canShoot == true) {
+			/* Firing Weapons */
+			if (Input.GetButtonDown("Fire1")) {
+				shipChassis.shipWeapons[0].FireButtonPressed();
+			}
 
-		if (Input.GetButtonDown("Fire2")) {
-			shipChassis.shipWeapons[1].FireButtonPressed();
-		}
+			if (Input.GetButtonUp("Fire1")) {
+				shipChassis.shipWeapons[0].FireButtonReleased();
+			}
 
-		if (Input.GetButtonUp("Fire2")) {
-			shipChassis.shipWeapons[1].FireButtonReleased();
-		}
+			if (Input.GetButtonDown("Fire2")) {
+				shipChassis.shipWeapons[1].FireButtonPressed();
+			}
 
-		if (Input.GetButtonDown("Fire3")) {
-			shipChassis.shipWeapons[2].FireButtonPressed();
-		}
+			if (Input.GetButtonUp("Fire2")) {
+				shipChassis.shipWeapons[1].FireButtonReleased();
+			}
 
-		if (Input.GetButtonUp("Fire3")) {
-			shipChassis.shipWeapons[2].FireButtonReleased();
+			if (Input.GetButtonDown("Fire3")) {
+				shipChassis.shipWeapons[2].FireButtonPressed();
+			}
+
+			if (Input.GetButtonUp("Fire3")) {
+				shipChassis.shipWeapons[2].FireButtonReleased();
+			}
 		}
-		
 
 		/* Camera Control */
 		if (Input.GetKey("+") || (Input.GetKey("=")) ) {
@@ -136,7 +147,7 @@ public class InputManager : MonoBehaviour {
 		if (Input.GetKeyDown("1")) {
 			systemManager.LoadSystemData("Sol");
 		} else if (Input.GetKeyDown("2")) {
-			systemManager.LoadSystemData("Centauri");
+			systemManager.LoadSystemData("Alpha Centauri");
 		}
 	}
 

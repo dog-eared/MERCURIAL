@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnergyShieldBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
@@ -70,6 +71,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\HeavyBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\LightBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\ShipWeapon.cs" />
+     <Compile Include="Assets\Scripts\Data\NPCPilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />

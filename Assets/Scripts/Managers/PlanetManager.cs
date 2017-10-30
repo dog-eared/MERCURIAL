@@ -25,7 +25,7 @@ public class PlanetManager : MonoBehaviour {
 
 
 	public void BuildPlanet(Planet planetToBuild) {
-		GameObject newPlanet = Instantiate(planetPrefab, new Vector3(planetToBuild.xLocation, planetToBuild.xLocation, 1), Quaternion.identity);
+		GameObject newPlanet = Instantiate(planetPrefab, new Vector3(planetToBuild.xLocation, planetToBuild.xLocation, 6), Quaternion.identity);
 		PlanetData newPlanetData = newPlanet.GetComponent<PlanetData>();
 
 		newPlanet.transform.localScale = new Vector3(planetToBuild.scale, planetToBuild.scale, 1);
@@ -33,8 +33,6 @@ public class PlanetManager : MonoBehaviour {
 		newPlanetData.planetName = planetToBuild.planetName;
 		newPlanetData.mapGraphic = planetToBuild.mapGraphic;
 		newPlanetData.buttons = planetToBuild.buttons;
-
-		Debug.Log(newPlanetData.buttons + " : BUTTONS");
 
 		newPlanetData.UpdatePlanetDisplay();
 	}

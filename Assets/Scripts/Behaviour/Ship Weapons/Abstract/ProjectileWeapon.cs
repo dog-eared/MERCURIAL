@@ -6,7 +6,7 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 	public float rateOfFire = 1f;
 	public float bulletLifespan = 3f;
-	float timeSinceLastShot;
+	float timeSinceLastShot = 0f; //must start at zero so we can shoot immediately
 
 
 	public GameObject projectile;
@@ -28,13 +28,14 @@ public abstract class ProjectileWeapon : ShipWeapon {
 		//Comment out the +1 if you want to minimize memory use... it's a safety in
 		//case of some weird inbetween time which clips the lifespan of one of our
 		//bullets
+
 		bulletPoolSize = Mathf.RoundToInt(bulletLifespan / rateOfFire) + 1;
 
 		bulletPoolPrefab = (GameObject)Resources.Load("Prefabs/Utility/Bullet Pool") as GameObject;
 		bulletPool = Instantiate(bulletPoolPrefab);
-		bulletPool.name = "W: " + weaponName + " Pool";
+		bulletPool.name = this.name + "W: " + weaponName + " Pool";
 
-		bulletPool.transform.parent = this.transform;
+		//bulletPool.transform.parent = this.transform;
 
 		for (var x = 0; x < bulletPoolSize; x++) {
 			GameObject newBullet = Instantiate(projectile);
@@ -47,17 +48,28 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 	override public void FireButtonPressed() {
 
-		if (Time.time > Time.time + timeSinceLastShot) {
+		if (Time.time > rateOfFire + timeSinceLastShot) {
 
-			Debug.Log(weaponName + " fired");
+			GameObject currentBullet = bulletPool.transform.GetChild(currentPoolIndex).gameObject;
 
+			currentBullet.transform.position = transform.position;
+			currentBullet.transform.rotation = transform.rotation;
+
+			currentBullet.SetActive(true);
+
+			Debug.Log(weaponName + " fired. Fired shot:" + currentPoolIndex);
 			currentPoolIndex++;
+			timeSinceLastShot = Time.time;
 
-			if (currentPoolIndex > bulletPoolSize) {
+			if (currentPoolIndex >= bulletPoolSize) {
 				currentPoolIndex = 0;
 			}
 
+		} else {
+			Debug.Log("Not long enough since last shot.");
 		}
+
+
 
 	}
 

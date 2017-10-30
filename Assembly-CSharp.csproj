@@ -51,14 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EnergyShieldBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\EnergyShieldBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\ShipStateBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\Projectiles\BulletDestroy.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Projectiles\BulletBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\InertialessMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\PhysicsMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\ShipChassis.cs" />
@@ -77,13 +77,13 @@
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_FPS.cs" />
      <Compile Include="Assets\Scripts\Managers\AsteroidManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlanetManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
      <Compile Include="Assets\Scripts\Menu\StationVisitMenu.cs" />
-     <Compile Include="Assets\Scripts\Visual\BackdropScroller.cs" />
      <Compile Include="Assets\Scripts\Visual\DecalSelfDestroy.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

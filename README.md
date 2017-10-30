@@ -1,6 +1,6 @@
 # MERCURIAL
 
-#### v.0.003
+#### v.0.004
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
 recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with modern gameplay that reflects the last 15 years since EV:Nova, a more indepth campaign and stronger pilot characterization.
@@ -18,10 +18,12 @@ goods from planet to planet or explore the cosmos.
 5. Barebones asteroid behaviour added
 6. Placeholder planet menu and behaviour
 7. Skeleton of weapons/defenses addons added
+8. Placeholder audio! 
+9. Some simple lighting fx added. More to come!
 
 ## GOALS FOR NEXT (REAL) BUILD
 1. Basic NPC ships with simple movement.
-2. Simple laser weapon for ships
+2. Simple laser weapon for ships -- DONE!
 3. Health and shields systems for ships
 
 ## GOALS FOR LATER
@@ -32,7 +34,9 @@ goods from planet to planet or explore the cosmos.
 5. Player stats screen -- Started, need to integrate but the beginnings of the scene are in the MenuScenes folder
 
 ## Current Tasks:
-1. Make sure menus load proper data. Stats menu has started
+1. Finish implementation of menu systems, filling them with proper data from json
+2. Implement Ship #ID system -- this will be used for centralizing audio sources, spawning, 
+communications, etc.
 
 
 ...note to self, make a credits section to link to the placeholder art 

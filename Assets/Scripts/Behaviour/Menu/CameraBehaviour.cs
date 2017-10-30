@@ -10,9 +10,25 @@ public class CameraBehaviour : MonoBehaviour {
 	public float zoomOut = 10f;
 	public float zoomIn = 1f;
 
+	public GameObject backdrop;
+	public GameObject playerShip;
+
+	ForesightModule foresightModule;
+	Vector2 foresightLocation;
+
+	MeshRenderer backdropRenderer;
+
+	public float scrollSpeedReduction = 24;
 
 	void Awake() {
+		backdropRenderer = backdrop.GetComponent<MeshRenderer>();
 		mainCam = Camera.main;
+
+		if (playerShip.GetComponent<ForesightModule>()) {
+			foresightModule = playerShip.GetComponent<ForesightModule>();
+		} else {
+			foresightLocation = new Vector2(0, 0);
+		}
 	}
 
 	public void ZoomIn() {
@@ -26,5 +42,24 @@ public class CameraBehaviour : MonoBehaviour {
 			mainCam.orthographicSize += zoomIncrement;
 		}
 	}
+
+	void FixedUpdate() {
+		if (playerShip != null) {
+
+			if (foresightModule != null) {
+				foresightLocation = foresightModule.foresightLocation;
+			}
+
+			float renderX = mainCam.transform.position.x / scrollSpeedReduction;
+			float renderY = mainCam.transform.position.y / scrollSpeedReduction;
+			backdropRenderer.material.mainTextureOffset = new Vector2(renderX, renderY);
+			transform.position = new Vector2(playerShip.transform.position.x, playerShip.transform.position.y) + foresightLocation;
+		}
+	}
+
+	public void DisplayBackdrop(Material newBackdrop) {
+		backdropRenderer.material = newBackdrop;
+	}
+
 
 }

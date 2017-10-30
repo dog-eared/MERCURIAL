@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour {
 
 		if (playerShip.GetComponent<ShipChassis>()) {
 			shipChassis = playerShip.GetComponent<ShipChassis>();
-			Debug.Log("Got chassis");
+			//Debug.Log("Got player chassis");
 		} else {
 			Debug.Log("No chassis found.");
 		}

@@ -25,7 +25,7 @@ public class SystemManager : MonoBehaviour {
 	public float chanceOfPirate;
 
 	Camera mainCam;
-	BackdropScroller backdrop;
+	CameraBehaviour backdrop;
 	AsteroidManager asteroids;
 	PlanetManager planetManager;
 	SystemData systemData;
@@ -39,7 +39,7 @@ public class SystemManager : MonoBehaviour {
 
 	void Awake() {
 		mainCam = Camera.main;
-		backdrop = mainCam.GetComponent<BackdropScroller>();
+		backdrop = mainCam.GetComponent<CameraBehaviour>();
 		asteroids = GetComponent<AsteroidManager>();
 		planetManager = GetComponent<PlanetManager>();
 

@@ -14,7 +14,7 @@ public class PhysicsMovement : ShipChassis {
 
 	Rigidbody2D rigidbody2D;
 
-	void Awake() {
+	public override void Awake() {
 		rigidbody2D = GetComponent<Rigidbody2D>();
 
 		base.Awake();

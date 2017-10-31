@@ -11,8 +11,8 @@ public class PhysicsMovement : ShipChassis {
 
 	*/
 
-
 	Rigidbody2D rigidbody2D;
+	public Vector3 reverseVelocity;
 
 	public override void Awake() {
 		rigidbody2D = GetComponent<Rigidbody2D>();
@@ -23,11 +23,16 @@ public class PhysicsMovement : ShipChassis {
 
 	public override void ShipMovement() {
 		rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, maximumSpeed);
+
 		}
 
 	public override void ShipThrust(float acceleration) {
 		currentThrust += acceleration;
 		rigidbody2D.AddForce(transform.up * currentThrust);
+	}
+
+	public override void ShipBrakes(float deacceleration) {
+		//
 	}
 
 }

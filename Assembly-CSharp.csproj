@@ -51,10 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Behaviour\EnergyShieldBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AbstractAI.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\AIState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\PassiveState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\PatrolState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AITask\AbstractTask.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AITask\goToLocation.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\ShipStateBehaviour.cs" />
@@ -63,6 +68,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\PhysicsMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\ShipChassis.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EmptyDefenseSlot.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EnergyShieldBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ForesightModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\RollModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ShipDefense.cs" />
@@ -76,6 +82,7 @@
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_FPS.cs" />
+     <Compile Include="Assets\Scripts\DEBUG\debug_SetSpecialAIState.cs" />
      <Compile Include="Assets\Scripts\Managers\AsteroidManager.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Managers\InputManager.cs" />

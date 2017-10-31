@@ -33,7 +33,7 @@ public class PlanetManager : MonoBehaviour {
 		newPlanetData.planetName = planetToBuild.planetName;
 		newPlanetData.mapGraphic = planetToBuild.mapGraphic;
 		newPlanetData.buttons = planetToBuild.buttons;
-
+		
 		newPlanetData.UpdatePlanetDisplay();
 	}
 

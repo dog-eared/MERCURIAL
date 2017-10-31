@@ -14,7 +14,7 @@ public abstract class ShipChassis : MonoBehaviour {
 
 	*/
 
-
+	protected Quaternion reverseAngle;
 
 	public float rotateSpeed = 300f;
 	public float acceleration = 0.3f;
@@ -60,7 +60,7 @@ public abstract class ShipChassis : MonoBehaviour {
 	}
 
 	void Update() {
-
+		
 		currentThrust = Mathf.Clamp(currentThrust, 0, maximumSpeed);
 
 	}
@@ -88,12 +88,12 @@ public abstract class ShipChassis : MonoBehaviour {
 			currentThrust += acceleration;
 	}
 
-	void ShipRotate(float horizontalInput) {
+	public virtual void ShipRotate(float horizontalInput) {
 			transform.Rotate(0, 0, horizontalInput * Time.deltaTime * rotateSpeed, Space.World);
 	}
 
 
-	void ShipBrakes(float deacceleration) {
+	public virtual void ShipBrakes(float deacceleration) {
 		currentThrust -= deacceleration;
 	}
 

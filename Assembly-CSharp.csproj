@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_FPS.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_SetSpecialAIState.cs" />
+     <Compile Include="Assets\Scripts\DEBUG\debug_WaypointDraw.cs" />
      <Compile Include="Assets\Scripts\Managers\AsteroidManager.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Managers\InputManager.cs" />

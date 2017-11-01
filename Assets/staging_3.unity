@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipModel: Venturer
-  shipName: Obama
+  shipName: TESTAISHIP
   explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
     type: 2}
   shipHullCurrent: 50
@@ -798,7 +798,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841492368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.61, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -836,13 +836,15 @@ MonoBehaviour:
   - taskName: New Task
     task: 0
     taskCompleted: 0
-    location: {x: 10, y: 10}
+    location: {x: 10, y: 10, z: 0}
     target: {fileID: 0}
   - taskName: 
     task: 0
     taskCompleted: 0
-    location: {x: 0, y: 0}
+    location: {x: 0, y: 0, z: 0}
     target: {fileID: 0}
+  facingTarget: 0
+  rotationTolerance: 30
 --- !u!1 &1133782246
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,9 +883,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.85294116, g: 0.85294116, b: 0.85294116, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.86
-  m_Range: 178
+  m_Range: 200
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1194,7 +1196,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1612165919}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 409322465}

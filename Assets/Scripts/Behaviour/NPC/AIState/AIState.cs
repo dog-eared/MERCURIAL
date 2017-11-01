@@ -26,8 +26,10 @@ public class AIState : MonoBehaviour {
   public AIStateTrigger trigger;
   public stateTask[] stateTasks;
 
-  float angleTowardsTarget;
+  public bool facingTarget = false;
 
+  float rotationTarget = 0f; //Represents the Rotation.Z value we want to aim for
+  public float rotationTolerance = 10f; //Represents how far on either side of rotationTarget we can be
 
   bool checkTaskCompleted(stateTask task) {
     if (task.taskCompleted) {
@@ -36,36 +38,37 @@ public class AIState : MonoBehaviour {
       return false;
     }
 
+  void SetRotationTarget() {
+    Vector3 location = stateTasks[currentTask].location - transform.position;
+    location.Normalize();
 
-  void moveToLocation(stateTask task) {
-
-    Vector2 target = task.location - new Vector2(transform.position.x, transform.position.y);
-    float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg - 90;
-
-    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-    //Rotate towards location;
-    //Increase speed until finished
+    //Done as +90 because we're normalizing to +180... but also -90 because otherwise it'll be sideways
+    rotationTarget = Mathf.Round(Mathf.Atan2(location.y, location.x) * Mathf.Rad2Deg) + 90;
   }
 
-  float SetRotationTarget(stateTask task) {
-    if (!task.target) {
-      task.target = Instantiate(new GameObject(), task.location, Quaternion.identity);
-      task.target.name = name + " -- Waypoint";
+  void RotateToTarget() {
+    if (transform.eulerAngles.z < (rotationTarget - rotationTolerance)) {
+      rotation = 1f;
+      facingTarget = false;
+    } else if (transform.eulerAngles.z > (rotationTarget + rotationTolerance)) {
+      rotation = -1f;
+      facingTarget = false;
+    } else {
+      rotation = 0f;
+      facingTarget = true;
     }
-  angleTowardsTarget = Vector2.Angle(transform.position, task.location);
-  return angleTowardsTarget;
   }
-
-
-  void Awake() {
-    SetRotationTarget(stateTasks[currentTask]);
-  }
-
 
   void Update() {
-    moveToLocation(stateTasks[currentTask]);
+    SetRotationTarget();
+    Debug.Log((rotationTarget - rotationTolerance) + "<" + (transform.eulerAngles.z) + "<" + (rotationTarget + rotationTolerance));
+    Debug.Log(rotationTarget);
+    RotateToTarget();
+    //rotation = 1f;
   }
+
+
+
 
 }
 
@@ -76,7 +79,7 @@ public class stateTask {
   public taskType task;
   public bool taskCompleted;
 
-  public Vector2 location;
+  public Vector3 location;
   public GameObject target;
 }
 

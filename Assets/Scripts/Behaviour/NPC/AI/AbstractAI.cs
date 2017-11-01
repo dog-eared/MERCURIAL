@@ -41,6 +41,15 @@ public class AbstractAI : MonoBehaviour {
 		chassis.thrustersOn = states[currentState].thrustersOn;
 		chassis.brakesOn = states[currentState].brakesOn;
 		chassis.horizontalInput = states[currentState].rotation;
+
+		if (states[currentState].firingWeapon1) {
+			chassis.shipWeapons[0].FireButtonPressed();
+		}
+
+		if (states[currentState].firingWeapon2) {
+			chassis.shipWeapons[1].FireButtonPressed();
+		}
+
 	}
 
 

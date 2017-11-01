@@ -23,13 +23,17 @@ public class AIState : MonoBehaviour {
   [HideInInspector]
   public float rotation;
 
+  public bool firingWeapon1;
+  public bool firingWeapon2;
+
   public AIStateTrigger trigger;
   public stateTask[] stateTasks;
 
   public bool facingTarget = false;
 
-  float rotationTarget = 0f; //Represents the Rotation.Z value we want to aim for
+  public float rotationTarget = 0f; //Represents the Rotation.Z value we want to aim for
   public float rotationTolerance = 10f; //Represents how far on either side of rotationTarget we can be
+
 
   bool checkTaskCompleted(stateTask task) {
     if (task.taskCompleted) {
@@ -38,36 +42,47 @@ public class AIState : MonoBehaviour {
       return false;
     }
 
+
   void SetRotationTarget() {
     Vector3 location = stateTasks[currentTask].location - transform.position;
     location.Normalize();
 
-    //Done as +90 because we're normalizing to +180... but also -90 because otherwise it'll be sideways
-    rotationTarget = Mathf.Round(Mathf.Atan2(location.y, location.x) * Mathf.Rad2Deg) + 90;
+    //Done as -90 because it likes to point sideways otherwise.
+    rotationTarget = Mathf.Repeat((Mathf.Round(Mathf.Atan2(location.y, location.x) * Mathf.Rad2Deg) - 90), 359);
   }
 
+
   void RotateToTarget() {
-    if (transform.eulerAngles.z < (rotationTarget - rotationTolerance)) {
-      rotation = 1f;
-      facingTarget = false;
-    } else if (transform.eulerAngles.z > (rotationTarget + rotationTolerance)) {
-      rotation = -1f;
-      facingTarget = false;
-    } else {
+
+    float currentRotationNormalized = Mathf.Floor(transform.localEulerAngles.z);
+
+    /* BUG:
+    This section has been written out with long, explicit comparisons because it
+    there's currently an issue -- if the target crosses a point directly UP on
+    the screen from the current location, the player will rotate all the way
+    around in the wrong direction. Might not be a huge problem, but being expli-
+    cit about what's going on should help fixing this later.
+    */
+
+    if (currentRotationNormalized > (rotationTarget - rotationTolerance) && currentRotationNormalized < (rotationTarget + rotationTolerance)) {
       rotation = 0f;
       facingTarget = true;
+    } else if (currentRotationNormalized < (rotationTarget - rotationTolerance)) {
+      rotation = 1f;
+    } else if (currentRotationNormalized > (rotationTarget + rotationTolerance)) {
+      rotation = -1f;
     }
+
   }
+
 
   void Update() {
     SetRotationTarget();
-    Debug.Log((rotationTarget - rotationTolerance) + "<" + (transform.eulerAngles.z) + "<" + (rotationTarget + rotationTolerance));
-    Debug.Log(rotationTarget);
+    //Debug.Log("RT- :" + (rotationTarget - rotationTolerance) + "  < " + (transform.localEulerAngles.z) + " < RT+ :" + (rotationTarget + rotationTolerance) );
+    //Debug.Log(transform.localEulerAngles.z);
     RotateToTarget();
     //rotation = 1f;
   }
-
-
 
 
 }

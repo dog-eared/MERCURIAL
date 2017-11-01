@@ -52,7 +52,7 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 			GameObject currentBullet = bulletPool.transform.GetChild(currentPoolIndex).gameObject;
 
-			currentBullet.transform.position = transform.position;
+			currentBullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
 			currentBullet.transform.rotation = transform.rotation;
 
 			currentBullet.SetActive(true);

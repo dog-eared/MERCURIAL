@@ -1,27 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ExperienceTagBehaviour : MonoBehaviour {
 
-	//Image tagIconObject;
-	Text tagTitleObject;
-	Text tagBonusObject;
+	public int combatBonus = 0;
+	public int diplomacyBonus = 0;
+	public int intimidationBonus = 0;
+	public int mechanicsBonus = 0;
+	public int thriftBonus = 0;
 
-	string tagTitle = "Robotic Mind";
-	string tagBonus = "+3 Mechanics\n+1 Diplomacy";
-
-	void Awake() {
-		//tagIconObject = this.gameObject.transform.GetChild(0).GetComponent<Image>();
-		tagTitleObject = this.gameObject.transform.GetChild(1).GetComponent<Text>();
-		tagBonusObject = this.gameObject.transform.GetChild(2).GetComponent<Text>();
+	public int ReturnIndividualBonus(string bonusName) {
+		switch (bonusName) {
+			case "Combat":
+				return combatBonus;
+			case "Diplomacy":
+				return diplomacyBonus;
+			case "Intimidation":
+				return intimidationBonus;
+			case "Mechanics":
+				return mechanicsBonus;
+			case "Thrift":
+				return thriftBonus;
+		}
+		return 0;
 	}
 
-	void OnEnable() {
-		tagTitleObject.text = tagTitle;
-		tagBonusObject.text = tagBonus;
+	public int[] ReturnBonusAsArray() {
+		int[] returnArray = new int[5];
+		returnArray[0] = combatBonus;
+		returnArray[1] = diplomacyBonus;
+		returnArray[2] = intimidationBonus;
+		returnArray[3] = mechanicsBonus;
+		returnArray[4] = thriftBonus;
+		return returnArray;
 	}
+
 
 
 }

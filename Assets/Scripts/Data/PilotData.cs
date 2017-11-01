@@ -22,5 +22,14 @@ public class PilotData : MonoBehaviour {
 	public float mechanicsSkill = 0;
 	public float thriftSkill = 0;
 
-	List<string> pilotExperiences;
+	public List<string> pilotExperiences;
+
+	void Awake() {
+		pilotExperiences.Add("Generic Tag");
+
+		pilotExperiences.Add("Robotic Mind");
+
+		pilotExperiences.Add("Generic Tag");
+
+	}
 }

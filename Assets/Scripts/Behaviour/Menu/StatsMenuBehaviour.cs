@@ -25,38 +25,49 @@ public class StatsMenuBehaviour : MonoBehaviour {
 	public GameObject callsign;
 	Text callsignText;
 
+	public GameObject experiences;
+	List<string> experiencesList;
+
+
 	[Header("Data Sources:")]
 	public PilotData playerPilotData;
 	public ShipData shipData;
 
-
+	GameObject gameController;
+	GameObject playerObject;
+	MenuManager menuManager;
 
 	void Awake() {
 		skillsValuesText = skillsValues.GetComponent<Text>();
 		pilotNameText = pilotName.GetComponent<Text>();
 		callsignText = callsign.GetComponent<Text>();
-
+		SetPlayerPilotData();
 		//UpdatePlayerPilotData();
 		Debug.Log("Complete");
 	}
 
 
 	void OnEnable() {
+		SetPlayerPilotData();
 		UpdatePlayerPilotData();
 	}
 
 
 	//defunct, but just incase we need to reload this at some point..
-	public void SetPlayerPilotData(PilotData data) {
+	public void SetPlayerPilotData() {
 		if (playerPilotData == null) {
-			playerPilotData = data;
+			gameController = GameObject.FindGameObjectWithTag("GameController");
+			playerObject = GameObject.FindGameObjectWithTag("PlayerObject");
+			menuManager = gameController.GetComponent<MenuManager>();
+			playerPilotData = playerObject.GetComponent<PilotData>();
+			shipData = playerObject.transform.GetChild(0).GetComponent<ShipData>();
 		}
 	}
 
 
 	public void UpdatePlayerPilotData() {
 		if (playerPilotData != null && shipData != null) {
-			skillsValuesText.text = 				 playerPilotData.combatSkill
+			skillsValuesText.text =  playerPilotData.combatSkill
 											+ "\n" + playerPilotData.diplomacySkill
 											+ "\n" + playerPilotData.intimidationSkill
 											+ "\n" + playerPilotData.mechanicsSkill
@@ -66,19 +77,41 @@ public class StatsMenuBehaviour : MonoBehaviour {
 
 			callsignText.text = playerPilotData.callsign + ", Captain of the " + shipData.shipName;
 
+			experiencesList = playerPilotData.pilotExperiences;
+
+			/*
+			TO FIX: This is a bit heavy, destroying/recreating the tag list each time.
+			Later, we can refactor so this doesn't happen every time you open/close
+			the menu. For now, performance isn't a big enough issue to worry.
+
+			Even when done, a character probably won't ever have 20+ tags so maybe its
+			fine
+			*/
+			foreach (Transform experience in experiences.transform) {
+				GameObject.Destroy(experience.gameObject);
+			}
+
+			for (var x = 0; x < experiencesList.Count; x++) {
+				GameObject experiencePrefab = Resources.Load("MenuPrefabs/IndividualElements/" + experiencesList[x]) as GameObject;
+				Instantiate(experiencePrefab, new Vector3(0, 0, 0), Quaternion.identity, experiences.transform);
+			}
+
 		} else {
 			Debug.Log("Player pilot data could not be loaded!");
 		}
+
+
+
 	}
 
 
 	public void AcceptButton() {
-		Debug.Log("Accept pressed!");
+		menuManager.CloseTopMenu();
 	}
 
 
 	public void CancelButton() {
-		Debug.Log("Cancel pressed.");
+		menuManager.CloseTopMenu();
 	}
 
 

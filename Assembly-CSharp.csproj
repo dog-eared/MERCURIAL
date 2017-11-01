@@ -53,6 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\StationVisitMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AbstractAI.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\AIState.cs" />
@@ -91,7 +93,6 @@
      <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlanetManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
-     <Compile Include="Assets\Scripts\Menu\StationVisitMenu.cs" />
      <Compile Include="Assets\Scripts\Visual\DecalSelfDestroy.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

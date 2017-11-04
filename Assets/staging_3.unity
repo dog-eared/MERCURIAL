@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65549007}
   - component: {fileID: 65549008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 30
+  m_Range: 70
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 409322475}
   m_Layer: 13
   m_Name: pirate_fighter
-  m_TagString: Ship
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,12 +344,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Venturer
   shipName: Sparrow
-  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
-    type: 2}
+  faction: 1
   shipHullCurrent: 50
   shipHullMax: 50
   shipShieldCurrent: 25
   shipShieldMax: 25
+  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
+    type: 2}
+  explosionSound: {fileID: 0}
 --- !u!50 &409322471
 Rigidbody2D:
   serializedVersion: 4
@@ -386,7 +388,7 @@ MonoBehaviour:
   defenseName: Defense
   buttonBeingHeld: 0
   warpSound: {fileID: 8300000, guid: a35486810ee2c4541b0390632bc13c87, type: 3}
-  audioManager: {fileID: 0}
+  audioSource: {fileID: 0}
   gameManager: {fileID: 1192814987}
   rollTime: 0.3
   rollSpeed: 0.3
@@ -514,6 +516,7 @@ MonoBehaviour:
   weaponName: Ship Weapon
   rateOfFire: 0.2
   bulletLifespan: 1
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
   bulletPoolPrefab: {fileID: 1579184030056696, guid: 8ad19c45cef5b4961ac7d4169875b611,
     type: 2}
@@ -538,7 +541,7 @@ GameObject:
   - component: {fileID: 841492382}
   m_Layer: 13
   m_Name: pirate_fighter (1)
-  m_TagString: Ship
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,6 +640,7 @@ MonoBehaviour:
   weaponName: Ship Weapon
   rateOfFire: 0.2
   bulletLifespan: 1
+  weaponClip: {fileID: 0}
   projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
   bulletPoolPrefab: {fileID: 1579184030056696, guid: 8ad19c45cef5b4961ac7d4169875b611,
     type: 2}
@@ -755,12 +759,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Venturer
   shipName: Magellan
+  faction: 0
+  shipHullCurrent: 1
+  shipHullMax: 1
+  shipShieldCurrent: 1
+  shipShieldMax: 1
   explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
     type: 2}
-  shipHullCurrent: 50
-  shipHullMax: 50
-  shipShieldCurrent: 25
-  shipShieldMax: 25
+  explosionSound: {fileID: 0}
 --- !u!50 &841492378
 Rigidbody2D:
   serializedVersion: 4
@@ -927,6 +933,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1192814989}
+  - component: {fileID: 1192814998}
   - component: {fileID: 1192814988}
   - component: {fileID: 1192814996}
   - component: {fileID: 1192814990}
@@ -976,7 +983,7 @@ Transform:
   - {fileID: 1314799129}
   - {fileID: 1698211103}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1192814990
 MonoBehaviour:
@@ -1027,8 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8617c8bfc94e4ca8b20fc0b3f405771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimeScale: 1
-  gameState: Normal
   landedMenuObject: {fileID: 1551899372280260, guid: 00830005780ea4221871eb6ee1ed50b6,
     type: 2}
   settingsMenuObject: {fileID: 1610221996196972, guid: 4bcdcfe45b35e4725a72ed284e38ee86,
@@ -1084,6 +1089,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAI: {fileID: 841492381}
+--- !u!114 &1192814998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192814987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffde80e6126da436181149a888bda4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMode: 1
+  combatGameSpeed: 0.8
+  normalGameSpeed: 1
+  fastGameSpeed: 0.25
+  fastModeOn: 0
 --- !u!1 &1314799128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1178,7 @@ GameObject:
   - component: {fileID: 1470481141}
   - component: {fileID: 1470481140}
   - component: {fileID: 1470481139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1280,7 @@ Transform:
   m_Children:
   - {fileID: 409322465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1612165921
 MonoBehaviour:
@@ -1298,7 +1319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1698211102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1308,7 +1329,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a4ebeca703b24014ab44db7b5d99961, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cc09770475b78425ca9a5be863018dcb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 0.92
@@ -1405,6 +1426,7 @@ GameObject:
   - component: {fileID: 1738330213}
   - component: {fileID: 1738330212}
   - component: {fileID: 1738330218}
+  - component: {fileID: 1738330217}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1484,6 +1506,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1738330217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1738330211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470a423bbc2c44fd1a92bec638f92076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1738330218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,4 +1533,6 @@ MonoBehaviour:
   zoomIn: 3.5
   backdrop: {fileID: 1470481138}
   playerShip: {fileID: 409322464}
+  _backdropLight: {fileID: 65549008}
+  hyperspaceLerp: 0
   scrollSpeedReduction: 24

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212741653887853012}
   - component: {fileID: 114539691077921962}
   - component: {fileID: 58101313789219308}
-  - component: {fileID: 50957457743765312}
   m_Layer: 12
   m_Name: LightBlasterShot
   m_TagString: Player
@@ -43,26 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50957457743765312
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1451988642418232}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!58 &58101313789219308
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -90,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  passThrough: 0
   moveSpeed: 30
   timeTilDestroy: 1
 --- !u!212 &212741653887853012
@@ -124,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1199f45ff9d14584a1d49da37c1aac7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b6126d2b22bf4ed681c28dad112c83e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

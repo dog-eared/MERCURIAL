@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Planet
-  - Ship
   - PlayerObject
   - SystemEdge
   - Asteroid
@@ -14,6 +13,14 @@ TagManager:
   - GUI_StatsMenu
   - GUI_SettingsMenu
   - GUI_Stats_Value
+  - Faction1Ship
+  - Faction2Ship
+  - Faction3Ship
+  - Faction4Ship
+  - Faction5Ship
+  - Faction6Ship
+  - Faction7Ship
+  - PlayerShip
   layers:
   - Default
   - TransparentFX

@@ -509,7 +509,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0.5
-    maxNumParticles: 10
+    maxNumParticles: 20
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1172,6 +1172,9 @@ ParticleSystem:
     - sprite: {fileID: 21300006, guid: 1866ae872db5148298d8e7b9dd974a87, type: 3}
     - sprite: {fileID: 21300008, guid: 1866ae872db5148298d8e7b9dd974a87, type: 3}
     - sprite: {fileID: 21300010, guid: 1866ae872db5148298d8e7b9dd974a87, type: 3}
+    - sprite: {fileID: 21300012, guid: 1866ae872db5148298d8e7b9dd974a87, type: 3}
+    - sprite: {fileID: 21300014, guid: 1866ae872db5148298d8e7b9dd974a87, type: 3}
+    - sprite: {fileID: 21300016, guid: 1866ae872db5148298d8e7b9dd974a87, type: 3}
   VelocityModule:
     enabled: 0
     x:
@@ -2553,8 +2556,8 @@ ParticleSystem:
       properties: 0
   LightsModule:
     enabled: 0
-    ratio: 0
-    light: {fileID: 0}
+    ratio: 1
+    light: {fileID: 108414903886491344, guid: 36dd58a6668ac41c492a3f1dddc9e571, type: 2}
     randomDistribution: 1
     color: 1
     range: 1
@@ -2641,7 +2644,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 20
+    maxLights: 1
   TrailModule:
     enabled: 0
     ratio: 1

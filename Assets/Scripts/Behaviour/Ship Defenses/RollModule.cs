@@ -13,7 +13,7 @@ public class RollModule : ShipDefense {
 	*/
 
 	public AudioClip warpSound;
-	public AudioManager audioManager;
+	public AudioSource audioSource;
 	public GameObject gameManager;
 
 	public float rollTime = 1f;
@@ -29,7 +29,7 @@ public class RollModule : ShipDefense {
 	void Awake() {
 		defenseName = "Roll Module : " + direction;
 		shipState = GetComponent<ShipStateBehaviour>();
-		audioManager = gameManager.GetComponent<AudioManager>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 
@@ -51,7 +51,10 @@ public class RollModule : ShipDefense {
 			shipState.AddState("Rolling");
 			rollingLeft = true;
 			Invoke("StopRolling", rollTime);
-			audioManager.PlaySingleFX(warpSound, 0);
+			if (audioSource.clip != warpSound) {
+				audioSource.clip = warpSound;
+			}
+			audioSource.Play();
 		}
 	}
 
@@ -61,7 +64,10 @@ public class RollModule : ShipDefense {
 			shipState.AddState("Rolling", 2f);
 			rollingRight = true;
 			Invoke("StopRolling", rollTime);
-			audioManager.PlaySingleFX(warpSound, 0);
+			if (audioSource.clip != warpSound) {
+				audioSource.clip = warpSound;
+			}
+			audioSource.Play();
 		}
 	}
 

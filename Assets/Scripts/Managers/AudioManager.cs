@@ -9,17 +9,9 @@ public class AudioManager : MonoBehaviour {
 
 
 	void Awake() {
-		GetAllSoundSources();
+		//GetAllSoundSources();
 	}
 
-
-	void GetAllSoundSources() {
-		GameObject[] allShips = GameObject.FindGameObjectsWithTag("Ship");
-
-		for (var x = 0; x < allShips.Length; x++) {
-			soundSources.Add(allShips[x].GetComponent<AudioSource>());
-		}
-	}
 
 
 	public void PlaySingleFX(AudioClip clip, int sourceIndex) {

@@ -18,6 +18,9 @@ public class CameraBehaviour : MonoBehaviour {
 
 	MeshRenderer backdropRenderer;
 
+	public Light _backdropLight;
+	public float hyperspaceLerp;
+
 	public float scrollSpeedReduction = 24;
 
 	void Awake() {
@@ -52,10 +55,27 @@ public class CameraBehaviour : MonoBehaviour {
 
 			float renderX = mainCam.transform.position.x / scrollSpeedReduction;
 			float renderY = mainCam.transform.position.y / scrollSpeedReduction;
+
 			backdropRenderer.material.mainTextureOffset = new Vector2(renderX, renderY);
+
 			transform.position = new Vector2(playerShip.transform.position.x, playerShip.transform.position.y) + foresightLocation;
+
 		}
 	}
+
+
+	public void HyperspaceFade(bool fadeIn) {
+		if (fadeIn) {
+			hyperspaceLerp += 1f * Time.deltaTime;
+		} else {
+			hyperspaceLerp -= 1f * Time.deltaTime;
+		}
+
+		hyperspaceLerp = Mathf.Clamp(hyperspaceLerp, 0, 1);
+		_backdropLight.intensity = Mathf.Lerp(2, 0, hyperspaceLerp);
+
+	}
+
 
 	public void DisplayBackdrop(Material newBackdrop) {
 		backdropRenderer.material = newBackdrop;

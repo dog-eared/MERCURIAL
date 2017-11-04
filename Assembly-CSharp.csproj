@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Behaviour\HyperspaceBlur.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
@@ -88,6 +89,7 @@
      <Compile Include="Assets\Scripts\DEBUG\debug_WaypointDraw.cs" />
      <Compile Include="Assets\Scripts\Managers\AsteroidManager.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
      <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />

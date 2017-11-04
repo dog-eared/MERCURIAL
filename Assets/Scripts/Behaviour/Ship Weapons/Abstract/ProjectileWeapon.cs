@@ -8,6 +8,8 @@ public abstract class ProjectileWeapon : ShipWeapon {
 	public float bulletLifespan = 3f;
 	float timeSinceLastShot = 0f; //must start at zero so we can shoot immediately
 
+	AudioSource _audioSource;
+	public AudioClip weaponClip;
 
 	public GameObject projectile;
 
@@ -20,6 +22,9 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 
 	public virtual void Awake() {
+
+		_audioSource = GetComponent<AudioSource>();
+
 		/*
 		Generating our bullet pool
 
@@ -49,6 +54,13 @@ public abstract class ProjectileWeapon : ShipWeapon {
 	override public void FireButtonPressed() {
 
 		if (Time.time > rateOfFire + timeSinceLastShot) {
+
+			//Audio for laser
+			if (_audioSource.clip != weaponClip) {
+				_audioSource.clip = weaponClip;
+			}
+			_audioSource.Play();
+			//audio
 
 			GameObject currentBullet = bulletPool.transform.GetChild(currentPoolIndex).gameObject;
 

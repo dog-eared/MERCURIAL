@@ -21,11 +21,9 @@ public class MenuManager : MonoBehaviour {
 
 	*/
 
-	SystemManager systemManager;
-
-	DockingBehaviour dockingBehaviour;
-	public float gameTimeScale = 1f;
-	public string gameState = "Normal";
+	SystemManager _systemManager;
+	GameStateManager _gameStateManager;
+	DockingBehaviour _dockingBehaviour;
 
 	string landingMenu = "MenuScenes/landed_menu";
 	string settingsMenu = "MenuScenes/settings_menu";
@@ -40,8 +38,9 @@ public class MenuManager : MonoBehaviour {
 	List<string> openMenus = new List<string>();
 
 	void Awake() {
-		systemManager = GetComponent<SystemManager>();
-		dockingBehaviour = GetComponent<InputManager>().playerShip.GetComponent<DockingBehaviour>();
+		_systemManager = GetComponent<SystemManager>();
+		_gameStateManager = GetComponent<GameStateManager>();
+		_dockingBehaviour = GetComponent<InputManager>().playerShip.GetComponent<DockingBehaviour>();
 		openMenus.Add("Gameplay"); //Saving a headache by having our list always contain minimum count of 1
 				//If we lose this string, the list will return a count of null, not 0 :|
 
@@ -74,11 +73,11 @@ public class MenuManager : MonoBehaviour {
 		}
 
 		//First, check if we can find the proper json file...
-		if (File.Exists(Application.dataPath + "/Resources/PlanetData/" + systemManager.systemName + "/"
-				+ dockingBehaviour.planetTarget + ".json")) {
+		if (File.Exists(Application.dataPath + "/Resources/PlanetData/" + _systemManager.systemName + "/"
+				+ _dockingBehaviour.planetTarget + ".json")) {
 					landedMenuObject.SetActive(true);
 					openMenus.Add("landedMenuObject");
-					Time.timeScale = 0;
+					_gameStateManager.SetGameMode("Menu");
 					return true;
 				} else {
 					Debug.Log("No file found!");
@@ -91,7 +90,7 @@ public class MenuManager : MonoBehaviour {
 		//Activate the menu!
 		settingsMenuObject.SetActive(true);
 		openMenus.Add("settingsMenuObject");
-		Time.timeScale = 0;
+		_gameStateManager.SetGameMode("Menu");
 		return true;
 }
 
@@ -100,7 +99,7 @@ public class MenuManager : MonoBehaviour {
 		//Activate the menu!
 		statsMenuObject.SetActive(true);
 		openMenus.Add("statsMenuObject");
-		Time.timeScale = 0;
+		_gameStateManager.SetGameMode("Menu");
 		return true;
 	}
 
@@ -130,7 +129,7 @@ public class MenuManager : MonoBehaviour {
 			openMenus.RemoveAt((openMenus.Count - 1));
 
 			if (openMenus.Count == 1) {
-				Time.timeScale = gameTimeScale;
+				_gameStateManager.SetGameMode("Normal");
 			}
 		} else {
 			Debug.Log("No menu to close.");

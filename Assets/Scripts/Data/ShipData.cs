@@ -19,10 +19,30 @@ public class ShipData : MonoBehaviour {
 	public float shipShieldMax;
 
 
-
 	void Awake() {
 		this.name = shipName;
 	}
+
+
+	public void TakeDamage(int damage) {
+		if (shipShieldCurrent > damage) {
+			shipShieldCurrent -= damage;
+			
+		}
+
+
+		if (shipShieldCurrent < damage) {
+			shipHullCurrent -= (damage - shipShieldCurrent);
+			shipShieldCurrent = 0;
+		} else if (shipShieldCurrent <= 0) {
+			shipHullCurrent -= damage;
+		}
+		if (shipHullCurrent <= 0) {
+			Death();
+		}
+	}
+
+
 
 
 	void Death() {

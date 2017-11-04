@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212741653887853012}
   - component: {fileID: 114539691077921962}
   - component: {fileID: 58101313789219308}
+  - component: {fileID: 50957457743765312}
   m_Layer: 12
   m_Name: LightBlasterShot
   m_TagString: Player
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50957457743765312
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451988642418232}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!58 &58101313789219308
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -68,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7385a5ad6ae48aab07cba94e9256cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   moveSpeed: 30
   timeTilDestroy: 1
 --- !u!212 &212741653887853012

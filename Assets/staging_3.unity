@@ -1282,9 +1282,7 @@ MonoBehaviour:
   intimidationSkill: 3
   mechanicsSkill: 2
   thriftSkill: 2
-  pilotExperiences:
-  - Slum Lord
-  - Honourable Discharge
+  pilotExperiences: []
 --- !u!1 &1698211101
 GameObject:
   m_ObjectHideFlags: 0

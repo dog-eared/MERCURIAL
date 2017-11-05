@@ -37,6 +37,7 @@ public class CameraBehaviour : MonoBehaviour {
 	public void ZoomIn() {
 		if (mainCam.orthographicSize > zoomIn) {
 			mainCam.orthographicSize -= zoomIncrement;
+
 		}
 	}
 
@@ -64,17 +65,30 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 
 
-	public void HyperspaceFade(bool fadeIn) {
-		if (fadeIn) {
+	public IEnumerator HyperspaceFadeOut() {
+		while (hyperspaceLerp < 1) {
 			hyperspaceLerp += 1f * Time.deltaTime;
-		} else {
-			hyperspaceLerp -= 1f * Time.deltaTime;
+
+			hyperspaceLerp = Mathf.Clamp(hyperspaceLerp, 0, 1);
+			_backdropLight.intensity = Mathf.Lerp(2, 0, hyperspaceLerp);
+
+			yield return null;
 		}
-
-		hyperspaceLerp = Mathf.Clamp(hyperspaceLerp, 0, 1);
-		_backdropLight.intensity = Mathf.Lerp(2, 0, hyperspaceLerp);
-
 	}
+
+
+	public IEnumerator HyperspaceFadeIn() {
+		while (hyperspaceLerp > 0) {
+			hyperspaceLerp -= (1f * Time.deltaTime);
+
+			//hyperspaceLerp = Mathf.Clamp(hyperspaceLerp, 0, 1);
+			_backdropLight.intensity = Mathf.Lerp(2, 0, hyperspaceLerp);
+
+			yield return null;
+		}
+	}
+
+
 
 
 	public void DisplayBackdrop(Material newBackdrop) {

@@ -24,38 +24,62 @@ public class ShipData : MonoBehaviour {
 	public float shipShieldCurrent;
 	public float shipShieldMax;
 
+	public int shieldRegenAmount = 1;
+
 	[Space(10)]
 
 	public GameObject explosionAnimation;
 	public AudioClip explosionSound;
 
+	GUIManager _guiManager;
 
 	void Awake() {
 		this.name = shipName;
 		this.tag = SetFactionString(faction) + "Ship";
 		_audioSource = GetComponent<AudioSource>();
+		_guiManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GUIManager>();
+
+		InvokeRepeating("ShieldsRegenerate", 6, 2);
 	}
 
 
 	public void TakeDamage(int damage) {
+
 		if (shipShieldCurrent > damage) {
 			shipShieldCurrent -= damage;
-
-		}
-
-
-		if (shipShieldCurrent < damage) {
+		} else if (shipShieldCurrent < damage) {
 			shipHullCurrent -= (damage - shipShieldCurrent);
 			shipShieldCurrent = 0;
 		} else if (shipShieldCurrent <= 0) {
 			shipHullCurrent -= damage;
 		}
+
+		if (_guiManager != null) {
+			_guiManager.SetBarAmount("hull", (shipHullCurrent / shipHullMax));
+			_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
+		}
+
 		if (shipHullCurrent <= 0) {
 			Death();
 		}
+
+
 	}
 
 
+	void ShieldsRegenerate() {
+		Debug.Log("Regen tick");
+		if (shipShieldCurrent < shipShieldMax) {
+
+			shipShieldCurrent += shieldRegenAmount;
+
+			if (shipShieldCurrent > shipShieldMax) {
+				shipShieldCurrent = shipShieldMax;
+			}
+
+			_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
+		}
+	}
 
 
 	void Death() {

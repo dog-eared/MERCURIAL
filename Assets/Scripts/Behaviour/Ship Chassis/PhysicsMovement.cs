@@ -11,24 +11,24 @@ public class PhysicsMovement : ShipChassis {
 
 	*/
 
-	Rigidbody2D rigidbody2D;
+	Rigidbody2D rb2d;
 	public Vector3 reverseVelocity;
 
 	public override void Awake() {
-		rigidbody2D = GetComponent<Rigidbody2D>();
+		rb2d = GetComponent<Rigidbody2D>();
 
 		base.Awake();
 
 	}
 
 	public override void ShipMovement() {
-		rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, maximumSpeed);
+		rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maximumSpeed);
 
 		}
 
 	public override void ShipThrust(float acceleration) {
 		currentThrust += acceleration;
-		rigidbody2D.AddForce(transform.up * currentThrust);
+		rb2d.AddForce(transform.up * currentThrust);
 	}
 
 	public override void ShipBrakes(float deacceleration) {

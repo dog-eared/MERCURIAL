@@ -21,6 +21,7 @@ TagManager:
   - Faction6Ship
   - Faction7Ship
   - PlayerShip
+  - GUI_Listener
   layers:
   - Default
   - TransparentFX

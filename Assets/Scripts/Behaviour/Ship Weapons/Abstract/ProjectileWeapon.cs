@@ -24,6 +24,12 @@ public abstract class ProjectileWeapon : ShipWeapon {
 	public virtual void Awake() {
 
 		_audioSource = GetComponent<AudioSource>();
+		GenerateBulletPool();
+
+	}
+
+
+	protected void GenerateBulletPool() {
 
 		/*
 		Generating our bullet pool
@@ -47,7 +53,6 @@ public abstract class ProjectileWeapon : ShipWeapon {
 			newBullet.SetActive(false);
 			newBullet.transform.parent = bulletPool.transform;
 		}
-
 	}
 
 

@@ -26,6 +26,7 @@ public class InputManager : MonoBehaviour {
 	CameraBehaviour gameCameraBehaviour;
 	public ShipStateBehaviour shipState;
 
+	public GUIManager _guiManager;
 
 
 	void Awake () {
@@ -39,6 +40,8 @@ public class InputManager : MonoBehaviour {
 
 		if (playerShip.GetComponent<ShipChassis>()) {
 			shipChassis = playerShip.GetComponent<ShipChassis>();
+			playerShip.GetComponent<ShipData>()._guiManager =
+			GameObject.FindGameObjectWithTag("GameController").GetComponent<GUIManager>();
 			//Debug.Log("Got player chassis");
 		} else {
 			Debug.Log("No chassis found.");
@@ -132,6 +135,14 @@ public class InputManager : MonoBehaviour {
 				shipChassis.shipWeapons[2].FireButtonReleased();
 			}
 		}
+
+		/* GUI controls */
+
+		if (Input.GetButtonDown("MoveLogs") && _guiManager != null) {
+			_guiManager.MoveLogs();
+		}
+
+
 
 		/* Camera Control */
 		if (Input.GetKey("+") || (Input.GetKey("=")) ) {

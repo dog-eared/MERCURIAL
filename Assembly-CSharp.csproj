@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\HyperspaceBlur.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
@@ -75,11 +76,12 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ForesightModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\RollModule.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ShipDefense.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\EmptyWeaponSlot.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\ProjectileWeapon.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\EmptyWeaponSlot.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\ShipWeapon.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\HeavyBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\LightBlaster.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\ShipWeapon.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\PrecisionBlaster.cs" />
      <Compile Include="Assets\Scripts\Data\NPCPilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />

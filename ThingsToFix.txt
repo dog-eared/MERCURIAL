@@ -1,0 +1,7 @@
+FIXME: ShipData._guiManager set by unrelated manager
+LOCATION: InputManager / Ship Data
+PROBLEM: InputManager is setting reference to GUI manager for now. It's a quick fix
+until I get around to re-organizing to have a master game data function (maybe reworking
+gameStateManager!)
+
+

@@ -25,21 +25,29 @@ public class ShipData : MonoBehaviour {
 	public float shipShieldMax;
 
 	public int shieldRegenAmount = 1;
+	public int shieldRegenFrequency;
 
 	[Space(10)]
 
 	public GameObject explosionAnimation;
 	public AudioClip explosionSound;
 
-	GUIManager _guiManager;
+	//Has this reference so it can post messages on death, communications, etc!
+	GUIBehaviour _guiBehaviour;
+
+	/*
+	FIXME: GUI manager is set by InputManager if it's supposed to be attached to the player.
+	*/
+
+	public GUIManager _guiManager;
 
 	void Awake() {
 		this.name = shipName;
 		this.tag = SetFactionString(faction) + "Ship";
 		_audioSource = GetComponent<AudioSource>();
-		_guiManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GUIManager>();
+		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").GetComponent<GUIBehaviour>();
 
-		InvokeRepeating("ShieldsRegenerate", 6, 2);
+		InvokeRepeating("ShieldsRegenerate", 6, shieldRegenFrequency);
 	}
 
 
@@ -60,6 +68,7 @@ public class ShipData : MonoBehaviour {
 		}
 
 		if (shipHullCurrent <= 0) {
+			_guiBehaviour.ReceiveMessage(this.name + " has been destroyed.", true);
 			Death();
 		}
 
@@ -83,7 +92,7 @@ public class ShipData : MonoBehaviour {
 
 
 	void Death() {
-
+		
 		Instantiate(explosionAnimation, new Vector3(transform.position.x, transform.position.y, 2), Quaternion.identity);
 		Destroy(gameObject);
 	}

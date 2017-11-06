@@ -30,7 +30,7 @@ public class SystemManager : MonoBehaviour {
 	PlanetManager planetManager;
 	SystemData systemData;
 
-
+	public GUIBehaviour _guiBehaviour;
 	public GameObject systemBoundary;
 
 	//SystemData should probably be in this file, not PlanetManager;
@@ -62,6 +62,9 @@ public class SystemManager : MonoBehaviour {
 			planetManager.BuildPlanet(newPlanet);
 		}
 
+
+		_guiBehaviour.ReceiveMessage("Entered system: " + systemName, false);
+		_guiBehaviour.ReceiveMessage("System owner: " + systemOwner, false);
 
 		return data;
 

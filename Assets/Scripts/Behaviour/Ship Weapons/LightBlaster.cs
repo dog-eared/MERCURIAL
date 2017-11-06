@@ -8,9 +8,12 @@ public class LightBlaster : ProjectileWeapon {
 
 		weaponName = "Light Blaster";
 
-		//GameObject projectile;
+		if (projectile == null) {
+			projectile = Resources.Load("/Projectiles/LightBlasterShot", typeof(GameObject))  as GameObject;
+		}
 
 		base.Awake();
+
 	}
 
 }

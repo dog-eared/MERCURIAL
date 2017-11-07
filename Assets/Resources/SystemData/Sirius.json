@@ -1,0 +1,11 @@
+{
+  "systemName": "Sirius",
+  "backdropMaterial": "Purple",
+  "systemOwner":"Contested (Earth/Scourge)",
+  "systemPopulated":true,
+  "systemSize": 350,
+  "asteroidsToSpawn":0,
+  "chanceOfPirate":0,
+
+  "planets":[]
+}

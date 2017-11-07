@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4402709497382950}
   - component: {fileID: 212741653887853012}
   - component: {fileID: 114539691077921962}
-  - component: {fileID: 58101313789219308}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: LightBlasterShot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -42,21 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58101313789219308
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1451988642418232}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.13
 --- !u!114 &114539691077921962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +56,9 @@ MonoBehaviour:
   passThrough: 0
   moveSpeed: 30
   timeTilDestroy: 0.5
+  layersToHit:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!212 &212741653887853012
 SpriteRenderer:
   m_ObjectHideFlags: 1

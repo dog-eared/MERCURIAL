@@ -1,0 +1,11 @@
+{
+  "systemName": "Cygni",
+  "backdropMaterial": "Gold",
+  "systemOwner":"Trade Alliance",
+  "systemPopulated":false,
+  "systemSize": 350,
+  "asteroidsToSpawn":0,
+  "chanceOfPirate":0,
+
+  "planets":[]
+}

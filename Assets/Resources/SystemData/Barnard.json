@@ -1,0 +1,11 @@
+{
+  "systemName": "Barnard",
+  "backdropMaterial": "Red",
+  "systemOwner":"Abandoned",
+  "systemPopulated":false,
+  "systemSize": 300,
+  "asteroidsToSpawn":48,
+  "chanceOfPirate":0,
+
+  "planets":["Barnard"]
+}

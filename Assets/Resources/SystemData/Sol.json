@@ -1,10 +1,10 @@
 {
   "systemName": "Sol",
-  "backdropMaterial": "Neutral",
-  "systemOwner":"Terran",
+  "backdropMaterial": "Blue",
+  "systemOwner":"Dominion of Earth",
   "systemPopulated":true,
   "systemSize": 400,
-  "asteroidsToSpawn":13,
+  "asteroidsToSpawn":7,
   "chanceOfPirate":0,
 
   "planets":["Earth", "Luna", "Mars"]

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4920592421775144}
   - component: {fileID: 68389354883625428}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: SystemEdge
   m_TagString: SystemEdge
   m_Icon: {fileID: 0}

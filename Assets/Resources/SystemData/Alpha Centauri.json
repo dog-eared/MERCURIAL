@@ -1,7 +1,7 @@
 {
   "systemName": "Alpha Centauri",
-  "backdropMaterial": "Gold",
-  "systemOwner":"None",
+  "backdropMaterial": "Neutral",
+  "systemOwner":"Abandoned",
   "systemPopulated":false,
   "systemSize": 400,
   "asteroidsToSpawn":55,

@@ -32,6 +32,8 @@ public abstract class ShipChassis : MonoBehaviour {
 	public List<ShipWeapon> shipWeapons = new List<ShipWeapon>();
 	public List<ShipDefense> shipDefenses = new List<ShipDefense>();
 
+	ShipData _shipData;
+
 
 	public virtual void Awake() {
 		var weaponsToAdd = GetComponents<ShipWeapon>();
@@ -60,7 +62,7 @@ public abstract class ShipChassis : MonoBehaviour {
 	}
 
 	void Update() {
-		
+
 		currentThrust = Mathf.Clamp(currentThrust, 0, maximumSpeed);
 
 	}

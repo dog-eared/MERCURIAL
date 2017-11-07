@@ -6,6 +6,11 @@ public abstract class ShipWeapon : MonoBehaviour {
 
 	public string weaponName = "Ship Weapon";
 
+	//[HideInInspector]
+	public string factionName;
+
+	protected ShipData _shipData;
+
 	bool buttonBeingHeld = false;
 
 	public virtual void FireButtonPressed() {
@@ -16,6 +21,10 @@ public abstract class ShipWeapon : MonoBehaviour {
 	public virtual void FireButtonReleased() {
 		Debug.Log("Release");
 		buttonBeingHeld = false;
+	}
+
+	public virtual void GenerateBulletPool(string ownerTag) {
+		Debug.Log("Generating bulletpool for " + ownerTag);
 	}
 
 }

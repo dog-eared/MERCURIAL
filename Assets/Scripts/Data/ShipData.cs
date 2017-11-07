@@ -7,6 +7,7 @@ public class ShipData : MonoBehaviour {
 	public string shipModel; //Style of ship
 	public string shipName; //Name of ship
 	AudioSource _audioSource;
+	ShipChassis _chassis;
 
 	[Space(10)]
 
@@ -32,19 +33,26 @@ public class ShipData : MonoBehaviour {
 	public GameObject explosionAnimation;
 	public AudioClip explosionSound;
 
+	public float invincibilityFramesTime = 0.1f;
+	bool invincibilityFramesOn = false;
+
+	Renderer _renderer;
+
 	//Has this reference so it can post messages on death, communications, etc!
 	GUIBehaviour _guiBehaviour;
 
 	/*
 	FIXME: GUI manager is set by InputManager if it's supposed to be attached to the player.
 	*/
-
+	[HideInInspector]
 	public GUIManager _guiManager;
 
 	void Awake() {
 		this.name = shipName;
 		this.tag = SetFactionString(faction) + "Ship";
 		_audioSource = GetComponent<AudioSource>();
+		_chassis = GetComponent<ShipChassis>();
+		_renderer = GetComponent<Renderer>();
 		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").GetComponent<GUIBehaviour>();
 
 		InvokeRepeating("ShieldsRegenerate", 6, shieldRegenFrequency);
@@ -53,26 +61,43 @@ public class ShipData : MonoBehaviour {
 
 	public void TakeDamage(int damage) {
 
-		if (shipShieldCurrent > damage) {
-			shipShieldCurrent -= damage;
-		} else if (shipShieldCurrent < damage) {
-			shipHullCurrent -= (damage - shipShieldCurrent);
-			shipShieldCurrent = 0;
-		} else if (shipShieldCurrent <= 0) {
-			shipHullCurrent -= damage;
+		if (!invincibilityFramesOn) {
+
+			InvincibilityOn();
+			Invoke("InvincibilityOff", invincibilityFramesTime);
+
+			if (shipShieldCurrent > damage) {
+				shipShieldCurrent -= damage;
+			} else if (shipShieldCurrent < damage) {
+				shipHullCurrent -= (damage - shipShieldCurrent);
+				shipShieldCurrent = 0;
+			} else if (shipShieldCurrent <= 0) {
+				shipHullCurrent -= damage;
+			}
+
+			if (_guiManager != null) {
+				_guiManager.SetBarAmount("hull", (shipHullCurrent / shipHullMax));
+				_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
+			}
+
+			if (shipHullCurrent <= 0) {
+				_guiBehaviour.ReceiveMessage(this.name + " has been destroyed.", true);
+				Death();
+			}
+
 		}
 
-		if (_guiManager != null) {
-			_guiManager.SetBarAmount("hull", (shipHullCurrent / shipHullMax));
-			_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
-		}
+	}
 
-		if (shipHullCurrent <= 0) {
-			_guiBehaviour.ReceiveMessage(this.name + " has been destroyed.", true);
-			Death();
-		}
+	void InvincibilityOn() {
+		invincibilityFramesOn = true;
+		_renderer.material.color = new Color(4, 0, 0);
+	}
 
 
+	void InvincibilityOff() {
+		invincibilityFramesOn = false;
+		_renderer.material.color = new Color(1, 1, 1);
 	}
 
 
@@ -92,13 +117,13 @@ public class ShipData : MonoBehaviour {
 
 
 	void Death() {
-		
+
 		Instantiate(explosionAnimation, new Vector3(transform.position.x, transform.position.y, 2), Quaternion.identity);
 		Destroy(gameObject);
 	}
 
 
-	string SetFactionString(FactionsList faction) {
+	public string SetFactionString(FactionsList faction) {
 			//For myself later:
 			//By casting the int to the FactionsList, we get the faction at the enum location
 			//This way if I'm crazy and decide to rename a faction in this enum, it'll

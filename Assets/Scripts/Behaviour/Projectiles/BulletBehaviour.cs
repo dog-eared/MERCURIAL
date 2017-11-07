@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour {
 
-	int factionNumber = 1;
-
 	public int damage = 10;
 	public bool passThrough = false;
 	public float moveSpeed = 10f;
@@ -31,10 +29,10 @@ public class BulletBehaviour : MonoBehaviour {
 		newPosition = transform.position;
 
 		//8192 is the value used by our layerMask for Layer 13:ships.
-		RaycastHit2D hit = Physics2D.Raycast(lastPosition, newPosition, Mathf.Infinity, 8192);
+		RaycastHit2D hit = Physics2D.Raycast(lastPosition, newPosition, 1, 8192);
 
 		if (hit) {
-			if (hit.collider.tag != "Faction" + factionNumber + "Ship") {
+			if (hit.collider.tag != transform.tag) {
 				RaycastHitTarget(hit.collider);
 			}
 		}
@@ -44,7 +42,7 @@ public class BulletBehaviour : MonoBehaviour {
 
 	void OnDrawGizmos() {
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawRay(lastPosition, newPosition);
+		Gizmos.DrawLine(lastPosition, newPosition);
 	}
 
 	void RaycastHitTarget(Collider2D collision) {

@@ -17,19 +17,23 @@ public abstract class ProjectileWeapon : ShipWeapon {
 	public GameObject bulletPoolPrefab;
 	GameObject bulletPool;
 
-	int currentPoolIndex = 0;
+	string factionTag;
 
+	int currentPoolIndex = 0;
 
 
 	public virtual void Awake() {
 
 		_audioSource = GetComponent<AudioSource>();
-		GenerateBulletPool();
+		_shipData = GetComponent<ShipData>();
+
+		factionTag = _shipData.SetFactionString(_shipData.faction);
+		GenerateBulletPool(factionTag + "Ship");
 
 	}
 
 
-	protected void GenerateBulletPool() {
+	override public void GenerateBulletPool(string ownerTag) {
 
 		/*
 		Generating our bullet pool
@@ -44,7 +48,10 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 		bulletPoolPrefab = (GameObject)Resources.Load("Prefabs/Utility/Bullet Pool") as GameObject;
 		bulletPool = Instantiate(bulletPoolPrefab);
-		bulletPool.name = this.name + "W: " + weaponName + " Pool";
+
+
+		bulletPool.name = this.name + " - W: " + weaponName + " bullet pool";
+		bulletPool.tag = ownerTag;
 
 		//bulletPool.transform.parent = this.transform;
 
@@ -52,6 +59,7 @@ public abstract class ProjectileWeapon : ShipWeapon {
 			GameObject newBullet = Instantiate(projectile);
 			newBullet.SetActive(false);
 			newBullet.transform.parent = bulletPool.transform;
+			newBullet.tag = ownerTag;
 		}
 	}
 
@@ -68,6 +76,7 @@ public abstract class ProjectileWeapon : ShipWeapon {
 			//audio
 
 			GameObject currentBullet = bulletPool.transform.GetChild(currentPoolIndex).gameObject;
+
 
 			currentBullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
 			currentBullet.transform.rotation = transform.rotation;

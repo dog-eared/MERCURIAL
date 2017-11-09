@@ -1,0 +1,11 @@
+{
+  "systemName": "GJ-725",
+  "backdropMaterial": "Red",
+  "systemOwner":"Abandoned",
+  "systemPopulated":false,
+  "systemSize": 300,
+  "asteroidsToSpawn":70,
+  "chanceOfPirate":0,
+
+  "planets":[]
+}

@@ -1,7 +1,7 @@
 {
   "systemName": "Sirius",
-  "backdropMaterial": "Purple",
-  "systemOwner":"Contested (Earth/Scourge)",
+  "backdropMaterial": "Blue",
+  "systemOwner":"Dominion of Earth",
   "systemPopulated":true,
   "systemSize": 350,
   "asteroidsToSpawn":0,

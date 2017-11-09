@@ -1,0 +1,11 @@
+{
+  "systemName": "Eridani",
+  "backdropMaterial": "Neutral",
+  "systemOwner":"Rebellion",
+  "systemPopulated":true,
+  "systemSize": 350,
+  "asteroidsToSpawn":0,
+  "chanceOfPirate":0,
+
+  "planets":["Farseer"]
+}

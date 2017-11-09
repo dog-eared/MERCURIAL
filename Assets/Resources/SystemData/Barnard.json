@@ -1,8 +1,8 @@
 {
   "systemName": "Barnard",
-  "backdropMaterial": "Red",
-  "systemOwner":"Abandoned",
-  "systemPopulated":false,
+  "backdropMaterial": "Blue",
+  "systemOwner":"Dominion of Earth",
+  "systemPopulated":true,
   "systemSize": 300,
   "asteroidsToSpawn":48,
   "chanceOfPirate":0,

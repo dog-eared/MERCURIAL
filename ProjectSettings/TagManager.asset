@@ -22,6 +22,8 @@ TagManager:
   - Faction7Ship
   - PlayerShip
   - GUI_Listener
+  - GUI_MapNode
+  - GUI_GalaxyMapMenu
   layers:
   - Default
   - TransparentFX

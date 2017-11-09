@@ -19,19 +19,20 @@ public class MenuManager : MonoBehaviour {
 	thing is workable.
 
 
+	TODO: Let's refactor using an enum or switch condition so we can cut down the
+	number of functions now that we don't instantiate new menus!
 	*/
 
 	SystemManager _systemManager;
 	GameStateManager _gameStateManager;
 	DockingBehaviour _dockingBehaviour;
 
-	string landingMenu = "MenuScenes/landed_menu";
-	string settingsMenu = "MenuScenes/settings_menu";
-	string statsMenu = "MenuScenes/stats_menu";
 
 	public GameObject landedMenuObject;
 	public GameObject settingsMenuObject;
 	public GameObject statsMenuObject;
+	public GameObject galaxyMapObject;
+	public GameObject guiStorage;
 
 	bool settingsOpenedThisFrame = false;
 
@@ -43,27 +44,8 @@ public class MenuManager : MonoBehaviour {
 		_dockingBehaviour = GetComponent<InputManager>().playerShip.GetComponent<DockingBehaviour>();
 		openMenus.Add("Gameplay"); //Saving a headache by having our list always contain minimum count of 1
 				//If we lose this string, the list will return a count of null, not 0 :|
-
-		LoadMenuScenes();
 	}
 
-
-	public void LoadMenuScenes() {
-
-		settingsMenuObject = Instantiate(settingsMenuObject as GameObject, new Vector3(0, 0, 5), Quaternion.identity);
-		settingsMenuObject.name = "SettingsMenu";
-
-		landedMenuObject = Instantiate(landedMenuObject as GameObject, new Vector3(0, 0, 5), Quaternion.identity);
-		landedMenuObject.name = "LandedMenu";
-
-		statsMenuObject = Instantiate(statsMenuObject as GameObject, new Vector3(0, 0, 5), Quaternion.identity);
-		statsMenuObject.name = "StatsMenu";
-
-		settingsMenuObject.SetActive(false);
-		landedMenuObject.SetActive(false);
-		statsMenuObject.SetActive(false);
-
-	}
 
 	public bool PlanetMenuOpen() {
 
@@ -76,7 +58,7 @@ public class MenuManager : MonoBehaviour {
 		if (File.Exists(Application.dataPath + "/Resources/PlanetData/" + _systemManager.systemName + "/"
 				+ _dockingBehaviour.planetTarget + ".json")) {
 					landedMenuObject.SetActive(true);
-					openMenus.Add("landedMenuObject");
+					openMenus.Add("Landed Menu");
 					_gameStateManager.SetGameMode("Menu");
 					return true;
 				} else {
@@ -89,16 +71,25 @@ public class MenuManager : MonoBehaviour {
 	public bool SettingsMenuOpen() {
 		//Activate the menu!
 		settingsMenuObject.SetActive(true);
-		openMenus.Add("settingsMenuObject");
+		openMenus.Add("Settings Menu");
 		_gameStateManager.SetGameMode("Menu");
 		return true;
 }
 
 
+	public bool GalaxyMenuOpen() {
+		galaxyMapObject.SetActive(true);
+		openMenus.Add("Galaxy Map");
+		_gameStateManager.SetGameMode("Menu");
+		Debug.Log("Success!");
+		return true;
+	}
+
+
 	public bool StatsMenuOpen() {
 		//Activate the menu!
 		statsMenuObject.SetActive(true);
-		openMenus.Add("statsMenuObject");
+		openMenus.Add("Stats Menu");
 		_gameStateManager.SetGameMode("Menu");
 		return true;
 	}
@@ -118,12 +109,14 @@ public class MenuManager : MonoBehaviour {
 
 			*/
 
-			if (menuToClose == "landedMenuObject") {
+			if (menuToClose == "Landed Menu") {
 				landedMenuObject.SetActive(false);
-			} else if (menuToClose == "settingsMenuObject") {
+			} else if (menuToClose == "Settings Menu") {
 				settingsMenuObject.SetActive(false);
-			} else if (menuToClose == "statsMenuObject") {
+			} else if (menuToClose == "Stats Menu") {
 				statsMenuObject.SetActive(false);
+			} else if (menuToClose == "Galaxy Map") {
+				galaxyMapObject.SetActive(false);
 			}
 
 			openMenus.RemoveAt((openMenus.Count - 1));
@@ -151,12 +144,16 @@ public class MenuManager : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetButtonDown("Land") && !(openMenus.Contains(landingMenu)))  {
+		if (Input.GetButtonDown("Land") && !(openMenus.Contains("Landing Menu")))  {
 			PlanetMenuOpen();
 		}
 
-		if (Input.GetButtonDown("Stats") && !(openMenus.Contains(statsMenu))) {
+		if (Input.GetButtonDown("Stats") && !(openMenus.Contains("Stats Menu"))) {
 			StatsMenuOpen();
+		}
+
+		if (Input.GetButtonDown("Map") && !(openMenus.Contains("Galaxy Map"))) {
+			GalaxyMenuOpen();
 		}
 
 		if (openMenus[openMenus.Count - 1] != "Gameplay" && Input.GetButtonDown("Cancel") && !settingsOpenedThisFrame) {

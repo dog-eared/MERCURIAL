@@ -1,0 +1,11 @@
+{
+  "systemName": "Groombridge",
+  "backdropMaterial": "Gold",
+  "systemOwner":"Divine Trade Alliance",
+  "systemPopulated":false,
+  "systemSize": 350,
+  "asteroidsToSpawn":0,
+  "chanceOfPirate":0,
+
+  "planets":["Chapel"]
+}

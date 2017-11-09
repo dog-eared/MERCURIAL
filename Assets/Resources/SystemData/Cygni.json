@@ -1,11 +1,11 @@
 {
   "systemName": "Cygni",
-  "backdropMaterial": "Gold",
-  "systemOwner":"Trade Alliance",
+  "backdropMaterial": "Blue",
+  "systemOwner":"Dominion of Earth",
   "systemPopulated":false,
   "systemSize": 350,
   "asteroidsToSpawn":0,
   "chanceOfPirate":0,
 
-  "planets":[]
+  "planets":["Kepler 89E"]
 }

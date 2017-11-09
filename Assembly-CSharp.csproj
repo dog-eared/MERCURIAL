@@ -51,10 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\HyperspaceBlur.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\GalaxyMapDragBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\GalaxyMapMenu.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StationVisitMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />

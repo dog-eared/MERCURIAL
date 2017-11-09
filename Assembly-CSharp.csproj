@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\Behaviour\Menu\GalaxyMapMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\Menu\StationVisitMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AbstractAI.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\AIState.cs" />

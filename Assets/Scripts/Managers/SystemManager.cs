@@ -34,6 +34,8 @@ public class SystemManager : MonoBehaviour {
 	public GameObject systemBoundary;
 	public GameObject systemBoundaryContainer;
 
+	public List<Planet> planetList;
+
 	//SystemData should probably be in this file, not PlanetManager;
 	//Refactor later?
 
@@ -49,6 +51,7 @@ public class SystemManager : MonoBehaviour {
 
 
 	public SystemData LoadSystemData(string target) {
+
 		WipeCurrentSystem();
 
 		TextAsset systemText = Resources.Load<TextAsset>("SystemData/" + target);
@@ -60,6 +63,7 @@ public class SystemManager : MonoBehaviour {
 			Debug.Log("PlanetData/" + data.systemName + "/" +  data.planets[x]);
 			TextAsset newPlanetText = Resources.Load<TextAsset>("PlanetData/" + data.systemName + "/" +  data.planets[x]);
 			Planet newPlanet = JsonUtility.FromJson<Planet>(newPlanetText.text);
+			planetList.Add(newPlanet);
 			planetManager.BuildPlanet(newPlanet);
 		}
 
@@ -89,6 +93,7 @@ public class SystemManager : MonoBehaviour {
 
 
 	void WipeCurrentSystem() {
+		Debug.Log("wipe!");
 		GameObject[] toWipe = GameObject.FindGameObjectsWithTag("Asteroid");
 		WipeObjects(toWipe);
 		toWipe = GameObject.FindGameObjectsWithTag("Planet");
@@ -99,6 +104,7 @@ public class SystemManager : MonoBehaviour {
 
 
 	void WipeObjects(GameObject[] toWipe) {
+		planetList = new List<Planet>();
 		for (var x = 0; x < toWipe.Length; x++) {
 			Destroy(toWipe[x]);
 		}

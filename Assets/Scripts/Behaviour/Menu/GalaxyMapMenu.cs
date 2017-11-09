@@ -23,12 +23,15 @@ public class GalaxyMapMenu : MonoBehaviour {
 
 
 	public string targetSystem;
-
+	Vector2 targetPosition;
 
 	public GameStateManager _gameStateManager;
 	public List<GameObject> _mapNodes;
+	public SystemManager _systemManager;
 
 	public GameObject galaxyMap;
+	public GameObject playerMapIcon;
+
 	RectTransform rectTransform;
 
 	public float scaleSpeed = 0.01f;
@@ -68,14 +71,21 @@ public class GalaxyMapMenu : MonoBehaviour {
 	}
 
 	public void SetTargetSystem(string target) {
+		targetPosition = new Vector2(playerMapIcon.transform.position.x - Input.mousePosition.x, playerMapIcon.transform.position.y - Input.mousePosition.y);
+		float rotateToTarget = Mathf.Atan2(targetPosition.y, targetPosition.x) * Mathf.Rad2Deg + 90;
+		playerMapIcon.transform.eulerAngles = new Vector3(0, 0, rotateToTarget);
+
 		targetSystem = target;
 	}
 
 
 	public void AcceptButton() {
-		_gameStateManager.targetSystem = targetSystem;
+		if (_systemManager.systemName != targetSystem) {
+			_gameStateManager.targetSystem = targetSystem;
+		} else {
+			Debug.Log("Currently in this system.");
+		}
 	}
-
 
 	public void CancelButton() {
 

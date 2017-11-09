@@ -15,21 +15,18 @@ public class PilotData : MonoBehaviour {
 	public string singular = "he";
 
 	[Space(10)]
-	[Header("Skills:")]
+	[Header("Skills & Exp:")]
 	public float combatSkill = 0;
 	public float diplomacySkill = 0;
 	public float intimidationSkill = 0;
 	public float mechanicsSkill = 0;
 	public float thriftSkill = 0;
-
 	public List<string> pilotExperiences;
 
-	void Awake() {
-		pilotExperiences.Add("Generic Tag");
+	[Space(10)]
+	[Header("Reputations:")]
+	public int dominionReputation = 50;
+	public int allianceReputation = 50;
+	public int rebelReputation = 50;
 
-		pilotExperiences.Add("Robotic Mind");
-
-		pilotExperiences.Add("Generic Tag");
-
-	}
 }

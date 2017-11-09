@@ -67,26 +67,21 @@ public class GameStateManager : MonoBehaviour {
 	//having it called directly in update is not working. Instead, invoking with
 	//a time of 0 seconds seems to be the solution. Research and fix later.
 	void StartFadeIn() {
-		_cameraBehaviour.StartCoroutine("HyperspaceFadeIn");
+		_cameraBehaviour.StartCoroutine("BackdropFadeIn");
 	}
 
 
 	void Update() {
 
 		if (Input.GetKeyDown("x")) {
-			_cameraBehaviour.StartCoroutine("HyperspaceFadeOut");
+			_cameraBehaviour.StartCoroutine("BackdropFadeOut");
 		}
 
-		if (_cameraBehaviour.hyperspaceLerp >= 1 && _systemManager.systemName != targetSystem) {
+		if (_cameraBehaviour.fadeLerp >= 1 && _systemManager.systemName != targetSystem) {
 			HyperspaceJump(targetSystem, 2);
 			Debug.Log("jumped!");
 			Invoke("StartFadeIn", 0); //See FIXME above.
 		}
-
-		else if (Input.GetKeyDown("c")) {
-			_cameraBehaviour.StartCoroutine("HyperspaceFadeIn");
-		}
-
 	}
 
 }

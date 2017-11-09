@@ -19,7 +19,7 @@ public class CameraBehaviour : MonoBehaviour {
 	MeshRenderer backdropRenderer;
 
 	public Light _backdropLight;
-	public float hyperspaceLerp;
+	public float fadeLerp;
 
 	public float scrollSpeedReduction = 24;
 
@@ -34,6 +34,7 @@ public class CameraBehaviour : MonoBehaviour {
 		}
 	}
 
+
 	public void ZoomIn() {
 		if (mainCam.orthographicSize > zoomIn) {
 			mainCam.orthographicSize -= zoomIncrement;
@@ -41,11 +42,13 @@ public class CameraBehaviour : MonoBehaviour {
 		}
 	}
 
+
 	public void ZoomOut() {
 		if (mainCam.orthographicSize < zoomOut) {
 			mainCam.orthographicSize += zoomIncrement;
 		}
 	}
+
 
 	void FixedUpdate() {
 		if (playerShip != null) {
@@ -65,24 +68,24 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 
 
-	public IEnumerator HyperspaceFadeOut() {
-		while (hyperspaceLerp < 1) {
-			hyperspaceLerp += 1f * Time.deltaTime;
+	public IEnumerator BackdropFadeOut() {
+		while (fadeLerp < 1) {
+			fadeLerp += 1f * Time.deltaTime;
 
-			hyperspaceLerp = Mathf.Clamp(hyperspaceLerp, 0, 1);
-			_backdropLight.intensity = Mathf.Lerp(2, 0, hyperspaceLerp);
+			fadeLerp = Mathf.Clamp(fadeLerp, 0, 1);
+			_backdropLight.intensity = Mathf.Lerp(2, 0, fadeLerp);
 
 			yield return null;
 		}
 	}
 
 
-	public IEnumerator HyperspaceFadeIn() {
-		while (hyperspaceLerp > 0) {
-			hyperspaceLerp -= (1f * Time.deltaTime);
+	public IEnumerator BackdropFadeIn() {
+		while (fadeLerp > 0) {
+			fadeLerp -= (1f * Time.deltaTime);
 
-			//hyperspaceLerp = Mathf.Clamp(hyperspaceLerp, 0, 1);
-			_backdropLight.intensity = Mathf.Lerp(2, 0, hyperspaceLerp);
+			//fadeLerp = Mathf.Clamp(fadeLerp, 0, 1);
+			_backdropLight.intensity = Mathf.Lerp(2, 0, fadeLerp);
 
 			yield return null;
 		}

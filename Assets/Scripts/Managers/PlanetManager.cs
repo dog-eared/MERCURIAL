@@ -33,7 +33,7 @@ public class PlanetManager : MonoBehaviour {
 		newPlanetData.planetName = planetToBuild.planetName;
 		newPlanetData.mapGraphic = planetToBuild.mapGraphic;
 		newPlanetData.buttons = planetToBuild.buttons;
-		
+
 		newPlanetData.UpdatePlanetDisplay();
 	}
 
@@ -69,10 +69,11 @@ public class Planet {
 	public float yLocation;
 	public float scale;
 	public string mapGraphic;
+
 	//Data for landing:
+	public string blurb;
 	public string landingGraphic;
 	public List<bool> buttons;
-	//public string blurb;
 
 
 }

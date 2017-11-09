@@ -32,6 +32,7 @@ public class SystemManager : MonoBehaviour {
 
 	public GUIBehaviour _guiBehaviour;
 	public GameObject systemBoundary;
+	public GameObject systemBoundaryContainer;
 
 	//SystemData should probably be in this file, not PlanetManager;
 	//Refactor later?
@@ -112,17 +113,27 @@ public class SystemManager : MonoBehaviour {
 
 
 	void GenerateBoundingEdges() {
+		//This is just for my own peace of mind, so the hierarchy stays clean
+		GameObject container = Instantiate(systemBoundaryContainer, new Vector3(0, 0, 0), Quaternion.identity);
+
+		//TODO: Refactor to be DRY
+
 		GameObject newBoundary = Instantiate(systemBoundary, new Vector3 (0, -systemSize, 0), Quaternion.identity);
 		newBoundary.transform.localScale = new Vector3(systemSize, 1, 0);
+		newBoundary.transform.SetParent(container.transform);
 
 		newBoundary = Instantiate(systemBoundary, new Vector3 (0, systemSize, 0), Quaternion.identity);
 		newBoundary.transform.localScale = new Vector3(systemSize, 1, 0);
+		newBoundary.transform.SetParent(container.transform);
 
 		newBoundary = Instantiate(systemBoundary, new Vector3 (systemSize, 0, 0), Quaternion.Euler(0,0,90));
 		newBoundary.transform.localScale = new Vector3(systemSize, 1, 0);
+		newBoundary.transform.SetParent(container.transform);
 
 		newBoundary = Instantiate(systemBoundary, new Vector3 (-systemSize, 0, 0), Quaternion.Euler(0,0,90));
 		newBoundary.transform.localScale = new Vector3(systemSize, 1, 0);
+		newBoundary.transform.SetParent(container.transform);
+
 	}
 
 }

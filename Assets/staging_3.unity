@@ -977,10 +977,10 @@ RectTransform:
   m_Father: {fileID: 332677904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 22, y: -10}
-  m_SizeDelta: {x: 10, y: -20}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 22, y: 402}
+  m_SizeDelta: {x: -1108, y: 804}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &908650028
 MonoBehaviour:
@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5862069, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7931032, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1349,6 +1349,8 @@ MonoBehaviour:
   _guiBehaviour: {fileID: 786956437}
   systemBoundary: {fileID: 1651210849243686, guid: c50f831a5fc8645cdb50f5695c6ba898,
     type: 2}
+  systemBoundaryContainer: {fileID: 1518132995851042, guid: 730ce40e9d5be4518ac0f6531a63fbb1,
+    type: 2}
 --- !u!4 &1192814989
 Transform:
   m_ObjectHideFlags: 0
@@ -1418,7 +1420,7 @@ MonoBehaviour:
   settingsMenuObject: {fileID: 343089238}
   statsMenuObject: {fileID: 1303507639}
   galaxyMapObject: {fileID: 2066394902}
-  guiStorage: {fileID: 0}
+  guiStorage: {fileID: 786956435}
 --- !u!114 &1192814994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2146,7 +2148,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1716869472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 603.21094, y: 331.67914, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 976613594}
@@ -2482,10 +2484,10 @@ RectTransform:
   m_Father: {fileID: 1026650010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20, y: -10}
-  m_SizeDelta: {x: 10, y: -20}
+  m_SizeDelta: {x: -1108, y: -20}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2103478846
 MonoBehaviour:

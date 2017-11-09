@@ -21,6 +21,9 @@ public class MenuManager : MonoBehaviour {
 
 	TODO: Let's refactor using an enum or switch condition so we can cut down the
 	number of functions now that we don't instantiate new menus!
+
+	BETTER TODO: Let's do an enormous refactor of the whole thing
+
 	*/
 
 	SystemManager _systemManager;
@@ -60,10 +63,11 @@ public class MenuManager : MonoBehaviour {
 					landedMenuObject.SetActive(true);
 					openMenus.Add("Landed Menu");
 					_gameStateManager.SetGameMode("Menu");
+					guiStorage.SetActive(false);
 					return true;
-				} else {
-					Debug.Log("No file found!");
-				}
+		} else {
+			Debug.Log("No file found!");
+		}
 		return false;
 	}
 
@@ -82,6 +86,7 @@ public class MenuManager : MonoBehaviour {
 		openMenus.Add("Galaxy Map");
 		_gameStateManager.SetGameMode("Menu");
 		Debug.Log("Success!");
+		guiStorage.SetActive(false);
 		return true;
 	}
 
@@ -91,6 +96,7 @@ public class MenuManager : MonoBehaviour {
 		statsMenuObject.SetActive(true);
 		openMenus.Add("Stats Menu");
 		_gameStateManager.SetGameMode("Menu");
+		guiStorage.SetActive(false);
 		return true;
 	}
 
@@ -123,6 +129,7 @@ public class MenuManager : MonoBehaviour {
 
 			if (openMenus.Count == 1) {
 				_gameStateManager.SetGameMode("Normal");
+				guiStorage.SetActive(true);
 			}
 		} else {
 			Debug.Log("No menu to close.");
@@ -134,6 +141,7 @@ public class MenuManager : MonoBehaviour {
 		if (openMenus[openMenus.Count - 1] == "Gameplay" && Input.GetButtonDown("Cancel")) {
 			SettingsMenuOpen();
 			settingsOpenedThisFrame = true;
+			guiStorage.SetActive(true);
 		}
 
 		if (Input.GetKeyDown("p")) {

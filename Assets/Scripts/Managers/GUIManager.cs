@@ -60,14 +60,21 @@ public class GUIManager : MonoBehaviour {
 
 		combatLogToDisplay.Add("");
 		textLogToDisplay.Add("");
+
+		Invoke("AutoFade", idleFadeOutTime);
 	}
 
 
 	public void PostMessage(string message, bool combatLog) {
+		Debug.Log(currentTextFade);
+		KillCurrentFades();
+
 		//Expand later to log more data
 		string newLogText;
 
 		if (combatLog) {
+
+			FadeLogs(false, true, 1);
 
 			newLogText = combatLogToDisplay[0];
 			combatLogToDisplay.Add(message);
@@ -82,6 +89,7 @@ public class GUIManager : MonoBehaviour {
 			_combatLog.text = newLogText;
 
 		} else {
+			FadeLogs(true, false, 1);
 			newLogText = textLogToDisplay[0];
 			textLogToDisplay.Add(message);
 			if (textLogToDisplay.Count > 3) {
@@ -94,6 +102,8 @@ public class GUIManager : MonoBehaviour {
 
 			_textLog.text = newLogText;
 		}
+
+		Invoke("AutoFade", idleFadeOutTime);
 	}
 
 
@@ -108,6 +118,25 @@ public class GUIManager : MonoBehaviour {
 			StartCoroutine(currentCombatFade);
 		}
 
+	}
+
+
+	void KillCurrentFades() {
+		Debug.Log(currentTextFade);
+		//So we can interrupt these if we get a new msg before invoke fires
+		if (currentTextFade != null) {
+			StopCoroutine(currentTextFade);
+		}
+		if (currentCombatFade !=null) {
+			StopCoroutine(currentCombatFade);
+		}
+	}
+
+
+	public void AutoFade() {
+		//Automatically fade both down after x number of secs
+		KillCurrentFades();
+		FadeLogs(true, true, 0);
 	}
 
 

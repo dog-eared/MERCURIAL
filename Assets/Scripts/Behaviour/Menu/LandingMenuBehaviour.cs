@@ -23,24 +23,23 @@ public class LandingMenuBehaviour : MonoBehaviour {
 	public void SetLandingData(SystemData systemData, Planet planetData) {
 		planetName.text = planetData.planetName;
 		planetBlurb.text = planetData.blurb;
-
-		SetReputationData(systemData.systemOwner);
+		Debug.Log(planetBlurb.text);
+		Debug.Log(planetData.blurb);
+		Debug.Log("Done!");
+		playerReputation.text = SetReputationData(systemData.systemOwner);
 	}
 
 	string SetReputationData(string owner) {
+		Debug.Log(owner);
 		switch (owner) {
 			case "Dominion of Earth":
-				return "Reputation: " + _playerPilotData.dominionReputation + "\n" +
-							 "Faction: Dominion of Earth";
+				return "Faction: Dominion of Earth \n" +
+				 				"Reputation: " + _playerPilotData.dominionReputation;
 			case "Divine Trade Alliance":
-				return "Reputation: " + _playerPilotData.allianceReputation + "\n" +
-						 "Faction: Divine Trade Alliance";
+				return "Faction: Divine Trade Alliance \n" +
+								"Reputation: " + _playerPilotData.allianceReputation;
 			default:
 				return "";
-		}
-
-		if (owner == "Dominion of Earth") {
-
 		}
 	}
 

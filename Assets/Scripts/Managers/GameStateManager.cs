@@ -72,9 +72,12 @@ public class GameStateManager : MonoBehaviour {
 
 
 	void Update() {
-
+		//To be replaced later
 		if (Input.GetKeyDown("x")) {
-			_cameraBehaviour.StartCoroutine("BackdropFadeOut");
+			Debug.Log(targetSystem);
+			if (targetSystem != "" && targetSystem != _systemManager.systemName) {
+				_cameraBehaviour.StartCoroutine("BackdropFadeOut");
+			}
 		}
 
 		if (_cameraBehaviour.fadeLerp >= 1 && _systemManager.systemName != targetSystem) {

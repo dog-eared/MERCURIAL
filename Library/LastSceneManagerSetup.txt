@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/staging_3.unity
+- path: Assets/minimap_staging.unity
   isLoaded: 1
   isActive: 1

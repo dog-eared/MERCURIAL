@@ -11,10 +11,10 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Evan Mulrooney
-  productName: MERCURIAL
+  productName: Mercurial
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.2486211, g: 0.22496757, b: 0.53676474, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.031795073, g: 0, b: 0.41911763, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -74,7 +74,7 @@ PlayerSettings:
   submitAnalytics: 1
   usePlayerLog: 1
   bakeCollisionMeshes: 0
-  forceSingleInstance: 0
+  forceSingleInstance: 1
   resizableWindow: 0
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
@@ -231,7 +231,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 2bb5b020402ab4812b861050a29862cf, type: 3}
+      m_Icon: {fileID: 2800000, guid: 0dddd74b20bf447f4b2bd8f9116ca623, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
@@ -503,6 +503,7 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
+    1: 
     4: 
   platformArchitecture: {}
   scriptingBackend: {}

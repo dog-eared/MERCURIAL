@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour {
 	DockingBehaviour _dockingBehaviour;
 
 
+	public LandingMenuBehaviour landingMenuBehaviour;
 	public GameObject landedMenuObject;
 	public GameObject settingsMenuObject;
 	public GameObject statsMenuObject;
@@ -57,16 +58,15 @@ public class MenuManager : MonoBehaviour {
 			return false;
 		}
 
-		//First, check if we can find the proper json file...
-		if (File.Exists(Application.dataPath + "/Resources/PlanetData/" + _systemManager.systemName + "/"
-				+ _dockingBehaviour.planetTarget + ".json")) {
-					landedMenuObject.SetActive(true);
-					openMenus.Add("Landed Menu");
-					_gameStateManager.SetGameMode("Menu");
-					guiStorage.SetActive(false);
-					return true;
-		} else {
-			Debug.Log("No file found!");
+		for (var x = 0; x < _systemManager.planetList.Count; x++) {
+			if (_systemManager.planetList[x].planetName == _dockingBehaviour.planetTarget) {
+				landedMenuObject.SetActive(true);
+				landingMenuBehaviour.SetLandingData(_systemManager.systemData, _systemManager.planetList[x]);
+				openMenus.Add("Landed Menu");
+				_gameStateManager.SetGameMode("Menu");
+				guiStorage.SetActive(false);
+				return true;
+			}
 		}
 		return false;
 	}

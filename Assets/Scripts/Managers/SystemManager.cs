@@ -28,9 +28,11 @@ public class SystemManager : MonoBehaviour {
 	CameraBehaviour backdrop;
 	AsteroidManager asteroids;
 	PlanetManager planetManager;
-	SystemData systemData;
+	public SystemData systemData;
 
 	public GUIBehaviour _guiBehaviour;
+	public MinimapManager _minimapManager;
+
 	public GameObject systemBoundary;
 	public GameObject systemBoundaryContainer;
 
@@ -47,6 +49,7 @@ public class SystemManager : MonoBehaviour {
 		planetManager = GetComponent<PlanetManager>();
 
 		systemData = LoadSystemData("Sol");
+		_minimapManager.GetPlanetLocations();
 	}
 
 
@@ -60,7 +63,7 @@ public class SystemManager : MonoBehaviour {
 		SetSystemManager(data);
 
 		for (var x = 0; x < data.planets.Count; x++) {
-			Debug.Log("PlanetData/" + data.systemName + "/" +  data.planets[x]);
+			//Debug.Log("PlanetData/" + data.systemName + "/" +  data.planets[x]);
 			TextAsset newPlanetText = Resources.Load<TextAsset>("PlanetData/" + data.systemName + "/" +  data.planets[x]);
 			Planet newPlanet = JsonUtility.FromJson<Planet>(newPlanetText.text);
 			planetList.Add(newPlanet);
@@ -93,7 +96,7 @@ public class SystemManager : MonoBehaviour {
 
 
 	void WipeCurrentSystem() {
-		Debug.Log("wipe!");
+		//Debug.Log("wiped current system!");
 		GameObject[] toWipe = GameObject.FindGameObjectsWithTag("Asteroid");
 		WipeObjects(toWipe);
 		toWipe = GameObject.FindGameObjectsWithTag("Planet");
@@ -141,6 +144,7 @@ public class SystemManager : MonoBehaviour {
 		newBoundary.transform.SetParent(container.transform);
 
 	}
+
 
 }
 

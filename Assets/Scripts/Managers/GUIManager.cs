@@ -173,8 +173,6 @@ public class GUIManager : MonoBehaviour {
 		} else {
 			FadeLogs(true, true, 0);
 		}
-
-		Debug.Log("Moved logs " + guiState);
 	}
 
 
@@ -186,7 +184,6 @@ public class GUIManager : MonoBehaviour {
 		float elapsedTime = 0;
 
 		while (targetLog.color.a != target) {
-			Debug.Log("go!");
 			changedColor.a = Mathf.Lerp(startAlpha, target, elapsedTime);
 			elapsedTime += Time.deltaTime * fadeSpeed;
 			textLogFade = changedColor.a;

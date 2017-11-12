@@ -19,8 +19,8 @@ public class InputManager : MonoBehaviour {
 
 	public float defenseActivationThreshold; //How far the horizontal input needs to be to trigger
 																					 //defense addon powers
-
-	SystemManager systemManager;
+	public SystemManager _systemManager;
+	public MinimapManager _minimapManager;
 
 	ShipChassis shipChassis;
 	CameraBehaviour gameCameraBehaviour;
@@ -32,7 +32,6 @@ public class InputManager : MonoBehaviour {
 	void Awake () {
 		playerObject = GameObject.FindWithTag("PlayerObject");
 		playerShip = playerObject.transform.GetChild(0).gameObject;
-		systemManager = GetComponent<SystemManager>();
 		shipState = playerShip.GetComponent<ShipStateBehaviour>();
 
 		gameCameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
@@ -156,9 +155,9 @@ public class InputManager : MonoBehaviour {
 
 		/*Debug!!*/
 		if (Input.GetKeyDown("1")) {
-			systemManager.LoadSystemData("Sol");
+			_systemManager.LoadSystemData("Sol");
 		} else if (Input.GetKeyDown("2")) {
-			systemManager.LoadSystemData("Alpha Centauri");
+			_systemManager.LoadSystemData("Alpha Centauri");
 		}
 	}
 

@@ -9,7 +9,7 @@
 
 	"buttons": [true, true, true, true, true],
 
-	"blurb": "A smaller planet.",
+	"blurb": "What a miserable planet this is.",
 
 	"tradeDepotStats":{	"food"		:{"buy":50, "sell":62},
 	    "medical"	:{"buy":200, "sell":228},

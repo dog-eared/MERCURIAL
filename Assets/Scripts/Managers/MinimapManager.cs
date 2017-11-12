@@ -7,41 +7,40 @@ public class MinimapManager : MonoBehaviour {
 	/*
 		MINIMAP MANAGER
 
-		--Primarily handles the data needed to display an accurate MINIMAP
-		--Keeps all planet and ship data for purposes of figuring out what data to
-		pull when the player tries to communicate or interact (in ways other than
-		combat)
+		--Primarily handles the data needed to display an accurate minimap
 
 
 
 	*/
 
-	GameObject[] planetsList;
-	PlanetData[] planetsData;
+	[Header("Minimap Config")]
+	public float mapDistance = 50f;
+	public bool showPlanetsOnEdge;
+
+
+	[Space(10)]
+	public GameObject minimapObject;
+	public GameObject planetBlip;
+	public GameObject shipBlip;
+
+
+
+	GameObject[] planetsArray;
+	PlanetData[] planetData;
 
 	GameObject[] shipsList;
 	ShipData[] shipsData;
 
-	void GetAllPlanets() {
-		planetsList = GameObject.FindGameObjectsWithTag("Planet");
 
-		planetsData = new PlanetData[planetsList.Length];
-
-		for (var x = 0; x < planetsData.Length; x++) {
-			planetsData[x] = planetsList[x].GetComponent<PlanetData>();
-		}
+	public void GetPlanetLocations() {
+		planetsArray = GameObject.FindGameObjectsWithTag("Planet");
+		GeneratePlanetBlips();
 	}
 
-	void Awake() {
-		GetAllPlanets();
-	}
-
-	void Update() {
-		if (Input.GetKeyDown("x")) {
-			Debug.Log("All planet names:");
-			for (var z = 0; z < planetsData.Length; z++) {
-				Debug.Log("Index: " + z + "  |  Name: " + planetsData[z].planetName);
-			}
+	public void GeneratePlanetBlips() {
+		for (var planet = 0; planet < planetsArray.Length; planet++) {
+			Debug.Log(planetsArray[planet].name + " at " + planetsArray[planet].transform.position.x + " " + planetsArray[planet].transform.position.y);
+//			Instantiate(planetBlip, transform.position)
 		}
 	}
 

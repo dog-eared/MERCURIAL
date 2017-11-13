@@ -532,7 +532,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 487}
     m_SelectedIDs: 6e280000
     m_LastClickedID: 10350
-    m_ExpandedIDs: 000000005e260000622600006a26000080260000ae260000bc26000042270000442700004827000058270000aa270000362800006c280000b02800006c2d000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000005e260000622600006a26000080260000ae260000bc26000042270000442700004827000058270000aa270000362800006c280000b02800006c2d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -678,21 +678,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3c290000
     m_LastClickedID: 10556
-    m_ExpandedIDs: 2cfbffff18fcffff000000002029000060290000ba290000e2290000
+    m_ExpandedIDs: 18fcffff00000000ba290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: pirate_fighter
+      m_OriginalName: pirate_fighter
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10556
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -728,14 +728,14 @@ MonoBehaviour:
     width: 1174
     height: 714
   m_SceneLighting: 1
-  lastFramingTime: 16055.389225959778
+  lastFramingTime: 811.2877368927002
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 788.80536, y: 291.93942, z: 4}
+    m_Target: {x: 57.78005, y: 26.022535, z: 3}
     speed: 2
-    m_Value: {x: 788.80536, y: 291.93942, z: 4}
+    m_Value: {x: 57.78005, y: 26.022535, z: 3}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -762,9 +762,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 972.706
+    m_Target: 16.817741
     speed: 2
-    m_Value: 972.706
+    m_Value: 16.817741
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -49,7 +49,7 @@ public class SystemManager : MonoBehaviour {
 		planetManager = GetComponent<PlanetManager>();
 
 		systemData = LoadSystemData("Sol");
-		_minimapManager.GetPlanetLocations();
+		_minimapManager.GenerateSystemMap();
 	}
 
 
@@ -103,6 +103,8 @@ public class SystemManager : MonoBehaviour {
 		WipeObjects(toWipe);
 		toWipe = GameObject.FindGameObjectsWithTag("SystemEdge");
 		WipeObjects(toWipe);
+
+		_minimapManager.WipeAllBlips();
 	}
 
 

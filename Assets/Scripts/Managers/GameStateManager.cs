@@ -29,15 +29,18 @@ public class GameStateManager : MonoBehaviour {
 
 	CameraBehaviour _cameraBehaviour;
 	SystemManager _systemManager;
+	MinimapManager _minimapManager;
 
 	void Awake() {
 		_cameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
 		_systemManager = GetComponent<SystemManager>();
+		_minimapManager = GetComponent<MinimapManager>();
 	}
 
 
 	void HyperspaceJump(string targetSystem, int direction) {
 		_systemManager.LoadSystemData(targetSystem);
+		_minimapManager.Invoke("GenerateSystemMap", 0.5f); //Gives a moment for json data to load
 	}
 
 

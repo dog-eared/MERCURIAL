@@ -24,6 +24,8 @@ TagManager:
   - GUI_Listener
   - GUI_MapNode
   - GUI_GalaxyMapMenu
+  - Ship
+  - MInimapObject
   layers:
   - Default
   - TransparentFX

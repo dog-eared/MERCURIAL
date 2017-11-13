@@ -5,6 +5,7 @@ using UnityEngine;
 public class debug_SetSpecialAIState : MonoBehaviour {
 
 	public AbstractAI targetAI;
+	public MinimapManager _minimap;
 
 	// Update is called once per frame
 	void Update () {
@@ -14,6 +15,10 @@ public class debug_SetSpecialAIState : MonoBehaviour {
 
 		if (Input.GetKeyDown("y")) {
 			targetAI.allyWasHit();
+		}
+
+		if (Input.GetKeyDown("i")) {
+			_minimap.GenerateSystemMap();
 		}
 
 	}

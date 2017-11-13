@@ -152,13 +152,5 @@ public class InputManager : MonoBehaviour {
 			gameCameraBehaviour.ZoomOut();
 		}
 
-
-		/*Debug!!*/
-		if (Input.GetKeyDown("1")) {
-			_systemManager.LoadSystemData("Sol");
-		} else if (Input.GetKeyDown("2")) {
-			_systemManager.LoadSystemData("Alpha Centauri");
-		}
 	}
-
 }

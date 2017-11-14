@@ -1,15 +1,15 @@
 {
-	"planetName": "Luna",
-	"minimapSize": 3,
+	"planetName": "Farseer",
+	"minimapSize": 4,
   "xLocation": 3.4,
   "yLocation": 3.2,
-  "scale": 1,
+  "scale": 4,
   "mapGraphic": "Planet1",
-	"landingGraphic": "luna.png",
+	"landingGraphic": "farseer.png",
 
-	"buttons": [true, true, true, true, true],
+	"buttons": [false, false, false, false, false],
 
-	"blurb": "Earth is the third planet from the Sun and the only object in the Universe known to harbor life. According to radiometric dating and other sources of evidence, Earth formed over 4 billion years ago. Earth's gravity interacts with other objects in space, especially the Sun and the Moon, Earth's only natural satellite. Earth revolves around the Sun in 365.26 days, a period known as an Earth year. During this time, Earth rotates about its axis about 366.26 times.",
+	"blurb": "The surface of Farseer is desolate and dreary. Though the planet has finally begun to show signs of recovery, for better or worse it remains a stark example of how the Dominion typically deals with insurrection.",
 
 	"tradeDepotStats":{	"food"		:{"buy":50, "sell":62},
 	    "medical"	:{"buy":200, "sell":228},

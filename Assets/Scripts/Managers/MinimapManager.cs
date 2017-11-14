@@ -18,10 +18,13 @@ public class MinimapManager : MonoBehaviour {
 	public float mapDistance = 50f;
 	public bool showPlanetsOnEdge;
 
+	/* TODO: Implement modifiers to minimap
 	[Space(10)]
 	public float mapUpdateFrequency = 0.08f; //Base rate of map updating frequency
 	public float shipMapQualityModifier = 2f; //Modifier based on how high quality the ship's map system is
 	public float systemMapQualityModifier = 0f; //Modifier representing difficulty of getting info in current system
+	*/
+
 
 	[Space(10)]
 	[Header("Prefabs/Refs")]

@@ -1,15 +1,15 @@
 {
-	"planetName": "Luna",
-	"minimapSize": 3,
-  "xLocation": 3.4,
-  "yLocation": 3.2,
+	"planetName": "Macbeth",
+	"minimapSize": 1,
+  "xLocation": -10,
+  "yLocation": -7,
   "scale": 1,
-  "mapGraphic": "Planet1",
+  "mapGraphic": "Planet3",
 	"landingGraphic": "luna.png",
 
 	"buttons": [true, true, true, true, true],
 
-	"blurb": "Earth is the third planet from the Sun and the only object in the Universe known to harbor life. According to radiometric dating and other sources of evidence, Earth formed over 4 billion years ago. Earth's gravity interacts with other objects in space, especially the Sun and the Moon, Earth's only natural satellite. Earth revolves around the Sun in 365.26 days, a period known as an Earth year. During this time, Earth rotates about its axis about 366.26 times.",
+	"blurb": "The scottish planet.",
 
 	"tradeDepotStats":{	"food"		:{"buy":50, "sell":62},
 	    "medical"	:{"buy":200, "sell":228},

@@ -19,6 +19,10 @@ public class LandingMenuBehaviour : MonoBehaviour {
 
 	public PilotData _playerPilotData;
 
+	[Space(10)]
+	public Sprite failedLoadImage;
+
+
 
 	public void SetLandingData(SystemData systemData, Planet planetData) {
 		planetName.text = planetData.planetName;
@@ -27,7 +31,9 @@ public class LandingMenuBehaviour : MonoBehaviour {
 		Debug.Log(planetData.blurb);
 		Debug.Log("Done!");
 		playerReputation.text = SetReputationData(systemData.systemOwner);
+		planetSplashImage.sprite = SetPlanetImage(systemData.systemName, planetData.planetName);
 	}
+
 
 	string SetReputationData(string owner) {
 		Debug.Log(owner);
@@ -41,6 +47,18 @@ public class LandingMenuBehaviour : MonoBehaviour {
 			default:
 				return "";
 		}
+	}
+
+
+	Sprite SetPlanetImage(string systemName, string planetName) {
+		Sprite returnImage = Resources.Load("Visuals/StationMenu/" + systemName + "/" + planetName + "_Splash", typeof(Sprite)) as Sprite;
+
+		if (returnImage != null) {
+			return returnImage;
+		} else {
+			return failedLoadImage;
+		}
+
 	}
 
 

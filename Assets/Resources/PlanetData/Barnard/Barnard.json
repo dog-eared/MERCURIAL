@@ -1,6 +1,6 @@
 {
 	"planetName": "Barnard",
-	"minimapSize": 3,
+	"minimapSize": 10,
   "xLocation": -2,
   "yLocation": -1,
   "scale": 10,
@@ -9,7 +9,7 @@
 
 	"buttons": [true, true, true, true, true],
 
-	"blurb": "Planet.",
+	"blurb": "A big planet!",
 
 	"tradeDepotStats":{	"food"		:{"buy":50, "sell":62},
 	    "medical"	:{"buy":200, "sell":228},

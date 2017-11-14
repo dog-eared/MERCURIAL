@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
-//using System.IO;
+//using System;
+using System.IO;
 using UnityEngine;
 
 public class GUIBehaviour : MonoBehaviour {
@@ -28,10 +28,10 @@ public class GUIBehaviour : MonoBehaviour {
 		sessionTextLog = new List<string>();
 		sessionCombatLog = new List<string>();
 
-		DateTime today = DateTime.Now;
+		//DateTime today = DateTime.Now;
 
-		sessionTextLog.Add("Log-" + today.Date + "-" + DateTime.Now);
-		sessionCombatLog.Add("Combat-" + today.Date + "-" + DateTime.Now);
+		//sessionTextLog.Add("Log-" + today.Date + "-" + DateTime.Now);
+		//sessionCombatLog.Add("Combat-" + today.Date + "-" + DateTime.Now);
 	}
 
 
@@ -48,7 +48,7 @@ public class GUIBehaviour : MonoBehaviour {
 
 
 	void AddToLog(string message, bool combatLog) {
-		message = DateTime.Now.TimeOfDay + " : " + message;
+		//message = DateTime.Now.TimeOfDay + " : " + message;
 		if (combatLog) {
 			sessionCombatLog.Add(message);
 		} else {

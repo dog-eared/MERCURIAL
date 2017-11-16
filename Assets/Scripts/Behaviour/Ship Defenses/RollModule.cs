@@ -22,7 +22,7 @@ public class RollModule : ShipDefense {
 	bool rollingLeft;
 	bool rollingRight;
 
-	float rollFinishTime = 0f;
+	//float rollFinishTime = 0f;
 	ShipStateBehaviour shipState;
 
 
@@ -41,7 +41,6 @@ public class RollModule : ShipDefense {
 	void StopRolling() {
 		rollingLeft = rollingRight = false;
 		shipState.RemoveState("Rolling");
-		rollFinishTime = Time.time;
 	}
 
 

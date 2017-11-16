@@ -26,6 +26,7 @@ TagManager:
   - GUI_GalaxyMapMenu
   - Ship
   - MInimapObject
+  - GalaxyMapObject
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,7 @@
   "xLocation": -17,
   "yLocation": -18,
   "scale": 2.4,
-  "mapGraphic": "Planet8",
+  "mapGraphic": "Planet5-NA",
 	"landingGraphic": "mars.png",
 
 	"buttons": [true, true, true, true, true],

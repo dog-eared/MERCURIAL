@@ -35,12 +35,14 @@ public class GameStateManager : MonoBehaviour {
 		_cameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
 		_systemManager = GetComponent<SystemManager>();
 		_minimapManager = GetComponent<MinimapManager>();
+		targetSystem = "";
 	}
 
 
-	void HyperspaceJump(string targetSystem, int direction) {
-		_systemManager.LoadSystemData(targetSystem);
+	public void HyperspaceJump() {
+		_systemManager.systemData = _systemManager.LoadSystemData(targetSystem);
 		_minimapManager.Invoke("GenerateSystemMap", 0.5f); //Gives a moment for json data to load
+		StartFadeIn();
 	}
 
 
@@ -74,7 +76,7 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 
-	void Update() {
+	/*void Update() {
 		//To be replaced later
 		if (Input.GetKeyDown("x")) {
 			Debug.Log(targetSystem);
@@ -88,7 +90,7 @@ public class GameStateManager : MonoBehaviour {
 			Debug.Log("jumped!");
 			Invoke("StartFadeIn", 0); //See FIXME above.
 		}
-	}
+	}*/
 
 }
 

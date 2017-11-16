@@ -102,7 +102,6 @@ public class ShipData : MonoBehaviour {
 
 
 	void ShieldsRegenerate() {
-		Debug.Log("Regen tick");
 		if (shipShieldCurrent < shipShieldMax) {
 
 			shipShieldCurrent += shieldRegenAmount;

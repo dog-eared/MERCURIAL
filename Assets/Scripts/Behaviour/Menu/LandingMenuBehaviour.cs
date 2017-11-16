@@ -29,14 +29,15 @@ public class LandingMenuBehaviour : MonoBehaviour {
 		planetBlurb.text = planetData.blurb;
 		Debug.Log(planetBlurb.text);
 		Debug.Log(planetData.blurb);
-		Debug.Log("Done!");
 		playerReputation.text = SetReputationData(systemData.systemOwner);
 		planetSplashImage.sprite = SetPlanetImage(systemData.systemName, planetData.planetName);
+		Debug.Log("Done setting landing data!");
+
 	}
 
 
 	string SetReputationData(string owner) {
-		Debug.Log(owner);
+		Debug.Log("Setting planet owner as " + owner);
 		switch (owner) {
 			case "Dominion of Earth":
 				return "Faction: Dominion of Earth \n" +
@@ -44,10 +45,16 @@ public class LandingMenuBehaviour : MonoBehaviour {
 			case "Divine Trade Alliance":
 				return "Faction: Divine Trade Alliance \n" +
 								"Reputation: " + _playerPilotData.allianceReputation;
+			case "Rebellion":
+				return "Faction: Rebellion \n" +
+				 				"Reputation: " + _playerPilotData.rebelReputation;
 			default:
 				return "";
 		}
 	}
+
+
+
 
 
 	Sprite SetPlanetImage(string systemName, string planetName) {

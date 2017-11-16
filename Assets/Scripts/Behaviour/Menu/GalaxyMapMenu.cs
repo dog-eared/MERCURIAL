@@ -32,16 +32,37 @@ public class GalaxyMapMenu : MonoBehaviour {
 	public GameObject galaxyMap;
 	public GameObject playerMapIcon;
 
+	GameObject[] planetMapIconArray;
+
+
 	RectTransform rectTransform;
 
 	public float scaleSpeed = 0.01f;
 	public float zoomMax = 2f;
 	public float zoomMin = 0.7f;
 
+
 	void Awake() {
 		if (galaxyMap) {
 			rectTransform = galaxyMap.GetComponent<RectTransform>();
+			planetMapIconArray = GameObject.FindGameObjectsWithTag("GalaxyMapObject");
 		}
+	}
+
+
+	void OnEnable() {
+		if (planetMapIconArray.Length > 0) {
+			for (var x = 0; x < planetMapIconArray.Length; x++) {
+				if (planetMapIconArray[x].name == _systemManager.systemName) {
+					MoveIconToPosition(planetMapIconArray[x].transform.position);
+				}
+			}
+		}
+	}
+
+
+	void MoveIconToPosition(Vector3 newPosition) {
+		playerMapIcon.transform.position = newPosition;
 	}
 
 
@@ -70,6 +91,7 @@ public class GalaxyMapMenu : MonoBehaviour {
 		rectTransform.anchoredPosition = new Vector3(0, 0, 0);
 	}
 
+
 	public void SetTargetSystem(string target) {
 		targetPosition = new Vector2(playerMapIcon.transform.position.x - Input.mousePosition.x, playerMapIcon.transform.position.y - Input.mousePosition.y);
 		float rotateToTarget = Mathf.Atan2(targetPosition.y, targetPosition.x) * Mathf.Rad2Deg + 90;
@@ -80,11 +102,14 @@ public class GalaxyMapMenu : MonoBehaviour {
 
 
 	public void AcceptButton() {
+		//The actual closing of the menu is handled by the menu manager
 		if (_systemManager.systemName != targetSystem) {
 			_gameStateManager.targetSystem = targetSystem;
 		} else {
 			Debug.Log("Currently in this system.");
 		}
+
+
 	}
 
 	public void CancelButton() {

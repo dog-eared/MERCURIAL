@@ -37,3 +37,23 @@ public class PlanetData : MonoBehaviour {
 
 	}
 }
+
+
+[System.Serializable]
+public class Planet {
+	//Class used to plug in json data properly
+	//Each piece of data we use MUST be defined in this class.
+	public string planetName = "Unknown Planet";
+	public int minimapSize;
+	public float xLocation;
+	public float yLocation;
+	public float scale;
+	public string mapGraphic;
+
+	//Data for landing:
+	public string blurb;
+	public string landingGraphic;
+	public List<bool> buttons;
+
+
+}

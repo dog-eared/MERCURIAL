@@ -46,7 +46,11 @@ public class BulletBehaviour : MonoBehaviour {
 	}
 
 	void RaycastHitTarget(Collider2D collision) {
-		collision.gameObject.GetComponent<ShipData>().TakeDamage(damage);
+		if (collision.tag == "Asteroid") {
+			collision.gameObject.GetComponent<AsteroidBehaviour>().TakeDamage(damage);
+		}	else {
+			collision.gameObject.GetComponent<ShipData>().TakeDamage(damage);
+		}
 		if (!passThrough) {
 			DestroySelf();
 		}

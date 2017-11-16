@@ -66,7 +66,6 @@ public class GUIManager : MonoBehaviour {
 
 
 	public void PostMessage(string message, bool combatLog) {
-		Debug.Log(currentTextFade);
 		KillCurrentFades();
 
 		//Expand later to log more data
@@ -102,7 +101,7 @@ public class GUIManager : MonoBehaviour {
 
 			_textLog.text = newLogText;
 		}
-
+		CancelInvoke();
 		Invoke("AutoFade", idleFadeOutTime);
 	}
 
@@ -122,7 +121,6 @@ public class GUIManager : MonoBehaviour {
 
 
 	void KillCurrentFades() {
-		Debug.Log(currentTextFade);
 		//So we can interrupt these if we get a new msg before invoke fires
 		if (currentTextFade != null) {
 			StopCoroutine(currentTextFade);

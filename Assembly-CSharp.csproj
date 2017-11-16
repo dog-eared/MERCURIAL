@@ -60,12 +60,6 @@
      <Compile Include="Assets\Scripts\Behaviour\Menu\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AbstractAI.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\AIState.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\PassiveState.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\NPC\AIState\PatrolState.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\NPC\AITask\AbstractTask.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\NPC\AITask\goToLocation.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\ShipStateBehaviour.cs" />
@@ -88,6 +82,7 @@
      <Compile Include="Assets\Scripts\Data\PilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />
+     <Compile Include="Assets\Scripts\Data\SystemData.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_FPS.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_SetSpecialAIState.cs" />
      <Compile Include="Assets\Scripts\DEBUG\debug_WaypointDraw.cs" />

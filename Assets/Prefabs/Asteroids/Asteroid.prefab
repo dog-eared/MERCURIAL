@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50104617815219460}
   - component: {fileID: 114457742279656906}
   - component: {fileID: 58098386751490450}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Asteroid
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d9717411a4442a59fa652df855f2f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroidHealth: 10
+  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
+    type: 2}
 --- !u!212 &212984210910125440
 SpriteRenderer:
   m_ObjectHideFlags: 1

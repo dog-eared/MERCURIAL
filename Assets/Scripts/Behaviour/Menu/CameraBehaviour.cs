@@ -12,20 +12,28 @@ public class CameraBehaviour : MonoBehaviour {
 
 	public GameObject backdrop;
 	public GameObject playerShip;
+	public GameObject fadeWhite;
 
 	ForesightModule foresightModule;
 	Vector2 foresightLocation;
 
 	MeshRenderer backdropRenderer;
+	SpriteRenderer fadeWhiteRenderer;
 
 	public Light _backdropLight;
 	public float fadeLerp;
 
 	public float scrollSpeedReduction = 24;
 
+	public IEnumerator fadeCoroutine;
+
 	void Awake() {
 		backdropRenderer = backdrop.GetComponent<MeshRenderer>();
+		fadeWhiteRenderer = fadeWhite.GetComponent<SpriteRenderer>();
 		mainCam = Camera.main;
+
+
+		fadeWhite.transform.localScale = new Vector3(Screen.width * 4, Screen.height * 4, 1);
 
 		if (playerShip.GetComponent<ForesightModule>()) {
 			foresightModule = playerShip.GetComponent<ForesightModule>();
@@ -92,6 +100,25 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 
 
+	public IEnumerator FadeWhiteToAlphaValue(float targetAlpha) {
+		float fadeWhiteLerp = 0;
+		float direction;
+		float startValue = fadeWhiteRenderer.color.a;
+		Color newValue = fadeWhiteRenderer.color;
+
+		if (startValue > targetAlpha) {
+			direction = -1;
+		} else {
+			direction = 1;
+		}
+
+		while (fadeWhiteRenderer.color.a != targetAlpha) {
+			fadeWhiteLerp += direction * Time.deltaTime;
+			newValue.a = Mathf.Lerp(startValue, targetAlpha, fadeWhiteLerp);
+			fadeWhiteRenderer.color = newValue;
+			yield return null;
+		}
+	}
 
 
 	public void DisplayBackdrop(Material newBackdrop) {

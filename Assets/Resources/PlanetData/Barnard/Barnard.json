@@ -4,7 +4,7 @@
   "xLocation": -2,
   "yLocation": -1,
   "scale": 10,
-  "mapGraphic": "Planet8",
+  "mapGraphic": "Planet4",
 	"landingGraphic": "proxima.png",
 
 	"buttons": [true, true, true, true, true],

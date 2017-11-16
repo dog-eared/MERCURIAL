@@ -56,9 +56,6 @@ MonoBehaviour:
   passThrough: 0
   moveSpeed: 30
   timeTilDestroy: 0.5
-  layersToHit:
-    serializedVersion: 2
-    m_Bits: 8192
 --- !u!212 &212741653887853012
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b6126d2b22bf4ed681c28dad112c83e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16e336332fbc14a9d8ca70b2b7a71343, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

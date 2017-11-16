@@ -14,6 +14,7 @@ public class SystemManager : MonoBehaviour {
 	*/
 
 	//Data for the inspector:
+	public SystemData systemData;
 	public string systemName;
 	public Material backdropMaterial;
 	public float systemSize;
@@ -28,7 +29,6 @@ public class SystemManager : MonoBehaviour {
 	CameraBehaviour backdrop;
 	AsteroidManager asteroids;
 	PlanetManager planetManager;
-	public SystemData systemData;
 
 	public GUIBehaviour _guiBehaviour;
 	public MinimapManager _minimapManager;
@@ -149,9 +149,3 @@ public class SystemManager : MonoBehaviour {
 
 
 }
-
-
-/*
-FOR INFO ABOUT SystemData, see PLANET MANAGER!
-
-*/

@@ -20,7 +20,9 @@ public class MinimapBehaviour : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		minimapSurface.transform.localPosition = -playerShip.transform.position;
+		if (playerShip) {
+			minimapSurface.transform.localPosition = -playerShip.transform.position;
+		}
 	}
 
 

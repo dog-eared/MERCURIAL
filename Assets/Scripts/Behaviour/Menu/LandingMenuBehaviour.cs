@@ -31,8 +31,18 @@ public class LandingMenuBehaviour : MonoBehaviour {
 		Debug.Log(planetData.blurb);
 		playerReputation.text = SetReputationData(systemData.systemOwner);
 		planetSplashImage.sprite = SetPlanetImage(systemData.systemName, planetData.planetName);
+		SetPlanetButtons(planetData.buttons);
 		Debug.Log("Done setting landing data!");
 
+	}
+
+
+	void SetPlanetButtons(List<bool> buttonsList) {
+		cantinaButton.gameObject.SetActive(buttonsList[0]);
+		missionBoard.gameObject.SetActive(buttonsList[1]);
+		tradeDepot.gameObject.SetActive(buttonsList[2]);
+		mechanicsDepot.gameObject.SetActive(buttonsList[3]);
+		refuelingDepot.gameObject.SetActive(buttonsList[4]);
 	}
 
 
@@ -54,7 +64,7 @@ public class LandingMenuBehaviour : MonoBehaviour {
 	}
 
 
-
+	
 
 
 	Sprite SetPlanetImage(string systemName, string planetName) {

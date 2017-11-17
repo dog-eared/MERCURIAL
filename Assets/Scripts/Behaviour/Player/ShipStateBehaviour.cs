@@ -20,7 +20,7 @@ public class ShipStateBehaviour : MonoBehaviour {
 
 
 	public void AddState(string newState, float duration = -1f) {
-		//NEEDS A REFACTOR... listing everything in here is not ideal, but I need
+		//TODO: NEEDS A REFACTOR... listing everything in here is not ideal, but I need
 		//to learn more before I can rework it. Come back to this.
 
 		ShipState stateToAdd;

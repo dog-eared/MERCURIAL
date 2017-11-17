@@ -3,8 +3,8 @@
 	"minimapSize": 4,
   "xLocation": 3.4,
   "yLocation": 3.2,
-  "scale": 4,
-  "mapGraphic": "Planet1",
+  "scale": 5,
+  "mapGraphic": "Planet5-NA",
 	"landingGraphic": "farseer.png",
 
 	"buttons": [false, false, false, false, false],

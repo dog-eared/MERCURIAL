@@ -5,14 +5,14 @@ using UnityEngine;
 public class PilotData : MonoBehaviour {
 
 	[Header("Name")]
-	public string firstName = "Tom";
-	public string lastName = "Cruise";
-	public string callsign = "Maverick";
+	public string firstName = "Firstname";
+	public string lastName = "Lastname";
+	public string callsign = "Callsign";
 
 	[Space(10)]
 	[Header("Pronouns:")]
-	public string possessive = "his";
-	public string singular = "he";
+	public string possessive = "their";
+	public string singular = "they";
 
 	[Space(10)]
 	[Header("Skills & Exp:")]

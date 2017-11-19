@@ -1010,6 +1010,7 @@ MonoBehaviour:
   factionName: 
   rateOfFire: 0.07
   bulletLifespan: 1
+  bulletSpread: 8
   weaponClip: {fileID: 0}
   projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
@@ -1886,6 +1887,7 @@ MonoBehaviour:
   factionName: 
   rateOfFire: 0.2
   bulletLifespan: 3
+  bulletSpread: 0
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
   bulletPoolPrefab: {fileID: 0}
@@ -2178,6 +2180,9 @@ MonoBehaviour:
   fastGameSpeed: 0.25
   targetSystem: 
   fastModeOn: 0
+  _cameraBehaviour: {fileID: 1738330218}
+  _systemManager: {fileID: 1192814988}
+  _minimapManager: {fileID: 1192814990}
 --- !u!114 &1192814999
 MonoBehaviour:
   m_ObjectHideFlags: 0

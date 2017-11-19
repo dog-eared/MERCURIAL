@@ -8,6 +8,9 @@ public abstract class ProjectileWeapon : ShipWeapon {
 	public float bulletLifespan = 3f;
 	float timeSinceLastShot = 0f; //must start at zero so we can shoot immediately
 
+	public float bulletSpread = 0f; //for the inspector
+	float bulletSpreadRandom = 0f; //for internal use
+
 	AudioSource _audioSource;
 	public AudioClip weaponClip;
 
@@ -77,13 +80,16 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 			GameObject currentBullet = bulletPool.transform.GetChild(currentPoolIndex).gameObject;
 
+			//Do we have any kind of spread? If yes, get a random value to add to the rotation;
+			if (bulletSpread != 0) {
+				bulletSpreadRandom = Random.Range(-bulletSpread, bulletSpread);
+			}
 
 			currentBullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-			currentBullet.transform.rotation = transform.rotation;
+			currentBullet.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, bulletSpreadRandom);
 
 			currentBullet.SetActive(true);
 
-			Debug.Log(weaponName + " fired. Fired shot:" + currentPoolIndex);
 			currentPoolIndex++;
 			timeSinceLastShot = Time.time;
 
@@ -91,17 +97,12 @@ public abstract class ProjectileWeapon : ShipWeapon {
 				currentPoolIndex = 0;
 			}
 
-		} else {
-			Debug.Log("Not long enough since last shot.");
 		}
-
-
-
 	}
 
 
 	override public void FireButtonReleased() {
-		Debug.Log(weaponName + " released");
+		//Debug.Log(weaponName + " released");
 	}
 
 }

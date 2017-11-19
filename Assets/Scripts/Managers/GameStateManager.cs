@@ -27,15 +27,15 @@ public class GameStateManager : MonoBehaviour {
 
 	public bool fastModeOn = false;
 
-	CameraBehaviour _cameraBehaviour;
-	SystemManager _systemManager;
-	MinimapManager _minimapManager;
+	[Header("References:")]
+	public CameraBehaviour _cameraBehaviour;
+	public SystemManager _systemManager;
+	public MinimapManager _minimapManager;
 
 	void Awake() {
-		_cameraBehaviour = Camera.main.GetComponent<CameraBehaviour>();
-		_systemManager = GetComponent<SystemManager>();
-		_minimapManager = GetComponent<MinimapManager>();
-		targetSystem = "";
+		if (targetSystem == null) {
+			targetSystem = "";
+		}
 	}
 
 
@@ -74,24 +74,6 @@ public class GameStateManager : MonoBehaviour {
 	void StartFadeIn() {
 		_cameraBehaviour.StartCoroutine("BackdropFadeIn");
 	}
-
-
-	/*void Update() {
-		//To be replaced later
-		if (Input.GetKeyDown("x")) {
-			Debug.Log(targetSystem);
-			if (targetSystem != "" && targetSystem != _systemManager.systemName) {
-				_cameraBehaviour.StartCoroutine("BackdropFadeOut");
-			}
-		}
-
-		if (_cameraBehaviour.fadeLerp >= 1 && _systemManager.systemName != targetSystem) {
-			HyperspaceJump(targetSystem, 2);
-			Debug.Log("jumped!");
-			Invoke("StartFadeIn", 0); //See FIXME above.
-		}
-	}*/
-
 }
 
 

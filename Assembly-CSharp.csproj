@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\MinimapBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\HyperspaceBlur.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\MainMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\GalaxyMapDragBehaviour.cs" />
@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\LightBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\PrecisionBlaster.cs" />
      <Compile Include="Assets\Scripts\Data\NPCPilotData.cs" />
+     <Compile Include="Assets\Scripts\Data\PersistentGameData.cs" />
      <Compile Include="Assets\Scripts\Data\PilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />
      <Compile Include="Assets\Scripts\Data\ShipData.cs" />

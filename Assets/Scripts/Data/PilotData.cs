@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class PilotData : MonoBehaviour {
 
+	/* PILOT DATA
+
+	Handles pilot data as it's presented to the player. Should include:
+		Name
+		Skills
+		Faction reputations
+		"Experiences", titles
+
+
+	*/
+
 	[Header("Name")]
 	public string firstName = "Firstname";
 	public string lastName = "Lastname";

@@ -28,8 +28,9 @@ public class VisitorList : MonoBehaviour {
 	int instantiatedSoFar = 0;
 
 
-	public void SpawnNeutrals() {
+	public List<GameObject> SpawnNeutrals() {
 		initialShips = new List<GameObject>();
+
 		if (neutrals.Length > 0) {
 
 			for (var x = 0; x < neutrals.Length; x++) {
@@ -51,8 +52,7 @@ public class VisitorList : MonoBehaviour {
 				}
 			}
 		}
-
-
+		return initialShips;
 	}
 
 

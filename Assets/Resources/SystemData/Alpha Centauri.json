@@ -2,6 +2,7 @@
   "systemName": "Alpha Centauri",
   "backdropMaterial": "Neutral",
   "systemOwner":"Abandoned",
+  "visitorList":"dominion1",
   "systemPopulated":false,
   "systemSize": 400,
   "asteroidsToSpawn":55,

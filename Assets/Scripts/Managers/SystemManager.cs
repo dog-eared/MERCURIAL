@@ -34,6 +34,7 @@ public class SystemManager : MonoBehaviour {
 
 	public GUIBehaviour _guiBehaviour;
 	public MinimapManager _minimapManager;
+	public LocalShipsManager _localShipsManager;
 
 	public GameObject systemBoundary;
 	public GameObject systemBoundaryContainer;
@@ -52,7 +53,6 @@ public class SystemManager : MonoBehaviour {
 
 		systemData = LoadSystemData("Sol");
 		_minimapManager.GenerateSystemMap();
-		InitializeOtherShips();
 	}
 
 
@@ -73,7 +73,7 @@ public class SystemManager : MonoBehaviour {
 			planetManager.BuildPlanet(newPlanet);
 		}
 
-
+		InitializeOtherShips();
 
 		_guiBehaviour.ReceiveMessage("Entered system: " + systemName, false);
 		_guiBehaviour.ReceiveMessage("System owner: " + systemOwner, false);
@@ -111,6 +111,8 @@ public class SystemManager : MonoBehaviour {
 		toWipe = GameObject.FindGameObjectsWithTag("SystemEdge");
 		WipeObjects(toWipe);
 
+
+		_localShipsManager.WipeAllShips();
 		_minimapManager.WipeAllBlips();
 	}
 
@@ -134,7 +136,7 @@ public class SystemManager : MonoBehaviour {
 
 
 	void InitializeOtherShips() {
-		_visitorList.SpawnNeutrals();
+		_localShipsManager.localShips = _visitorList.SpawnNeutrals();
 		Debug.Log("Planet list: " + planetList + " " + planetList.Count);
 
 		spawnLocations = _visitorList.GenerateSpawnLocations(planetList, new Vector3(0, 0, 1));

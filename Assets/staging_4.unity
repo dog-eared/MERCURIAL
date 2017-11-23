@@ -2002,6 +2002,7 @@ GameObject:
   - component: {fileID: 1192814997}
   - component: {fileID: 1192814999}
   - component: {fileID: 1192814990}
+  - component: {fileID: 1192815000}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -2040,6 +2041,7 @@ MonoBehaviour:
   chanceOfPirate: 0
   _guiBehaviour: {fileID: 786956437}
   _minimapManager: {fileID: 1192814990}
+  _localShipsManager: {fileID: 1192815000}
   systemBoundary: {fileID: 1651210849243686, guid: c50f831a5fc8645cdb50f5695c6ba898,
     type: 2}
   systemBoundaryContainer: {fileID: 1518132995851042, guid: 730ce40e9d5be4518ac0f6531a63fbb1,
@@ -2215,6 +2217,18 @@ MonoBehaviour:
   _shieldBar: {fileID: 908650028}
   fadeSpeed: 10
   idleFadeOutTime: 4
+--- !u!114 &1192815000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192814987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d78ab4eb46e49d689b3839923d7af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localShips: []
 --- !u!1001 &1303507637
 Prefab:
   m_ObjectHideFlags: 0

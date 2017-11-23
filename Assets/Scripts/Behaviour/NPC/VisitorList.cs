@@ -1,0 +1,62 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class VisitorList : MonoBehaviour {
+	/*VISITOR LIST
+
+	Component to be attached to a blank Visitor List GameObject, which will be instantiated
+	every time we jump into a new system. This script will handle:
+		--Ships that are present when you enter a system
+		--Ships that jump into or out of a system when there's no one to fight
+		--Tagging ships as "Unique" which can only exist ONCE in a system
+
+	*/
+	[Header("Config:")]
+	public int neutralsOnEntry = 0;
+	public int maximumNeutrals = 10;
+
+	[Header("Visitors:")]
+	public Visitor[] neutrals;
+	public Visitor[] pirates;
+
+	[HideInInspector]
+	public float chanceOfPirates; //Set by SystemManager;
+
+	int instantiatedSoFar = 0;
+
+	void Awake() {
+		if (neutrals.Length > 0) {
+			for (var x = 0; x < neutrals.Length; x++) {
+
+				for (var y = 0; y < neutrals[x].numberToInstantiate; y++) {
+
+					if (instantiatedSoFar < maximumNeutrals);
+
+					float randomCheck = Random.Range(0, 100);
+					if (randomCheck > neutrals[x].appearanceFrequency) {
+						Debug.Log("Instantiating a ship: " + neutrals[x].visitorPrefab);
+						instantiatedSoFar++;
+					}
+				}
+
+
+			}
+		}
+	}
+
+
+	void GenerateSpawnLocations(List<Planet> planets) {
+
+	}
+
+
+}
+
+[System.Serializable]
+public class Visitor {
+	public GameObject visitorPrefab;
+	public bool isUnique = false;
+	public float appearanceFrequency; //Should be between 0 and 100;
+	public float numberToInstantiate;
+}

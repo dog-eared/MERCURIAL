@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\AIState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\BaseAI.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\VisitorList.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\DockingBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Player\ShipStateBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Projectiles\BulletBehaviour.cs" />

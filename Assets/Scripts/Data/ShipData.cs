@@ -77,7 +77,7 @@ public class ShipData : MonoBehaviour {
 
 			if (_guiManager != null) {
 				_guiManager.SetBarAmount("hull", (shipHullCurrent / shipHullMax));
-				_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
+				_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipShieldMax));
 			}
 
 			if (shipHullCurrent <= 0) {
@@ -110,7 +110,10 @@ public class ShipData : MonoBehaviour {
 				shipShieldCurrent = shipShieldMax;
 			}
 
-			_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
+			if (_guiManager != null) {
+				_guiManager.SetBarAmount("shield", (shipShieldCurrent / shipHullMax));
+			}
+
 		}
 	}
 

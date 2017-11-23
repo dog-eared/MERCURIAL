@@ -1307,6 +1307,68 @@ MonoBehaviour:
   _guiManager: {fileID: 1192814999}
   _textLog: {fileID: 1875397918}
   _combatLog: {fileID: 684768539}
+--- !u!1001 &799397782
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
+        type: 2}
+      propertyPath: neutrals.Array.data[0].appearanceFrequency
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
+        type: 2}
+      propertyPath: neutrals.Array.data[1].appearanceFrequency
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
+        type: 2}
+      propertyPath: neutrals.Array.data[0].numberToInstantiate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
+        type: 2}
+      propertyPath: neutrals.Array.data[1].numberToInstantiate
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &908650026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1752,7 @@ GameObject:
   - component: {fileID: 1175229950}
   - component: {fileID: 1175229957}
   - component: {fileID: 1175229958}
+  - component: {fileID: 1175229959}
   m_Layer: 13
   m_Name: terran_fighter
   m_TagString: Ship
@@ -1971,6 +2034,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1175229959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1175229949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1192814987
 GameObject:
   m_ObjectHideFlags: 0

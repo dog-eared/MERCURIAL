@@ -102,12 +102,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Venturer
   shipName: Ferdinand
-  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
-    type: 2}
+  faction: 0
   shipHullCurrent: 60
   shipHullMax: 60
   shipShieldCurrent: 20
   shipShieldMax: 20
+  shieldRegenAmount: 1
+  shieldRegenFrequency: 0
+  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
+    type: 2}
+  explosionSound: {fileID: 0}
+  invincibilityFramesTime: 0.1
+  _guiManager: {fileID: 0}
 --- !u!114 &114514348598218354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +133,9 @@ MonoBehaviour:
   brakesOn: 0
   horizontalInput: 0
   currentThrust: 0
+  shipWeapons: []
+  shipDefenses: []
+  reverseVelocity: {x: 0, y: 0, z: 0}
 --- !u!212 &212249770216649292
 SpriteRenderer:
   m_ObjectHideFlags: 1

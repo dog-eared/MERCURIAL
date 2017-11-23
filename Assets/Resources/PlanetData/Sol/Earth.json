@@ -1,10 +1,10 @@
 {
 	"planetName": "Earth",
 	"minimapSize": 4,
-  "xLocation": 0,
-  "yLocation": 0,
-  "scale": 5,
-  "mapGraphic": "Planet-Earth",
+	"xLocation": 0,
+	"yLocation": 0,
+	"scale": 5,
+	"mapGraphic": "Planet-Earth",
 	"landingGraphic": "earth.png",
 
 	"buttons": [true, true, true, true, true],

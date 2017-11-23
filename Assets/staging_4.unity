@@ -1307,68 +1307,6 @@ MonoBehaviour:
   _guiManager: {fileID: 1192814999}
   _textLog: {fileID: 1875397918}
   _combatLog: {fileID: 684768539}
---- !u!1001 &799397782
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846006684121660, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
-        type: 2}
-      propertyPath: neutrals.Array.data[0].appearanceFrequency
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
-        type: 2}
-      propertyPath: neutrals.Array.data[1].appearanceFrequency
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
-        type: 2}
-      propertyPath: neutrals.Array.data[0].numberToInstantiate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114901258453701764, guid: 226af2610a990449386cbbbc86136f6c,
-        type: 2}
-      propertyPath: neutrals.Array.data[1].numberToInstantiate
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 226af2610a990449386cbbbc86136f6c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &908650026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,8 +1902,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2086,6 +2024,7 @@ MonoBehaviour:
     systemName: 
     backdropMaterial: 
     systemOwner: 
+    visitorList: 
     systemPopulated: 0
     systemSize: 0
     asteroidsToSpawn: 0
@@ -2096,6 +2035,7 @@ MonoBehaviour:
   systemSize: 0
   systemOwner: 
   systemPopulated: 0
+  visitorList: {fileID: 0}
   asteroidsToSpawn: 0
   chanceOfPirate: 0
   _guiBehaviour: {fileID: 786956437}

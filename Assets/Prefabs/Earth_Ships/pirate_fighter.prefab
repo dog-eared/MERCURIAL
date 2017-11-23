@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1677585611609424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,12 +102,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Venturer
   shipName: Sparrow
-  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
-    type: 2}
+  faction: 0
   shipHullCurrent: 50
   shipHullMax: 50
   shipShieldCurrent: 25
   shipShieldMax: 25
+  shieldRegenAmount: 1
+  shieldRegenFrequency: 0
+  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
+    type: 2}
+  explosionSound: {fileID: 0}
+  invincibilityFramesTime: 0.1
+  _guiManager: {fileID: 0}
 --- !u!114 &114965565506742824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +133,9 @@ MonoBehaviour:
   brakesOn: 0
   horizontalInput: 0
   currentThrust: 0
+  shipWeapons: []
+  shipDefenses: []
+  reverseVelocity: {x: 0, y: 0, z: 0}
 --- !u!212 &212941772414839980
 SpriteRenderer:
   m_ObjectHideFlags: 1

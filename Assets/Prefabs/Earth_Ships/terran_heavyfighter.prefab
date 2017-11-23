@@ -75,11 +75,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Paladin
   shipName: Galahad
-  explosionAnimation: {fileID: 0}
+  faction: 0
   shipHullCurrent: 125
   shipHullMax: 125
   shipShieldCurrent: 50
   shipShieldMax: 50
+  shieldRegenAmount: 1
+  shieldRegenFrequency: 0
+  explosionAnimation: {fileID: 0}
+  explosionSound: {fileID: 0}
+  invincibilityFramesTime: 0.1
+  _guiManager: {fileID: 0}
 --- !u!212 &212101917526481622
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -20,38 +20,78 @@ public class VisitorList : MonoBehaviour {
 	public Visitor[] neutrals;
 	public Visitor[] pirates;
 
+	List<GameObject> initialShips;
+
 	[HideInInspector]
 	public float chanceOfPirates; //Set by SystemManager;
 
 	int instantiatedSoFar = 0;
 
-	void Awake() {
+
+	public void SpawnNeutrals() {
+		initialShips = new List<GameObject>();
 		if (neutrals.Length > 0) {
+
 			for (var x = 0; x < neutrals.Length; x++) {
 
 				for (var y = 0; y < neutrals[x].numberToInstantiate; y++) {
 
-					if (instantiatedSoFar < maximumNeutrals);
+					if (instantiatedSoFar <= maximumNeutrals) {
 
-					float randomCheck = Random.Range(0, 100);
-					if (randomCheck > neutrals[x].appearanceFrequency) {
-						Debug.Log("Instantiating a ship: " + neutrals[x].visitorPrefab);
-						instantiatedSoFar++;
+						float randomCheck = Random.Range(0, 100);
+
+						if (randomCheck > neutrals[x].appearanceFrequency) {
+							Debug.Log("Instantiating a ship: " + neutrals[x].visitorPrefab);
+							instantiatedSoFar++;
+							GameObject newShip = Instantiate(neutrals[x].visitorPrefab);
+							initialShips.Add(newShip);
+							newShip.SetActive(false);
+						}
 					}
 				}
-
-
 			}
 		}
+
+
 	}
 
 
-	void GenerateSpawnLocations(List<Planet> planets) {
+	public List<Vector3> GenerateSpawnLocations(List<Planet> planets, Vector3 playerLocation) {
+		//Should be called by system manager.
 
+		//Get all planets that the player is not exiting
+		List<Vector3> returnedLocations = new List<Vector3>();
+
+		for (int x = 0; x < planets.Count; x++) {
+
+			returnedLocations.Add(new Vector3(planets[x].xLocation, planets[x].yLocation, 1));
+			//if (planets[x].xLocation != playerLocation.x && planets[x].yLocation != playerLocation.y) {
+			//}
+		}
+		Debug.Log("GenerateSpawnLocations -- I'm returning: " + returnedLocations + " " + returnedLocations.Count);
+		return returnedLocations;
 	}
 
+
+	public void PlaceVisitors(List<Vector3> locations) {
+		Debug.Log("starting PlaceVisitors");
+		Debug.Log(initialShips + " count: " + initialShips.Count);
+		if (initialShips.Count > 0) {
+
+			for (int x = 0; x < initialShips.Count; x++) {
+				int randomPlacement = Random.Range(0, locations.Count);
+				Debug.Log("init ship pos: " + initialShips[x].transform.localPosition);
+				Debug.Log("locations: " + locations[0]);
+				initialShips[x].transform.localPosition = locations[randomPlacement];
+				Debug.Log(initialShips[x].transform.position);
+				initialShips[x].SetActive(true);
+			}
+		}
+		Debug.Log("finished PlaceVisitors");
+	}
 
 }
+
 
 [System.Serializable]
 public class Visitor {

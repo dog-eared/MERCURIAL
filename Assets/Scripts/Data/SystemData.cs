@@ -12,6 +12,7 @@ public class SystemData {
 	public string systemName;
 	public string backdropMaterial; //Important this string, not Material. It will be cast as a material at assignment to PlanetData;
 	public string systemOwner;
+	public string visitorList;
 	public bool systemPopulated;
 	public float systemSize;
 	public int asteroidsToSpawn;

@@ -75,11 +75,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Frigate
   shipName: Zeus
-  explosionAnimation: {fileID: 0}
+  faction: 0
   shipHullCurrent: 600
   shipHullMax: 600
   shipShieldCurrent: 200
   shipShieldMax: 200
+  shieldRegenAmount: 1
+  shieldRegenFrequency: 0
+  explosionAnimation: {fileID: 0}
+  explosionSound: {fileID: 0}
+  invincibilityFramesTime: 0.1
+  _guiManager: {fileID: 0}
 --- !u!212 &212808954168506934
 SpriteRenderer:
   m_ObjectHideFlags: 1

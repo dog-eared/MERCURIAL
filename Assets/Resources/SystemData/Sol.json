@@ -2,6 +2,7 @@
   "systemName": "Sol",
   "backdropMaterial": "Blue",
   "systemOwner":"Dominion of Earth",
+  "visitorList": "dominion1",
   "systemPopulated":true,
   "systemSize": 400,
   "asteroidsToSpawn":7,

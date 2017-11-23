@@ -22,6 +22,8 @@ public class SystemManager : MonoBehaviour {
 	public string systemOwner;
 	public bool systemPopulated;
 	[Space(10)]
+	public GameObject visitorList;
+
 	public int asteroidsToSpawn;
 	public float chanceOfPirate;
 
@@ -38,9 +40,9 @@ public class SystemManager : MonoBehaviour {
 
 	public List<Planet> planetList;
 
-	//SystemData should probably be in this file, not PlanetManager;
-	//Refactor later?
+	VisitorList _visitorList;
 
+	List<Vector3> spawnLocations = new List<Vector3>();
 
 	void Awake() {
 		mainCam = Camera.main;
@@ -50,6 +52,7 @@ public class SystemManager : MonoBehaviour {
 
 		systemData = LoadSystemData("Sol");
 		_minimapManager.GenerateSystemMap();
+		InitializeOtherShips();
 	}
 
 
@@ -71,6 +74,7 @@ public class SystemManager : MonoBehaviour {
 		}
 
 
+
 		_guiBehaviour.ReceiveMessage("Entered system: " + systemName, false);
 		_guiBehaviour.ReceiveMessage("System owner: " + systemOwner, false);
 
@@ -85,6 +89,8 @@ public class SystemManager : MonoBehaviour {
 		//Can I refactor to simplify??
 		systemName = systemData.systemName;
 		backdropMaterial = Resources.Load("Visuals/Backdrops/" + systemData.backdropMaterial, typeof(Material)) as Material;
+		visitorList = Resources.Load("Prefabs/Visitor List/" + systemData.visitorList) as GameObject;
+		_visitorList = visitorList.GetComponent<VisitorList>();
 		systemSize = systemData.systemSize;
 		systemOwner = systemData.systemOwner;
 		systemPopulated = systemData.systemPopulated;
@@ -92,6 +98,7 @@ public class SystemManager : MonoBehaviour {
 		chanceOfPirate = systemData.chanceOfPirate;
 
 		InitializeArea();
+
 	}
 
 
@@ -119,7 +126,20 @@ public class SystemManager : MonoBehaviour {
 	void InitializeArea() {
 		backdrop.DisplayBackdrop(backdropMaterial);
 		GenerateBoundingEdges();
+
+		//Instantiate(visitorList);
+
 		asteroids.SpawnAsteroids(asteroidsToSpawn, systemSize);
+	}
+
+
+	void InitializeOtherShips() {
+		_visitorList.SpawnNeutrals();
+		Debug.Log("Planet list: " + planetList + " " + planetList.Count);
+
+		spawnLocations = _visitorList.GenerateSpawnLocations(planetList, new Vector3(0, 0, 1));
+		Debug.Log("Spawn locations:" + spawnLocations.Count);
+		_visitorList.PlaceVisitors(spawnLocations);
 	}
 
 

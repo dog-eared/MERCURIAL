@@ -23,7 +23,9 @@ GameObject:
   - component: {fileID: 114457397352095846}
   - component: {fileID: 212522563091687696}
   - component: {fileID: 61699488461385482}
-  - component: {fileID: 114053404301040884}
+  - component: {fileID: 114941917052683626}
+  - component: {fileID: 114730770183264656}
+  - component: {fileID: 114519906726168692}
   m_Layer: 13
   m_Name: alien_rogue
   m_TagString: Ship
@@ -89,25 +91,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.77, y: 1.36}
   m_EdgeRadius: 0
---- !u!114 &114053404301040884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1387727266781584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62364ad3e0ec8437db25438c511cd316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 300
-  acceleration: 0.15
-  deacceleration: 0.9
-  maximumSpeed: 24
-  thrustersOn: 0
-  brakesOn: 0
-  horizontalInput: 0
-  currentThrust: 0
 --- !u!114 &114457397352095846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,12 +104,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Rogue
   shipName: Inquisitor
+  faction: 2
+  shipHullCurrent: 200
+  shipHullMax: 200
+  shipShieldCurrent: 100
+  shipShieldMax: 100
+  shieldRegenAmount: 5
+  shieldRegenFrequency: 3
   explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
     type: 2}
-  shipHullCurrent: 300
-  shipHullMax: 300
-  shipShieldCurrent: 0
-  shipShieldMax: 0
+  explosionSound: {fileID: 0}
+  invincibilityFramesTime: 0.1
+  _guiManager: {fileID: 0}
+--- !u!114 &114519906726168692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387727266781584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61d4845be88348cda0ea9db988e0e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  factionName: 
+  rateOfFire: 2
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
+--- !u!114 &114730770183264656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387727266781584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0131fe5a5f5c54888bb23a76d0743e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  factionName: 
+  rateOfFire: 0.5
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
+--- !u!114 &114941917052683626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387727266781584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff001e3f28563423f8521e68c12ca517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 300
+  acceleration: 0.3
+  deacceleration: 0.44
+  maximumSpeed: 13
+  thrustersOn: 0
+  brakesOn: 0
+  horizontalInput: 0
+  currentThrust: 0
+  shipWeapons: []
+  shipDefenses: []
+  reverseVelocity: {x: 0, y: 0, z: 0}
 --- !u!212 &212522563091687696
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -156,11 +205,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1260825317
-  m_SortingLayer: 2
+  m_SortingLayerID: 1058392351
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6d41532da20f44920b6fbf6321b10fb7, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.46206903, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

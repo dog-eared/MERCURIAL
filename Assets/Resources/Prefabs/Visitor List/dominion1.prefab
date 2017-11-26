@@ -51,18 +51,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69a7ca097ace4a52a25ce6b3b952e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralsOnEntry: 3
+  neutralsOnEntry: 5
   maximumNeutrals: 5
   neutrals:
   - visitorPrefab: {fileID: 1430530111344576, guid: 4d1a3a6acc91e4cd09a69e625341df86,
       type: 2}
     isUnique: 0
-    appearanceFrequency: 60
+    appearanceFrequency: 90
     numberToInstantiate: 2
   - visitorPrefab: {fileID: 1022435970594744, guid: f729dc8f2d7f74991aa030eb3663a792,
       type: 2}
     isUnique: 0
-    appearanceFrequency: 20
+    appearanceFrequency: 60
+    numberToInstantiate: 2
+  - visitorPrefab: {fileID: 1188348088011180, guid: 3b456353afb6844efaf254f4f068115f,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 10
+    numberToInstantiate: 1
+  - visitorPrefab: {fileID: 1870983020579114, guid: 115d599a4d8644836a06968ed4570093,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 30
     numberToInstantiate: 1
   pirates: []
   chanceOfPirates: 0

@@ -24,6 +24,11 @@ GameObject:
   - component: {fileID: 212941995759927116}
   - component: {fileID: 61194376389402844}
   - component: {fileID: 114010603913565538}
+  - component: {fileID: 114223567675181536}
+  - component: {fileID: 82204903052377910}
+  - component: {fileID: 114435779064042000}
+  - component: {fileID: 114734727147396284}
+  - component: {fileID: 114821030355256468}
   m_Layer: 13
   m_Name: terran_defender
   m_TagString: Ship
@@ -39,7 +44,7 @@ Transform:
   m_GameObject: {fileID: 1430530111344576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,6 +94,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.55, y: 1.45}
   m_EdgeRadius: 0
+--- !u!82 &82204903052377910
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114010603913565538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +196,25 @@ MonoBehaviour:
   shipWeapons: []
   shipDefenses: []
   reverseVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114223567675181536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0131fe5a5f5c54888bb23a76d0743e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  factionName: 
+  rateOfFire: 1
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
 --- !u!114 &114270007493195842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,17 +228,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipModel: Bulwark
   shipName: Waterloo
-  faction: 0
+  faction: 1
   shipHullCurrent: 100
   shipHullMax: 100
   shipShieldCurrent: 35
   shipShieldMax: 35
   shieldRegenAmount: 1
   shieldRegenFrequency: 0
-  explosionAnimation: {fileID: 0}
+  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
+    type: 2}
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1
   _guiManager: {fileID: 0}
+--- !u!114 &114435779064042000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6182db14527d649ae9f9b8594416472c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 30
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 50
+  mediumDistance: 20
+  shortDistance: 10
+  minimumDistance: 4
+--- !u!114 &114734727147396284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0131fe5a5f5c54888bb23a76d0743e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  factionName: 
+  rateOfFire: 1
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
+--- !u!114 &114821030355256468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0131fe5a5f5c54888bb23a76d0743e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  factionName: 
+  rateOfFire: 1
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
 --- !u!212 &212941995759927116
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -164,8 +331,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1260825317
-  m_SortingLayer: 2
+  m_SortingLayerID: 1058392351
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 87c2a3bf82719494b82b675389fd8fe8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

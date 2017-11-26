@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1759035734303916}
+  m_IsPrefabParent: 1
+--- !u!1 &1759035734303916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4846006684121660}
+  - component: {fileID: 114901258453701764}
+  m_Layer: 0
+  m_Name: dominion2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4846006684121660
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759035734303916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114901258453701764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759035734303916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69a7ca097ace4a52a25ce6b3b952e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralsOnEntry: 5
+  maximumNeutrals: 5
+  neutrals:
+  - visitorPrefab: {fileID: 1430530111344576, guid: 4d1a3a6acc91e4cd09a69e625341df86,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 40
+    numberToInstantiate: 2
+  - visitorPrefab: {fileID: 1022435970594744, guid: f729dc8f2d7f74991aa030eb3663a792,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 60
+    numberToInstantiate: 2
+  - visitorPrefab: {fileID: 1188348088011180, guid: 3b456353afb6844efaf254f4f068115f,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 10
+    numberToInstantiate: 1
+  - visitorPrefab: {fileID: 1870983020579114, guid: 115d599a4d8644836a06968ed4570093,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 30
+    numberToInstantiate: 1
+  pirates: []
+  chanceOfPirates: 0

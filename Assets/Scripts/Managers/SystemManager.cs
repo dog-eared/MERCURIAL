@@ -41,7 +41,7 @@ public class SystemManager : MonoBehaviour {
 
 	public List<Planet> planetList;
 
-	VisitorList _visitorList;
+	public VisitorList _visitorList;
 
 	List<Vector3> spawnLocations = new List<Vector3>();
 
@@ -90,7 +90,9 @@ public class SystemManager : MonoBehaviour {
 		systemName = systemData.systemName;
 		backdropMaterial = Resources.Load("Visuals/Backdrops/" + systemData.backdropMaterial, typeof(Material)) as Material;
 		visitorList = Resources.Load("Prefabs/Visitor List/" + systemData.visitorList) as GameObject;
+
 		_visitorList = visitorList.GetComponent<VisitorList>();
+
 		systemSize = systemData.systemSize;
 		systemOwner = systemData.systemOwner;
 		systemPopulated = systemData.systemPopulated;
@@ -112,7 +114,7 @@ public class SystemManager : MonoBehaviour {
 		WipeObjects(toWipe);
 
 
-		_localShipsManager.WipeAllShips();
+		_localShipsManager.RemoveAllShips();
 		_minimapManager.WipeAllBlips();
 	}
 

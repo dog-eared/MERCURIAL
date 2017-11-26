@@ -56,7 +56,7 @@ public class AIState : MonoBehaviour {
 	public float longDistance = 50f;
 	public float mediumDistance = 20f;
 	public float shortDistance = 10f;
-	public float minDistance = 4f;
+	public float minimumDistance = 4f;
 
 	private Quaternion rotationToTarget;
 	private Vector3 vectorToTarget;
@@ -65,17 +65,52 @@ public class AIState : MonoBehaviour {
 	void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
- 		rotationSpeed = _chassis.rotateSpeed / 150;
+ 		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... pretty good approximation of normal rotation
 		_rb2d = GetComponent<Rigidbody2D>();
 		//InvokeRepeating("PeriodicUpdate", 0, periodicUpdateFrequency);
 	}
 
 
-	void Update () {
+	void LessThanMinimumDistance() {
+		//For distances less than minimumDistance
+	}
+
+
+	void MinimumDistance() {
+		//For distances greater than minimumDistance but less than shortDistance
+	}
+
+
+	void ShortDistance() {
+		//For distances greater than shortDistance but less than mediumDistance
+	}
+
+
+	void MediumDistance() {
+		//For distances greater than mediumDistance but less than longDistance
+
+	}
+
+	void LongDistance() {
+		//For distances greater than longDistance
+
+	}
+
+
+	/*
+
+	UPDATING
+
+	*/
+
+
+
+
+	void LateUpdate () {
 		if (targetedShip != null) {
 			SetTargetShipVector(targetedShip);
 		} else {
-			vectorToTarget = Vector3.zero;
+			//vectorToTarget = Vector3.zero;
 		}
 		vectorToTarget = (targetLocation - transform.position).normalized;
 		eulerAngleToTarget = GetAngleToTarget(targetLocation);
@@ -86,7 +121,7 @@ public class AIState : MonoBehaviour {
 														- 90 + Random.Range(-rotationTolerance, rotationTolerance)), Time.deltaTime * rotationSpeed);
 														//Slerps from our rotation to a quat.euler
 			_chassis.thrustersOn = false;
-		} else if (distanceToTarget > minDistance) {
+		} else if (distanceToTarget > minimumDistance) {
 			_chassis.thrustersOn = true;
 			_chassis.brakesOn = false;
 		} else {
@@ -94,12 +129,25 @@ public class AIState : MonoBehaviour {
 		}
 
 		if (facingTarget && distanceToTarget < mediumDistance && targetedShip != null) {
-			_chassis.shipWeapons[0].FireButtonPressed();
+			FireAllWeapons();
+			//_chassis.shipWeapons[0].FireButtonPressed();
 		}
 
 
 		SetFacingStatus();
 
+	}
+
+	/*
+
+	METHODS
+
+	*/
+
+	void FireAllWeapons() {
+		_chassis.shipWeapons[0].FireButtonPressed();
+		_chassis.shipWeapons[1].FireButtonPressed();
+		_chassis.shipWeapons[2].FireButtonPressed();
 	}
 
 

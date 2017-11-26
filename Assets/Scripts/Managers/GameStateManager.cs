@@ -41,7 +41,7 @@ public class GameStateManager : MonoBehaviour {
 
 	public void HyperspaceJump() {
 		_systemManager.systemData = _systemManager.LoadSystemData(targetSystem);
-		_minimapManager.Invoke("GenerateSystemMap", 0.5f); //Gives a moment for json data to load
+		_minimapManager.Invoke("GenerateSystemMap", 0.2f); //Gives a moment for json data to load
 		StartFadeIn();
 	}
 

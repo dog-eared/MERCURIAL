@@ -91,7 +91,7 @@ public class ShipData : MonoBehaviour {
 
 	void InvincibilityOn() {
 		invincibilityFramesOn = true;
-		_renderer.material.color = new Color(4, 0, 0);
+		_renderer.material.color = new Color(4, 0, 0, .5f);
 	}
 
 

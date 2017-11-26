@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MinimapBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\MainMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
@@ -60,6 +59,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Menu\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\MinimapBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\AIState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\BaseAI.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />

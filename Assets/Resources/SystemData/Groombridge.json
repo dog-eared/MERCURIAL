@@ -2,6 +2,7 @@
   "systemName": "Groombridge",
   "backdropMaterial": "Gold",
   "systemOwner":"Divine Trade Alliance",
+"visitorList": "dominion1",
   "systemPopulated":false,
   "systemSize": 350,
   "asteroidsToSpawn":0,

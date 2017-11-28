@@ -46,10 +46,13 @@ public class AIState : MonoBehaviour {
 	float rotationSpeed;
 
 	public float distanceToTarget;
+
 	public float velocityMagnitude;
 
 	public float eulerAngleToTarget;
 	public float brakeAngleToTarget;
+
+
 
 	[Space(10)]
 	[Header("Distances:")]
@@ -58,6 +61,11 @@ public class AIState : MonoBehaviour {
 	public float shortDistance = 10f;
 	public float minimumDistance = 4f;
 
+	[Space(10)]
+	[Header("Velocities:")]
+	public float engageSpeed = 0.35f;
+	[Tooltip("Represents multiplier to slow down ship when engaging in combat")]
+
 	private Quaternion rotationToTarget;
 	private Vector3 vectorToTarget;
 
@@ -65,7 +73,7 @@ public class AIState : MonoBehaviour {
 	void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
- 		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... pretty good approximation of normal rotation
+ 		rotationSpeed = _chassis.rotateSpeed / 100; //Magic number of 150... pretty good approximation of normal rotation
 		_rb2d = GetComponent<Rigidbody2D>();
 		//InvokeRepeating("PeriodicUpdate", 0, periodicUpdateFrequency);
 	}
@@ -73,27 +81,43 @@ public class AIState : MonoBehaviour {
 
 	void LessThanMinimumDistance() {
 		//For distances less than minimumDistance
+		//Normal objective: basically hang out
+		MinimumDistance();
 	}
 
 
 	void MinimumDistance() {
 		//For distances greater than minimumDistance but less than shortDistance
+		RotateToTarget();
+		_chassis.shipDefenses[0].DefenseButtonPressed();
 	}
 
 
 	void ShortDistance() {
 		//For distances greater than shortDistance but less than mediumDistance
+		if (slowingDown) {
+			SlowToEngage();
+		} else {
+			RotateToTarget();
+		}
 	}
 
 
 	void MediumDistance() {
 		//For distances greater than mediumDistance but less than longDistance
+		if (facingTarget) {
+			_chassis.thrustersOn = true;
+		} else {
+			_chassis.thrustersOn = false;
+			RotateToTarget();
+		}
 
 	}
 
 	void LongDistance() {
 		//For distances greater than longDistance
-
+		MediumDistance();
+		_chassis.shipDefenses[0].DefenseButtonReleased();
 	}
 
 
@@ -104,37 +128,34 @@ public class AIState : MonoBehaviour {
 	*/
 
 
-
-
 	void LateUpdate () {
 		if (targetedShip != null) {
 			SetTargetShipVector(targetedShip);
-		} else {
-			//vectorToTarget = Vector3.zero;
 		}
+
 		vectorToTarget = (targetLocation - transform.position).normalized;
 		eulerAngleToTarget = GetAngleToTarget(targetLocation);
 		distanceToTarget = (targetLocation - transform.position).magnitude;
+		velocityMagnitude = _rb2d.velocity.sqrMagnitude;
 
-		if (!facingTarget) {
-			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg
-														- 90 + Random.Range(-rotationTolerance, rotationTolerance)), Time.deltaTime * rotationSpeed);
-														//Slerps from our rotation to a quat.euler
-			_chassis.thrustersOn = false;
-		} else if (distanceToTarget > minimumDistance) {
-			_chassis.thrustersOn = true;
-			_chassis.brakesOn = false;
+		if (distanceToTarget < minimumDistance) {
+			LessThanMinimumDistance();
+		} else if (distanceToTarget < shortDistance) {
+			MinimumDistance();
+		} else if (distanceToTarget < mediumDistance) {
+			ShortDistance();
+		} else if (distanceToTarget < longDistance) {
+			MediumDistance();
 		} else {
-			_chassis.brakesOn = true;
+			LongDistance();
 		}
 
 		if (facingTarget && distanceToTarget < mediumDistance && targetedShip != null) {
 			FireAllWeapons();
-			//_chassis.shipWeapons[0].FireButtonPressed();
 		}
 
-
 		SetFacingStatus();
+
 
 	}
 
@@ -143,6 +164,46 @@ public class AIState : MonoBehaviour {
 	METHODS
 
 	*/
+
+	float CalculateTimeToIntercept() {
+		Vector3 interceptDistance = transform.position - targetLocation;
+		return interceptDistance.sqrMagnitude / velocityMagnitude;
+
+
+	}
+
+
+	void ToggleSlowingDown() {
+		slowingDown = !slowingDown;
+	}
+
+
+	void SlowToEngage() {
+		if (velocityMagnitude > (Mathf.Pow(_chassis.maximumSpeed, 2) * engageSpeed)) {
+			if (!facingTarget) {
+				RotateToAway();
+			} else {
+				_chassis.thrustersOn = true;
+			}
+		} else {
+			_chassis.thrustersOn = false;
+		}
+	}
+
+
+	void RotateToTarget() {
+		if (!facingTarget) {
+			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg
+														- 90 + Random.Range(-rotationTolerance, rotationTolerance)), Time.deltaTime * rotationSpeed);
+			}
+	}
+
+	void RotateToAway() {
+		if (!facingAway) {
+			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg
+														+ 90 + Random.Range(-rotationTolerance, rotationTolerance)), Time.deltaTime * rotationSpeed);
+		}
+	}
 
 	void FireAllWeapons() {
 		_chassis.shipWeapons[0].FireButtonPressed();

@@ -2,6 +2,7 @@
   "systemName": "Cygnus",
   "backdropMaterial": "Blue",
   "systemOwner":"Dominion of Earth",
+"visitorList": "dominion1",
   "systemPopulated":false,
   "systemSize": 350,
   "asteroidsToSpawn":0,

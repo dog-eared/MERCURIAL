@@ -20,12 +20,13 @@ public class BaseAI : MonoBehaviour {
 
 	AIState currentAIState;
 
+	public Rigidbody2D rb2d;
 	public AIState normalAI; //Normal state active when nothing is going on.
 	public AIState combatAI; //State used when threatened in combat.
 	public AIState specialAI; //Special circumstances AI.
 
 	void Awake() {
-
+		rb2d.drag = 4f;
 	}
 
 

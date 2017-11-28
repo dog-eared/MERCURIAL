@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\InertialessMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\PhysicsMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Chassis\ShipChassis.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\AI_PhysicsBrake.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EmptyDefenseSlot.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\EnergyShieldBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ForesightModule.cs" />

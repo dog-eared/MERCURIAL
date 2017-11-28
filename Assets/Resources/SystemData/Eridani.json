@@ -2,6 +2,7 @@
   "systemName": "Eridani",
   "backdropMaterial": "Neutral",
   "systemOwner":"Rebellion",
+"visitorList": "none",
   "systemPopulated":true,
   "systemSize": 350,
   "asteroidsToSpawn":0,

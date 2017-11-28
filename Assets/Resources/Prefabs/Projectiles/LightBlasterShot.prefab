@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  passThrough: 0
-  moveSpeed: 30
-  timeTilDestroy: 0.5
+  passThrough: 1
+  moveSpeed: 24
+  timeTilDestroy: 0.6
 --- !u!212 &212741653887853012
 SpriteRenderer:
   m_ObjectHideFlags: 1

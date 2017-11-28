@@ -2,6 +2,7 @@
   "systemName": "Ross",
   "backdropMaterial": "Blue",
   "systemOwner":"Dominion of Earth",
+"visitorList": "dominion2",
   "systemPopulated":true,
   "systemSize": 350,
   "asteroidsToSpawn":0,

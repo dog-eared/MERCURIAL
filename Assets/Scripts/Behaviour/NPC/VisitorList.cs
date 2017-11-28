@@ -68,26 +68,25 @@ public class VisitorList : MonoBehaviour {
 			//if (planets[x].xLocation != playerLocation.x && planets[x].yLocation != playerLocation.y) {
 			//}
 		}
-		Debug.Log("GenerateSpawnLocations -- I'm returning: " + returnedLocations + " " + returnedLocations.Count);
+
 		return returnedLocations;
 	}
 
 
 	public void PlaceVisitors(List<Vector3> locations) {
-		Debug.Log("starting PlaceVisitors");
-		Debug.Log(initialShips + " count: " + initialShips.Count);
+
 		if (initialShips.Count > 0) {
 
 			for (int x = 0; x < initialShips.Count; x++) {
 				int randomPlacement = Random.Range(0, locations.Count);
-				Debug.Log("init ship pos: " + initialShips[x].transform.localPosition);
-				Debug.Log("locations: " + locations[0]);
-				initialShips[x].transform.localPosition = locations[randomPlacement];
-				Debug.Log(initialShips[x].transform.position);
+
+				initialShips[x].transform.localPosition = (5 * (Vector3)Random.insideUnitCircle) + locations[randomPlacement];
+				initialShips[x].transform.Rotate(new Vector3(0, 0, Random.Range(0, 359)));
+
 				initialShips[x].SetActive(true);
 			}
 		}
-		Debug.Log("finished PlaceVisitors");
+
 	}
 
 }

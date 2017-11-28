@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 82413520637510282}
   - component: {fileID: 114656464032354760}
   - component: {fileID: 114375335762007136}
+  - component: {fileID: 114511158180616610}
+  - component: {fileID: 114610590968762932}
   m_Layer: 13
   m_Name: terran_fighter
   m_TagString: Ship
@@ -58,7 +60,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 14
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -212,15 +214,30 @@ MonoBehaviour:
   targetLocation: {x: 0, y: 0, z: 0}
   facingTarget: 0
   facingAway: 0
-  rotationTolerance: 30
+  rotationTolerance: 5
   distanceToTarget: 0
   velocityMagnitude: 0
   eulerAngleToTarget: 0
   brakeAngleToTarget: 0
-  longDistance: 50
-  mediumDistance: 20
-  shortDistance: 10
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
   minimumDistance: 4
+  engageSpeed: 0.18
+--- !u!114 &114511158180616610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022435970594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26989200b530413b869d1994d775bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: left
+  defenseName: Defense
+  buttonBeingHeld: 0
 --- !u!114 &114514348598218354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +260,21 @@ MonoBehaviour:
   shipWeapons: []
   shipDefenses: []
   reverseVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114610590968762932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022435970594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff060cda8b3fe4162bfc95c8ed15a3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 50842864473452024}
+  normalAI: {fileID: 114375335762007136}
+  combatAI: {fileID: 0}
+  specialAI: {fileID: 0}
 --- !u!114 &114656464032354760
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,6 +2,7 @@
   "systemName": "GJ-725",
   "backdropMaterial": "Red",
   "systemOwner":"Abandoned",
+"visitorList": "dominion2",
   "systemPopulated":false,
   "systemSize": 300,
   "asteroidsToSpawn":70,

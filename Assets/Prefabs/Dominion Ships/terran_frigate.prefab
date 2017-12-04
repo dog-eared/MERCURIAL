@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 82429243056384530}
   - component: {fileID: 114374492421196404}
   - component: {fileID: 114883823544540844}
-  - component: {fileID: 61145414346446766}
+  - component: {fileID: 70419783147406004}
   m_Layer: 13
   m_Name: terran_frigate
   m_TagString: Ship
@@ -66,8 +66,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61145414346446766
-BoxCollider2D:
+--- !u!70 &70419783147406004
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -78,19 +78,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.66, y: 5.78}
-    newSize: {x: 4.22, y: 3.72}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.66, y: 5.78}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.21}
+  m_Size: {x: 3.44, y: 5.07}
+  m_Direction: 0
 --- !u!82 &82429243056384530
 AudioSource:
   m_ObjectHideFlags: 1
@@ -220,6 +210,7 @@ MonoBehaviour:
   mediumDistance: 20
   shortDistance: 10
   minimumDistance: 4
+  engageSpeed: 0.35
 --- !u!114 &114883823544540844
 MonoBehaviour:
   m_ObjectHideFlags: 1

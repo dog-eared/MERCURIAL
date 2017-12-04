@@ -73,7 +73,7 @@ public class AIState : MonoBehaviour {
 	void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
- 		rotationSpeed = _chassis.rotateSpeed / 100; //Magic number of 150... pretty good approximation of normal rotation
+ 		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... pretty good approximation of normal rotation
 		_rb2d = GetComponent<Rigidbody2D>();
 		//InvokeRepeating("PeriodicUpdate", 0, periodicUpdateFrequency);
 	}
@@ -89,7 +89,6 @@ public class AIState : MonoBehaviour {
 	void MinimumDistance() {
 		//For distances greater than minimumDistance but less than shortDistance
 		RotateToTarget();
-		_chassis.shipDefenses[0].DefenseButtonPressed();
 	}
 
 
@@ -117,7 +116,6 @@ public class AIState : MonoBehaviour {
 	void LongDistance() {
 		//For distances greater than longDistance
 		MediumDistance();
-		_chassis.shipDefenses[0].DefenseButtonReleased();
 	}
 
 
@@ -259,5 +257,31 @@ public class AIState : MonoBehaviour {
 		return Mathf.Repeat(targetAngle + 90, 360);
 	}
 
+
+}
+
+
+public enum Objective {
+	Flee,
+	Pursue,
+	Engage,
+	Land,
+	Jump
+}
+
+
+class AITask {
+	string name;
+	GameObject target;
+	Vector3 targetLocation;
+	Objective objective;
+
+	public Vector3 ReturnLocationVector() {
+		if (target != null) {
+			return target.transform.position;
+		} else {
+			return targetLocation;
+		}
+	}
 
 }

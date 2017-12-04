@@ -46,13 +46,9 @@ public class AIState : MonoBehaviour {
 	float rotationSpeed;
 
 	public float distanceToTarget;
-
 	public float velocityMagnitude;
-
 	public float eulerAngleToTarget;
 	public float brakeAngleToTarget;
-
-
 
 	[Space(10)]
 	[Header("Distances:")]
@@ -63,18 +59,21 @@ public class AIState : MonoBehaviour {
 
 	[Space(10)]
 	[Header("Velocities:")]
-	public float engageSpeed = 0.35f;
+	public float engageMod = 0.35f;
+	float engageSpeed;
 	[Tooltip("Represents multiplier to slow down ship when engaging in combat")]
 
 	private Quaternion rotationToTarget;
 	private Vector3 vectorToTarget;
 
+	private Rigidbody2D _targetRigidbody;
 
 	void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
  		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... pretty good approximation of normal rotation
 		_rb2d = GetComponent<Rigidbody2D>();
+		engageSpeed = Mathf.Pow(_chassis.maximumSpeed, 2) * engageMod;
 		//InvokeRepeating("PeriodicUpdate", 0, periodicUpdateFrequency);
 	}
 
@@ -104,6 +103,7 @@ public class AIState : MonoBehaviour {
 
 	void MediumDistance() {
 		//For distances greater than mediumDistance but less than longDistance
+
 		if (facingTarget) {
 			_chassis.thrustersOn = true;
 		} else {
@@ -239,7 +239,13 @@ public class AIState : MonoBehaviour {
 
 
 	void SetTargetShipVector(GameObject ship) {
-		targetLocation = ship.transform.position;
+
+
+		if (_targetRigidbody == null) {
+			_targetRigidbody = ship.GetComponent<Rigidbody2D>();
+		}
+
+		targetLocation = ship.transform.position + ((Vector3)_targetRigidbody.velocity / 2) - ((Vector3)_rb2d.velocity / 2);
 	}
 
 
@@ -255,6 +261,11 @@ public class AIState : MonoBehaviour {
 
 		float targetAngle = Mathf.Atan2(tanOpposite, tanAdjacent) * Mathf.Rad2Deg;
 		return Mathf.Repeat(targetAngle + 90, 360);
+	}
+
+
+	Vector3 GetTargetVelocity(Rigidbody2D rb2d) {
+		return rb2d.velocity;
 	}
 
 

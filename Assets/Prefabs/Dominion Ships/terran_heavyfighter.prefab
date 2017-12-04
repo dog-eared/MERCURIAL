@@ -185,7 +185,7 @@ MonoBehaviour:
   rotateSpeed: 400
   acceleration: 100
   deacceleration: 0.44
-  maximumSpeed: 13
+  maximumSpeed: 10
   thrustersOn: 0
   brakesOn: 0
   horizontalInput: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   mediumDistance: 20
   shortDistance: 10
   minimumDistance: 4
-  engageSpeed: 0.35
+  engageMod: 0.35
 --- !u!114 &114976181976823574
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 400
-  acceleration: 200
+  acceleration: 100
   deacceleration: 1000
   maximumSpeed: 7
   thrustersOn: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   mediumDistance: 20
   shortDistance: 10
   minimumDistance: 4
-  engageSpeed: 0.35
+  engageMod: 0.35
 --- !u!114 &114734727147396284
 MonoBehaviour:
   m_ObjectHideFlags: 1

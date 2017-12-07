@@ -55,83 +55,81 @@ public class InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButtonDown("Jump") && _gameStateManager.currentMode == GameMode.hyperspace) {
-			//Cancel hyperspace jump.
-		}
+		if (_gameStateManager.currentMode != GameMode.menu) {
 
-		if (_gameStateManager.currentMode != GameMode.menu && _gameStateManager.currentMode != GameMode.hyperspace) {
+			if (Input.GetButtonDown("Jump") && _gameStateManager.currentMode == GameMode.hyperspace) {
+				//Cancel hyperspace jump.
+			}
 
-				/* Hyperspace Jump */
-				if (Input.GetButtonDown("Jump")
-				&& _gameStateManager.currentMode != GameMode.hyperspace
-				&& (Mathf.Abs(playerShip.transform.position.x) + Mathf.Abs(playerShip.transform.position.y) > validJumpDistance))
-				{
-					if (_gameStateManager.targetSystem != null) {
-						_gameStateManager.currentMode = GameMode.hyperspace;
-						_gameStateManager.Invoke("HyperspaceJump", 1.8f);
-						_cameraBehaviour.StartCoroutine("BackdropFadeOut");
-					} else {
-						_guiBehaviour.ReceiveMessage("Invalid hyperspace target.", false);
+			if (_gameStateManager.currentMode != GameMode.menu && _gameStateManager.currentMode != GameMode.hyperspace) {
+
+					/* Hyperspace Jump */
+					if (Input.GetButtonDown("Jump")
+					&& _gameStateManager.currentMode != GameMode.hyperspace
+					&& (Mathf.Abs(playerShip.transform.position.x) + Mathf.Abs(playerShip.transform.position.y) > validJumpDistance))
+					{
+						if (_gameStateManager.targetSystem != null) {
+							_gameStateManager.currentMode = GameMode.hyperspace;
+							_gameStateManager.Invoke("HyperspaceJump", 1.8f);
+							_cameraBehaviour.StartCoroutine("BackdropFadeOut");
+						} else {
+							_guiBehaviour.ReceiveMessage("Invalid hyperspace target.", false);
+						}
+					} else if (Input.GetButtonDown("Jump")) {
+						_guiBehaviour.ReceiveMessage("Too close to system center.", false);
 					}
-				} else if (Input.GetButtonDown("Jump")) {
-					_guiBehaviour.ReceiveMessage("Too close to system center.", false);
-				}
-			}
-
-
-			/*Movement while Defenses are active*/
-			if (Input.GetAxis("Horizontal") <= -defenseActivationThreshold) {
-				shipChassis.shipDefenses[0].DefenseRotateLeft();
-				shipChassis.shipDefenses[1].DefenseRotateLeft();
-			} else if (Input.GetAxis("Horizontal") >= defenseActivationThreshold) {
-				shipChassis.shipDefenses[0].DefenseRotateRight();
-				shipChassis.shipDefenses[1].DefenseRotateRight();
-			}
-
-				/*Thrust and Brakes*/
-			if (Input.GetAxis("Vertical") > 0) {
-				shipChassis.thrustersOn = true;
-				shipChassis.brakesOn = false;
-			} else if (Input.GetAxis("Vertical") < 0) {
-				shipChassis.thrustersOn = false;
-				shipChassis.brakesOn = true;
-			} else {
-				shipChassis.thrustersOn = shipChassis.brakesOn = false;
-			}
-
-			/*Activating/Deactivating Defenses L R*/
-			if (shipState.GetTopState().canDefend == true) {
-				if (Input.GetButtonDown("DefenseL")) {
-					shipChassis.FireDefense(0);
 				}
 
-				if (Input.GetButtonDown("DefenseR")) {
-					shipChassis.FireDefense(1);
+
+				/*Movement while Defenses are active*/
+				if (Input.GetAxis("Horizontal") <= -defenseActivationThreshold) {
+					shipChassis.shipDefenses[0].DefenseRotateLeft();
+					shipChassis.shipDefenses[1].DefenseRotateLeft();
+				} else if (Input.GetAxis("Horizontal") >= defenseActivationThreshold) {
+					shipChassis.shipDefenses[0].DefenseRotateRight();
+					shipChassis.shipDefenses[1].DefenseRotateRight();
 				}
 
-			}
+					/*Thrust and Brakes*/
+				if (Input.GetAxis("Vertical") > 0) {
+					shipChassis.thrustersOn = true;
+					shipChassis.brakesOn = false;
+				} else if (Input.GetAxis("Vertical") < 0) {
+					shipChassis.thrustersOn = false;
+					shipChassis.brakesOn = true;
+				} else {
+					shipChassis.thrustersOn = shipChassis.brakesOn = false;
+				}
 
-			/* Releasing our buttons is outside the canDefend so they don't get stuck
-			down  */
+				/*Activating/Deactivating Defenses L R*/
+				if (shipState.GetTopState().canDefend == true) {
+					if (Input.GetButtonDown("DefenseL")) {
+						shipChassis.FireDefense(0);
+					}
 
-			if (Input.GetButtonUp("DefenseL")) {
-				shipChassis.ReleaseDefense(0);
-			}
+					if (Input.GetButtonDown("DefenseR")) {
+						shipChassis.FireDefense(1);
+					}
 
-			if (Input.GetButtonUp("DefenseR")) {
-				shipChassis.ReleaseDefense(1);
-			}
+				}
 
-			/*Rotation*/
-			//Kept separate from defenses below in order to ensure rotates cut off when
-			//axis input is zero.
-			if (shipState.GetTopState().canRotate == true) {
+				/* Releasing our buttons is outside the canDefend so they don't get stuck
+				down  */
+
+				if (Input.GetButtonUp("DefenseL")) {
+					shipChassis.ReleaseDefense(0);
+				}
+
+				if (Input.GetButtonUp("DefenseR")) {
+					shipChassis.ReleaseDefense(1);
+				}
+
+				/*Rotation*/
+				//Kept separate from defenses below in order to ensure rotates cut off when
+				//axis input is zero.
 				shipChassis.horizontalInput = -Input.GetAxis("Horizontal");
-			} else {
-				shipChassis.horizontalInput = 0;
-			}
 
-			if (shipState.GetTopState().canShoot == true) {
+
 				/* Firing Weapons */
 				if (Input.GetButtonDown("Fire1")) {
 					shipChassis.FireWeapon(0);
@@ -156,24 +154,24 @@ public class InputManager : MonoBehaviour {
 				if (Input.GetButtonUp("Fire3")) {
 					shipChassis.shipWeapons[2].FireButtonReleased();
 				}
-			}
 
 			/* GUI controls */
 
-			if (Input.GetButtonDown("MoveLogs") && _guiManager != null) {
-				_guiManager.MoveLogs();
-			}
 
+				if (Input.GetButtonDown("MoveLogs") && _guiManager != null) {
+					_guiManager.MoveLogs();
+				}
 
+				/* Camera Control */
+				if (Input.GetKey("+") || (Input.GetKey("=")) ) {
+					_cameraBehaviour.ZoomIn();
+				}
 
-			/* Camera Control */
-			if (Input.GetKey("+") || (Input.GetKey("=")) ) {
-				_cameraBehaviour.ZoomIn();
-			}
-
-			if (Input.GetKey("-")) {
-				_cameraBehaviour.ZoomOut();
+				if (Input.GetKey("-")) {
+					_cameraBehaviour.ZoomOut();
+				}
 			}
 
 		}
+
 	}

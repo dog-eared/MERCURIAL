@@ -71,8 +71,12 @@ public abstract class ShipChassis : MonoBehaviour {
 		ShipMovement();
 		currentThrust = Mathf.Clamp(currentThrust, 0, maximumSpeed);
 
-		if (horizontalInput != 0 && _shipState.GetTopState().canRotate == true) {
-			ShipRotate(horizontalInput);
+		if (horizontalInput != 0) {
+			if (_shipState.GetTopState().canRotate == true) {
+				ShipRotate(horizontalInput);
+			} else {
+				horizontalInput = 0;
+			}
 		}
 
 		if (_shipState.GetTopState().canMove == true) {

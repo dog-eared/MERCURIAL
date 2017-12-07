@@ -467,53 +467,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!1001 &170228153
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -10.126707
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.7906954
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175100619652186, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114375335762007136, guid: f729dc8f2d7f74991aa030eb3663a792,
-        type: 2}
-      propertyPath: targetedShip
-      value: 
-      objectReference: {fileID: 409322464}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
-  m_IsPrefabParent: 0
 --- !u!224 &207705939 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224759349766724774, guid: c66132d715d6a4bc68fc2a594b9cb75e,
@@ -816,7 +769,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.055, y: 0.93}
-    newSize: {x: 4.22, y: 3.72}
+    newSize: {x: 1.055, y: 0.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -856,12 +809,12 @@ SpriteRenderer:
   m_SortingLayerID: -753187845
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0dddd74b20bf447f4b2bd8f9116ca623, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2bb5b020402ab4812b861050a29862cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.22, y: 3.72}
+  m_Size: {x: 1.055, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -881,12 +834,12 @@ MonoBehaviour:
   shipModel: Venturer
   shipName: Sparrow
   faction: 0
-  shipHullCurrent: 10
-  shipHullMax: 50
-  shipShieldCurrent: 25
-  shipShieldMax: 25
-  shieldRegenAmount: 3
-  shieldRegenFrequency: 0
+  shipHullCurrent: 15
+  shipHullMax: 15
+  shipShieldCurrent: 20
+  shipShieldMax: 20
+  shieldRegenAmount: 1
+  shieldRegenFrequency: 3
   explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
     type: 2}
   explosionSound: {fileID: 0}
@@ -1050,16 +1003,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 409322464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f7717affffe47c3a739a6f6887acf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fcd2d5dc2cf841b8ac680a2f0437003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
   factionName: 
-  rateOfFire: 0.07
+  rateOfFire: 0.2
   bulletLifespan: 1
-  bulletSpread: 8
-  weaponClip: {fileID: 0}
-  projectile: {fileID: 0}
+  bulletSpread: 15
+  weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
+  projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
   bulletPoolPrefab: {fileID: 0}
 --- !u!224 &487605321 stripped
 RectTransform:
@@ -1405,7 +1358,7 @@ Transform:
   - {fileID: 332677904}
   - {fileID: 1026650010}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &786956437
 MonoBehaviour:
@@ -2493,7 +2446,7 @@ Transform:
   m_Children:
   - {fileID: 409322465}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1612165921
 MonoBehaviour:
@@ -2768,7 +2721,7 @@ Transform:
   - {fileID: 343089237}
   - {fileID: 1303507638}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738330211
 GameObject:
@@ -2861,7 +2814,7 @@ Transform:
   - {fileID: 1470481142}
   - {fileID: 743901543}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1738330218
 MonoBehaviour:

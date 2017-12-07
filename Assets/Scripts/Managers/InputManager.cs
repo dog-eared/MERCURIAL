@@ -88,30 +88,25 @@ public class InputManager : MonoBehaviour {
 				shipChassis.shipDefenses[1].DefenseRotateRight();
 			}
 
-			if (shipState.GetTopState().canMove == true) {
 				/*Thrust and Brakes*/
-				if (Input.GetAxis("Vertical") > 0) {
-					shipChassis.thrustersOn = true;
-					shipChassis.brakesOn = false;
-				} else if (Input.GetAxis("Vertical") < 0) {
-					shipChassis.thrustersOn = false;
-					shipChassis.brakesOn = true;
-				} else {
-					shipChassis.thrustersOn = shipChassis.brakesOn = false;
-				}
-			} else {
-				shipChassis.thrustersOn = false;
+			if (Input.GetAxis("Vertical") > 0) {
+				shipChassis.thrustersOn = true;
 				shipChassis.brakesOn = false;
+			} else if (Input.GetAxis("Vertical") < 0) {
+				shipChassis.thrustersOn = false;
+				shipChassis.brakesOn = true;
+			} else {
+				shipChassis.thrustersOn = shipChassis.brakesOn = false;
 			}
 
 			/*Activating/Deactivating Defenses L R*/
 			if (shipState.GetTopState().canDefend == true) {
 				if (Input.GetButtonDown("DefenseL")) {
-					shipChassis.shipDefenses[0].DefenseButtonPressed();
+					shipChassis.FireDefense(0);
 				}
 
 				if (Input.GetButtonDown("DefenseR")) {
-					shipChassis.shipDefenses[1].DefenseButtonPressed();
+					shipChassis.FireDefense(1);
 				}
 
 			}
@@ -120,11 +115,11 @@ public class InputManager : MonoBehaviour {
 			down  */
 
 			if (Input.GetButtonUp("DefenseL")) {
-				shipChassis.shipDefenses[0].DefenseButtonReleased();
+				shipChassis.ReleaseDefense(0);
 			}
 
 			if (Input.GetButtonUp("DefenseR")) {
-				shipChassis.shipDefenses[1].DefenseButtonReleased();
+				shipChassis.ReleaseDefense(1);
 			}
 
 			/*Rotation*/
@@ -139,11 +134,11 @@ public class InputManager : MonoBehaviour {
 			if (shipState.GetTopState().canShoot == true) {
 				/* Firing Weapons */
 				if (Input.GetButtonDown("Fire1")) {
-					shipChassis.shipWeapons[0].FireButtonPressed();
+					shipChassis.FireWeapon(0);
 				}
 
 				if (Input.GetButtonUp("Fire1")) {
-					shipChassis.shipWeapons[0].FireButtonReleased();
+					shipChassis.ReleaseWeapon(0);
 				}
 
 				if (Input.GetButtonDown("Fire2")) {

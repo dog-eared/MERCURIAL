@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114375335762007136}
   - component: {fileID: 114511158180616610}
   - component: {fileID: 114610590968762932}
+  - component: {fileID: 114597510905498642}
   m_Layer: 13
   m_Name: terran_fighter
   m_TagString: Ship
@@ -260,6 +261,17 @@ MonoBehaviour:
   shipWeapons: []
   shipDefenses: []
   reverseVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114597510905498642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022435970594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114610590968762932
 MonoBehaviour:
   m_ObjectHideFlags: 1

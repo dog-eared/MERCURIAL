@@ -6,23 +6,23 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 	public float rateOfFire = 1f;
 	public float bulletLifespan = 3f;
-	float timeSinceLastShot = 0f; //must start at zero so we can shoot immediately
+	protected float timeSinceLastShot = 0f; //must start at zero so we can shoot immediately
 
 	public float bulletSpread = 0f; //for the inspector
-	float bulletSpreadRandom = 0f; //for internal use
+	protected float bulletSpreadRandom = 0f; //for internal use
 
-	AudioSource _audioSource;
+	protected  AudioSource _audioSource;
 	public AudioClip weaponClip;
 
 	public GameObject projectile;
 
-	int bulletPoolSize;
+	protected int bulletPoolSize;
 	public GameObject bulletPoolPrefab;
-	GameObject bulletPool;
+	protected GameObject bulletPool;
 
-	string factionTag;
+	protected string factionTag;
 
-	int currentPoolIndex = 0;
+	protected int currentPoolIndex = 0;
 
 
 	public virtual void Awake() {

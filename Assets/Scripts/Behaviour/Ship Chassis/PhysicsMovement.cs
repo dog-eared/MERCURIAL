@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ShipStateBehaviour))]
 public class PhysicsMovement : ShipChassis {
 
 	/* PHYSICS MOVEMENT

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114358194629398272}
   - component: {fileID: 114174731188231552}
   - component: {fileID: 61746634151976210}
+  - component: {fileID: 114415806357708136}
   m_Layer: 13
   m_Name: terran_heavyfighter
   m_TagString: Ship
@@ -218,6 +219,17 @@ MonoBehaviour:
   shortDistance: 10
   minimumDistance: 4
   engageMod: 0.35
+--- !u!114 &114415806357708136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870983020579114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114976181976823574
 MonoBehaviour:
   m_ObjectHideFlags: 1

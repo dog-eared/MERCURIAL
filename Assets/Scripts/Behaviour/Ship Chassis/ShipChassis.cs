@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ShipStateBehaviour))]
 public abstract class ShipChassis : MonoBehaviour {
 
 	/* SHIP CHASSIS
@@ -33,9 +34,13 @@ public abstract class ShipChassis : MonoBehaviour {
 	public List<ShipDefense> shipDefenses = new List<ShipDefense>();
 
 	ShipData _shipData;
+	ShipStateBehaviour _shipState;
 
 
 	public virtual void Awake() {
+
+		_shipState = GetComponent<ShipStateBehaviour>();
+
 		var weaponsToAdd = GetComponents<ShipWeapon>();
 		var defensesToAdd = GetComponents<ShipDefense>();
 
@@ -61,24 +66,21 @@ public abstract class ShipChassis : MonoBehaviour {
 
 	}
 
-	void Update() {
-
-		currentThrust = Mathf.Clamp(currentThrust, 0, maximumSpeed);
-
-	}
-
 
 	void FixedUpdate () {
 		ShipMovement();
+		currentThrust = Mathf.Clamp(currentThrust, 0, maximumSpeed);
 
-		if (horizontalInput != 0) {
+		if (horizontalInput != 0 && _shipState.GetTopState().canRotate == true) {
 			ShipRotate(horizontalInput);
 		}
 
-		if (thrustersOn) {
-			ShipThrust(acceleration);
-		} else if (brakesOn) {
-			ShipBrakes(deacceleration);
+		if (_shipState.GetTopState().canMove == true) {
+			if (thrustersOn) {
+				ShipThrust(acceleration);
+			} else if (brakesOn && _shipState.GetTopState().canRotate == true) {
+				ShipBrakes(deacceleration);
+			}
 		}
 	}
 
@@ -97,6 +99,30 @@ public abstract class ShipChassis : MonoBehaviour {
 
 	public virtual void ShipBrakes(float deacceleration) {
 		currentThrust -= deacceleration;
+	}
+
+	public virtual void FireWeapon(int weapon) {
+		if (shipWeapons[weapon] != null && _shipState.GetTopState().canShoot == true) {
+			shipWeapons[weapon].FireButtonPressed();
+		}
+	}
+
+	public virtual void ReleaseWeapon(int weapon) {
+		if (shipWeapons[weapon] != null) {
+			shipWeapons[weapon].FireButtonReleased();
+		}
+	}
+
+	public virtual void FireDefense(int defense) {
+		if (shipDefenses[defense] != null && _shipState.GetTopState().canDefend == true) {
+			shipDefenses[defense].DefenseButtonPressed();
+		}
+	}
+
+	public virtual void ReleaseDefense(int defense) {
+		if (shipDefenses[defense] != null) {
+			shipDefenses[defense].DefenseButtonReleased();
+		}
 	}
 
 

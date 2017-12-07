@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Defenses\ShipDefense.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\EmptyWeaponSlot.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\ProjectileWeapon.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\RepeatingProjectileWeapon.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\Abstract\ShipWeapon.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\HeavyBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\LightBlaster.cs" />

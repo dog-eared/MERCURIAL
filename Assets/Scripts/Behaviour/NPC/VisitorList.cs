@@ -29,6 +29,8 @@ public class VisitorList : MonoBehaviour {
 
 
 	public List<GameObject> SpawnNeutrals() {
+		instantiatedSoFar = 0;
+
 		initialShips = new List<GameObject>();
 
 		if (neutrals.Length > 0) {
@@ -69,7 +71,14 @@ public class VisitorList : MonoBehaviour {
 			//}
 		}
 
+		//Now let's spawn a few that aren't attached to a planet.
+
+		for (int y = 0; y < 8 - planets.Count; y++) {
+			returnedLocations.Add(new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), 1));
+		}
+
 		return returnedLocations;
+
 	}
 
 

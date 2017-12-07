@@ -555,6 +555,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2acdaeb7a7b4a2b9a6b8708e0f1f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerShip: {fileID: 1022435970594744, guid: f729dc8f2d7f74991aa030eb3663a792, type: 2}
+  currentSystem: 
+  currentPlanet: 
+  _gameManager: {fileID: 0}
 --- !u!4 &1352530738
 Transform:
   m_ObjectHideFlags: 0

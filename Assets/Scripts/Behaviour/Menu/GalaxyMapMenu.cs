@@ -111,10 +111,7 @@ public class GalaxyMapMenu : MonoBehaviour {
 
 
 	}
-
-	public void CancelButton() {
-
-	}
+	
 
 	void Update() {
 		if (Input.GetKey("+") || Input.GetKey("=")) {

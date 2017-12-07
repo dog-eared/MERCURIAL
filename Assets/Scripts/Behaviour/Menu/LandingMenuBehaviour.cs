@@ -9,19 +9,29 @@ public class LandingMenuBehaviour : MonoBehaviour {
 	public Text playerReputation;
 	public Image planetSplashImage;
 
+	[Space(10)]
 	public Button cantinaButton;
 	public Button missionBoard;
 	public Button tradeDepot;
 	public Button mechanicsDepot;
 	public Button refuelingDepot;
-
 	public Text planetBlurb;
 
-	public PilotData _playerPilotData;
+	[Space(10)]
+	public SystemManager _systemManager;
+	public GameObject playerObject;
+	GameObject _playerShip;
+	PilotData _playerPilotData;
 
 	[Space(10)]
 	public Sprite failedLoadImage;
 
+	Planet currentPlanet;
+
+	void Awake() {
+		_playerPilotData = playerObject.GetComponent<PilotData>();
+		_playerShip = playerObject.transform.GetChild(0).gameObject;
+	}
 
 
 	public void SetLandingData(SystemData systemData, Planet planetData) {
@@ -34,6 +44,7 @@ public class LandingMenuBehaviour : MonoBehaviour {
 		SetPlanetButtons(planetData.buttons);
 		Debug.Log("Done setting landing data!");
 
+		currentPlanet = planetData;
 	}
 
 
@@ -64,7 +75,17 @@ public class LandingMenuBehaviour : MonoBehaviour {
 	}
 
 
-	
+	public void LeavePlanet() {
+
+		//This lets us remove any velocity without needing access to a rigidbody
+		_playerShip.SetActive(false);
+		_playerShip.SetActive(true);
+		//
+		_playerShip.transform.position = new Vector3(currentPlanet.xLocation, currentPlanet.yLocation, 3);
+
+		_systemManager.LeavePlanet();
+
+	}
 
 
 	Sprite SetPlanetImage(string systemName, string planetName) {

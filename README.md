@@ -1,6 +1,6 @@
 # MERCURIAL
 
-#### v.0.00 5
+#### v.0.00 6
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
 recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with modern gameplay that reflects the last 15 years since EV:Nova, a more indepth campaign and stronger pilot characterization.
@@ -11,12 +11,13 @@ the Terran Dominion, investigate the mysteries of humanity's predecessors, trade
 goods from planet to planet or explore the cosmos. 
 
 ## CURRENT STATUS:
-To get the game into a playable tech demo state, the following needs to be implemented:
-1. Simple follow and shoot AI for enemy ships -- COMPLETE, but only for inertialess ships
-2. Things to do when you land on planets
-3. Jumping systems needs to load the appropriate ships into the current scene.
+Game is not really playable or fun yet. Things to do before it works:
 
-...once these are in place, the game will actually be a /game/, hopefully.
+1. AI should change state based on conditional checks -- have I been shot? Did a pirate just enter the system? Is an enemy faction member here?
+
+2. More weapons, and the ability to buy/sell them on a planet
+
+3. Saving/loading player data
 
 
 ### Credits:

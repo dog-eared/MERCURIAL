@@ -21,6 +21,8 @@ public class PersistentGameData : MonoBehaviour {
 	PilotData _playerPilotData;
 	ShipData _playerShipData;
 
+	public GameObject playerShip;
+
 	public string currentSystem;
 	public string currentPlanet;
 
@@ -39,8 +41,8 @@ public class PersistentGameData : MonoBehaviour {
 	public void NewGame() {
 		currentSystem = "Sol";
 		currentPlanet = "Earth";
-		SceneManager.LoadScene("staging_4");
 
+		SceneManager.LoadScene("staging_4");
 	}
 
 }

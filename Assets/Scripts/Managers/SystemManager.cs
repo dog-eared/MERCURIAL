@@ -82,7 +82,6 @@ public class SystemManager : MonoBehaviour {
 
 	}
 
-
 	public void SetSystemManager(SystemData systemData) {
 
 		//Set all system data here
@@ -104,12 +103,23 @@ public class SystemManager : MonoBehaviour {
 	}
 
 
+	public void LeavePlanet() {
+		GameObject[] toWipe = GameObject.FindGameObjectsWithTag("Asteroid");
+		WipeObjects(toWipe);
+
+		_localShipsManager.RemoveAllShips();
+
+		InitializeOtherShips();
+	}
+
+
 	void WipeCurrentSystem() {
 		//Debug.Log("wiped current system!");
 		GameObject[] toWipe = GameObject.FindGameObjectsWithTag("Asteroid");
 		WipeObjects(toWipe);
 		toWipe = GameObject.FindGameObjectsWithTag("Planet");
 		WipeObjects(toWipe);
+		planetList = new List<Planet>();
 		toWipe = GameObject.FindGameObjectsWithTag("SystemEdge");
 		WipeObjects(toWipe);
 
@@ -120,7 +130,6 @@ public class SystemManager : MonoBehaviour {
 
 
 	void WipeObjects(GameObject[] toWipe) {
-		planetList = new List<Planet>();
 		for (var x = 0; x < toWipe.Length; x++) {
 			Destroy(toWipe[x]);
 		}

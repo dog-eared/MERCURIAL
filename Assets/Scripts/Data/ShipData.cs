@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShipData : MonoBehaviour {
 
+
+
 	public string shipModel; //Style of ship
 	public string shipName; //Name of ship
 	AudioSource _audioSource;
@@ -53,7 +55,9 @@ public class ShipData : MonoBehaviour {
 		_audioSource = GetComponent<AudioSource>();
 		_chassis = GetComponent<ShipChassis>();
 		_renderer = GetComponent<Renderer>();
+		Debug.Log("Became awake: " + this.name + " part one");
 		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").GetComponent<GUIBehaviour>();
+		Debug.Log("Became awake: " + this.name + " part two");
 
 		InvokeRepeating("ShieldsRegenerate", 6, shieldRegenFrequency);
 	}

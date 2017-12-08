@@ -14,11 +14,11 @@ public class AI_PhysicsBrake : ShipDefense {
 		_rb2d = GetComponent<Rigidbody2D>();
 	}
 
-	public virtual void DefenseButtonPressed() {
+	public override void DefenseButtonPressed() {
 		_rb2d.drag += 3f;
 	}
 
-	public virtual void DefenseButtonReleased() {
+	public override void DefenseButtonReleased() {
 		_rb2d.drag = 0f;
 	}
 

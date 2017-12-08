@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212741653887853012}
   - component: {fileID: 114539691077921962}
   m_Layer: 13
-  m_Name: LightBlasterShot
+  m_Name: B-LightBlasterShot
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
   passThrough: 0
   moveSpeed: 22
   timeTilDestroy: 1
-  fadeoutTime: 0.1
+  fadeoutTime: 0.23
   sprite: {fileID: 212741653887853012}
 --- !u!212 &212741653887853012
 SpriteRenderer:
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16e336332fbc14a9d8ca70b2b7a71343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 154f96d37033f46da8c84fd81a5b9b2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

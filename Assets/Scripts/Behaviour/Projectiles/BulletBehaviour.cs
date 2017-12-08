@@ -15,7 +15,6 @@ public class BulletBehaviour : MonoBehaviour {
 	Vector2 lastPosition;
 	Vector2 newPosition;
 
-	float initializationTime;
 	float alphaValue = 1f;
 	IEnumerator fade;
 
@@ -24,7 +23,7 @@ public class BulletBehaviour : MonoBehaviour {
 
 		/*
 		What's going on here:
-		We lastPosition, then move, then set newPosition.
+		We  set lastPosition, then move, then set newPosition.
 		Then we check if there's a collision between those two points using Raycast
 		but only checking on layer 8192 (which is the Ships layer)
 
@@ -64,35 +63,42 @@ public class BulletBehaviour : MonoBehaviour {
 	}
 
 
+	void StartFade() {
+		fade = FadeOut();
+		StartCoroutine(fade);
+	}
+
+
 	IEnumerator FadeOut() {
 		float t = 0;
 
-		while (true) {
-			Debug.Log("fade!");
-			alphaValue = Mathf.Lerp(1.0f, 0.0f, t);
+		while (t < fadeoutTime) {
+			alphaValue = Mathf.Lerp(1.0f, 0.0f, t / fadeoutTime);
 			sprite.color = new Color(1, 1, 1, alphaValue);
 
-			t += fadeoutTime * Time.deltaTime;
+			t += Time.deltaTime;
 			yield return null;
+
 		}
+
+		DestroySelf();
 
 	}
 
 
 	void DestroySelf() {
-		StopCoroutine(fade);
+		if (fade != null) {
+			StopCoroutine(fade);
+		}
 		gameObject.SetActive(false);
 	}
 
 
 	void OnEnable() {
 		//Setting newPosition/lastPosition here so they aren't null on instantiation
-		initializationTime = Time.time;
+		sprite.color = new Color(1, 1, 1, 1);
 		newPosition = lastPosition = transform.position;
-		fade = FadeOut();
-		StartCoroutine(fade);
-		Invoke("DestroySelf", timeTilDestroy);
-		alphaValue = 1f;
+		Invoke("StartFade", timeTilDestroy - fadeoutTime);
 	}
 
 

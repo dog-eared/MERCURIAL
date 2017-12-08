@@ -9,7 +9,7 @@ public class HeavyBlaster : ProjectileWeapon {
 		weaponName = "Heavy Blaster";
 
 		if (projectile == null) {
-			projectile = Resources.Load("Prefabs/Projectiles/HeavyBlasterShot", typeof(GameObject)) as GameObject;
+			projectile = Resources.Load("Prefabs/Projectiles/" + GetColor(color) + "HeavyBlasterShot", typeof(GameObject)) as GameObject;
 		}
 
 		base.Awake();

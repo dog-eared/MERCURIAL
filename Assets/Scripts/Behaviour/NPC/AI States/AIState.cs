@@ -68,6 +68,9 @@ public class AIState : MonoBehaviour {
 
 	private Rigidbody2D _targetRigidbody;
 
+	[HideInInspector]
+	public bool targetAliveFlag; //This is set to true when we get a target. Then, if it's true and we have no target, it becomes false.
+
 	void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
@@ -127,8 +130,11 @@ public class AIState : MonoBehaviour {
 
 
 	void LateUpdate () {
+
 		if (targetedShip != null) {
 			SetTargetShipVector(targetedShip);
+		} else {
+			targetAliveFlag = false;
 		}
 
 		vectorToTarget = (targetLocation - transform.position).normalized;

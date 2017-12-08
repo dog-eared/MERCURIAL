@@ -85,6 +85,8 @@ public abstract class ProjectileWeapon : ShipWeapon {
 				bulletSpreadRandom = Random.Range(-bulletSpread, bulletSpread);
 			}
 
+			currentBullet.SetActive(false); //This will allow the values to reset in the bullet behaviour
+
 			currentBullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
 			currentBullet.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, bulletSpreadRandom);
 

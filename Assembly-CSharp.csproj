@@ -61,6 +61,9 @@
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\MinimapBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\AIState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\FleeTargetState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\KillTargetState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\RelaxState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\BaseAI.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AsteroidBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\VisitorList.cs" />

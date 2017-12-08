@@ -7,8 +7,10 @@ public class RepeatingProjectileWeapon : ProjectileWeapon {
   bool isFiring;
 
   override public void FireButtonPressed() {
-    isFiring = true;
-    InvokeRepeating("Fire", 0, rateOfFire);
+    if (Time.time > rateOfFire + timeSinceLastShot) {
+      isFiring = true;
+      InvokeRepeating("Fire", 0, rateOfFire);
+      }
   }
 
   override public void FireButtonReleased() {
@@ -17,7 +19,9 @@ public class RepeatingProjectileWeapon : ProjectileWeapon {
   }
 
   void Fire() {
-  		if (Time.time > rateOfFire + timeSinceLastShot) {
+
+      if (isFiring) {
+
 
   			//Audio for laser
   			if (_audioSource.clip != weaponClip) {
@@ -46,9 +50,6 @@ public class RepeatingProjectileWeapon : ProjectileWeapon {
   			}
 
   		}
-  }
 
-
-
-
+    }
 }

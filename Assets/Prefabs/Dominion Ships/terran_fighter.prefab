@@ -189,16 +189,17 @@ MonoBehaviour:
   shipModel: Venturer
   shipName: Ferdinand
   faction: 1
-  shipHullCurrent: 60
-  shipHullMax: 60
-  shipShieldCurrent: 20
-  shipShieldMax: 20
+  shipHullCurrent: 20
+  shipHullMax: 20
+  shipShieldCurrent: 10
+  shipShieldMax: 10
   shieldRegenAmount: 1
-  shieldRegenFrequency: 0
+  shieldRegenFrequency: 3
   explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
     type: 2}
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1
+  _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
 --- !u!114 &114375335762007136
 MonoBehaviour:
@@ -299,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
+  color: 0
   factionName: 
   rateOfFire: 1
   bulletLifespan: 3

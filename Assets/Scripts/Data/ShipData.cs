@@ -8,7 +8,6 @@ public class ShipData : MonoBehaviour {
 
 	public string shipModel; //Style of ship
 	public string shipName; //Name of ship
-	AudioSource _audioSource;
 	ShipChassis _chassis;
 
 	[Space(10)]
@@ -41,10 +40,14 @@ public class ShipData : MonoBehaviour {
 	Renderer _renderer;
 
 	//Has this reference so it can post messages on death, communications, etc!
-	GUIBehaviour _guiBehaviour;
+	public GUIBehaviour _guiBehaviour;
 
 	/*
-	FIXME: GUI manager is set by InputManager if it's supposed to be attached to the player.
+	GUI manager is set by InputManager ONLY if it's supposed to be attached to the player.
+
+	For now, this means only the player ship will attach to the GUI manager. But if we expand
+	to have control over fleets or check the stats of other ships using powerups, we'll
+	want this reference in place.
 	*/
 	[HideInInspector]
 	public GUIManager _guiManager;
@@ -52,12 +55,9 @@ public class ShipData : MonoBehaviour {
 	void Awake() {
 		this.name = shipName;
 		this.tag = SetFactionString(faction) + "Ship";
-		_audioSource = GetComponent<AudioSource>();
 		_chassis = GetComponent<ShipChassis>();
 		_renderer = GetComponent<Renderer>();
-		Debug.Log("Became awake: " + this.name + " part one");
-		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").GetComponent<GUIBehaviour>();
-		Debug.Log("Became awake: " + this.name + " part two");
+		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").transform.GetChild(0).GetComponent<GUIBehaviour>();
 
 		InvokeRepeating("ShieldsRegenerate", 6, shieldRegenFrequency);
 	}

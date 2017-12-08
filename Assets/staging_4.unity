@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 409322469}
   - component: {fileID: 409322475}
   - component: {fileID: 409322476}
+  - component: {fileID: 409322477}
   m_Layer: 13
   m_Name: pirate_fighter
   m_TagString: Untagged
@@ -904,6 +905,7 @@ MonoBehaviour:
     type: 2}
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1
+  _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
 --- !u!50 &409322471
 Rigidbody2D:
@@ -1067,12 +1069,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
+  color: 2
   factionName: 
   rateOfFire: 0.2
   bulletLifespan: 1
   bulletSpread: 7
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
+  bulletPoolPrefab: {fileID: 0}
+--- !u!114 &409322477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409322464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f7717affffe47c3a739a6f6887acf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  color: 2
+  factionName: 
+  rateOfFire: 1
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 0}
+  projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
 --- !u!224 &487605321 stripped
 RectTransform:

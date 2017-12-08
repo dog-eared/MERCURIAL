@@ -18,8 +18,6 @@ public class BaseAI : MonoBehaviour {
 
 	*/
 
-	AIState currentAIState;
-
 	public Rigidbody2D rb2d;
 	public AIState normalAI; //Normal state active when nothing is going on.
 	public AIState combatAI; //State used when threatened in combat.
@@ -31,7 +29,6 @@ public class BaseAI : MonoBehaviour {
 
 
 	void SetAIState(AIState newState) {
-		currentAIState = newState;
 		AllStatesOff();
 		newState.gameObject.SetActive(true);
 	}
@@ -46,6 +43,23 @@ public class BaseAI : MonoBehaviour {
 	}
 
 
+	public void iWasHit(GameObject offender) {
+		combatAI.targetAliveFlag = true;
+		combatAI.targetedShip = offender;
+		SetAIState(combatAI);
+		//Action to take when hit.
+	}
+
+
+	public void allyWasHit() {
+		//Action to take when ally is hit
+
+	}
+
+
+	public void iShouldGoHere(Vector2 location) {
+		normalAI.targetLocation = location;
+	}
 
 
 

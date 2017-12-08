@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114734727147396284}
   - component: {fileID: 114821030355256468}
   - component: {fileID: 114295145816214780}
+  - component: {fileID: 114606438448391932}
   m_Layer: 13
   m_Name: terran_defender
   m_TagString: Ship
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
+  color: 0
   factionName: 
   rateOfFire: 1
   bulletLifespan: 3
@@ -230,16 +232,17 @@ MonoBehaviour:
   shipModel: Bulwark
   shipName: Waterloo
   faction: 1
-  shipHullCurrent: 100
-  shipHullMax: 100
-  shipShieldCurrent: 35
-  shipShieldMax: 35
-  shieldRegenAmount: 1
-  shieldRegenFrequency: 0
+  shipHullCurrent: 30
+  shipHullMax: 30
+  shipShieldCurrent: 30
+  shipShieldMax: 30
+  shieldRegenAmount: 2
+  shieldRegenFrequency: 2
   explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
     type: 2}
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1
+  _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
 --- !u!114 &114295145816214780
 MonoBehaviour:
@@ -272,11 +275,25 @@ MonoBehaviour:
   velocityMagnitude: 0
   eulerAngleToTarget: 0
   brakeAngleToTarget: 0
-  longDistance: 50
-  mediumDistance: 20
-  shortDistance: 10
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
   minimumDistance: 4
   engageMod: 0.35
+--- !u!114 &114606438448391932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26989200b530413b869d1994d775bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: left
+  defenseName: Defense
+  buttonBeingHeld: 0
 --- !u!114 &114734727147396284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
+  color: 0
   factionName: 
   rateOfFire: 1
   bulletLifespan: 3
@@ -308,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
+  color: 0
   factionName: 
   rateOfFire: 1
   bulletLifespan: 3

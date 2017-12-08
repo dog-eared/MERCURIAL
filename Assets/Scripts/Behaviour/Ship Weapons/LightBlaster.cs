@@ -9,7 +9,7 @@ public class LightBlaster : ProjectileWeapon {
 		weaponName = "Light Blaster";
 
 		if (projectile == null) {
-			projectile = Resources.Load("Prefabs/Projectiles/LightBlasterShot", typeof(GameObject))  as GameObject;
+			projectile = Resources.Load("Prefabs/Projectiles/" + GetColor(color) + "LightBlasterShot", typeof(GameObject))  as GameObject;
 		}
 
 		base.Awake();

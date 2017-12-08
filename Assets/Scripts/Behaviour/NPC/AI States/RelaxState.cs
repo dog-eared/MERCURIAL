@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class RelaxState : AIState {
 
-	// Use this for initialization
-	void Start () {
+	/*
 
-	}
+	
 
-	// Update is called once per frame
-	void Update () {
+	Basically hangs out and tries to get to target. Default.
 
-	}
+	*/
+
+
 }

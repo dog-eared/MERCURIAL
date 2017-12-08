@@ -1,6 +1,6 @@
 # MERCURIAL
 
-#### v.0.00 6
+#### v.0.007
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
 recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with modern gameplay that reflects the last 15 years since EV:Nova, a more indepth campaign and stronger pilot characterization.
@@ -11,13 +11,15 @@ the Terran Dominion, investigate the mysteries of humanity's predecessors, trade
 goods from planet to planet or explore the cosmos. 
 
 ## CURRENT STATUS:
-Game is not really playable or fun yet. Things to do before it works:
+Game is approaching playable, but is not really fun yet. Things to do before it really starts to work well.
 
-1. AI should change state based on conditional checks -- have I been shot? Did a pirate just enter the system? Is an enemy faction member here?
+1. Add pirate enemies.
 
-2. More weapons, and the ability to buy/sell them on a planet
+2. Things to do on a planet. 
 
-3. Saving/loading player data
+3. Customizing player ship load out and saving settings in an intelligent way. 
+
+4. Saving/loading player data from session to session.
 
 
 ### Credits:

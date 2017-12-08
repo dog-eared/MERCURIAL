@@ -10,6 +10,8 @@ public class BulletBehaviour : MonoBehaviour {
 	public float timeTilDestroy = 3f;
 	public float fadeoutTime = 0.4f;
 
+	public GameObject owner;
+
 	public SpriteRenderer sprite;
 
 	Vector2 lastPosition;
@@ -55,7 +57,7 @@ public class BulletBehaviour : MonoBehaviour {
 		if (collision.tag == "Asteroid") {
 			collision.gameObject.GetComponent<AsteroidBehaviour>().TakeDamage(damage);
 		}	else {
-			collision.gameObject.GetComponent<ShipData>().TakeDamage(damage);
+			collision.gameObject.GetComponent<ShipData>().TakeDamage(damage, owner);
 		}
 		if (!passThrough) {
 			DestroySelf();

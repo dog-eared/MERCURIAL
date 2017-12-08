@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class KillTargetState : AIState {
 
-	// Use this for initialization
-	void Start () {
-
+	void OnEnable() {
+		Debug.Log("Enabled kill target!");
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-	}
 }

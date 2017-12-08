@@ -42,6 +42,7 @@ public class ShipData : MonoBehaviour {
 	//Has this reference so it can post messages on death, communications, etc!
 	public GUIBehaviour _guiBehaviour;
 
+
 	/*
 	GUI manager is set by InputManager ONLY if it's supposed to be attached to the player.
 
@@ -51,6 +52,14 @@ public class ShipData : MonoBehaviour {
 	*/
 	[HideInInspector]
 	public GUIManager _guiManager;
+
+	/*
+	Similarly, base AI is set by the AI itself.
+	*/
+
+	[HideInInspector]
+	public BaseAI _ai;
+
 
 	void Awake() {
 		this.name = shipName;
@@ -63,7 +72,7 @@ public class ShipData : MonoBehaviour {
 	}
 
 
-	public void TakeDamage(int damage) {
+	public void TakeDamage(int damage, GameObject damageSource) {
 
 		if (!invincibilityFramesOn) {
 
@@ -91,7 +100,13 @@ public class ShipData : MonoBehaviour {
 
 		}
 
+		if (_ai != null) {
+			Debug.Log("I was hit!");
+			_ai.IWasHit(damageSource);
+		}
+
 	}
+
 
 	void InvincibilityOn() {
 		invincibilityFramesOn = true;

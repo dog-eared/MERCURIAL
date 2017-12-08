@@ -19,17 +19,18 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4175100619652186}
+  - component: {fileID: 114597510905498642}
   - component: {fileID: 50842864473452024}
-  - component: {fileID: 114308210356676976}
-  - component: {fileID: 212249770216649292}
-  - component: {fileID: 61177312071390962}
   - component: {fileID: 114514348598218354}
   - component: {fileID: 82413520637510282}
+  - component: {fileID: 212249770216649292}
+  - component: {fileID: 114308210356676976}
+  - component: {fileID: 114667280494840980}
+  - component: {fileID: 61177312071390962}
+  - component: {fileID: 114020387000094968}
+  - component: {fileID: 114818717859016982}
   - component: {fileID: 114656464032354760}
-  - component: {fileID: 114375335762007136}
   - component: {fileID: 114511158180616610}
-  - component: {fileID: 114610590968762932}
-  - component: {fileID: 114597510905498642}
   m_Layer: 13
   m_Name: terran_fighter
   m_TagString: Ship
@@ -175,6 +176,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114020387000094968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022435970594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e063f8be02ce240e68ce26cb62e170f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 30
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
+  minimumDistance: 4
+  engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!114 &114308210356676976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,31 +228,7 @@ MonoBehaviour:
   invincibilityFramesTime: 0.1
   _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
---- !u!114 &114375335762007136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022435970594744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6182db14527d649ae9f9b8594416472c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetedShip: {fileID: 0}
-  targetLocation: {x: 0, y: 0, z: 0}
-  facingTarget: 0
-  facingAway: 0
-  rotationTolerance: 5
-  distanceToTarget: 0
-  velocityMagnitude: 0
-  eulerAngleToTarget: 0
-  brakeAngleToTarget: 0
-  longDistance: 12
-  mediumDistance: 8
-  shortDistance: 6
-  minimumDistance: 4
-  engageMod: 0.35
+  _ai: {fileID: 0}
 --- !u!114 &114511158180616610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,21 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114610590968762932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022435970594744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff060cda8b3fe4162bfc95c8ed15a3a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb2d: {fileID: 50842864473452024}
-  normalAI: {fileID: 114375335762007136}
-  combatAI: {fileID: 0}
-  specialAI: {fileID: 0}
 --- !u!114 &114656464032354760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,6 +296,48 @@ MonoBehaviour:
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
+--- !u!114 &114667280494840980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022435970594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a010abc5568bb448497ef14e47d95520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 50842864473452024}
+  normalAI: {fileID: 114020387000094968}
+  combatAI: {fileID: 114818717859016982}
+  specialAI: {fileID: 0}
+  _shipData: {fileID: 114308210356676976}
+--- !u!114 &114818717859016982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022435970594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96da2bbd259740a3980e1fc618cd91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 30
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 15
+  mediumDistance: 12
+  shortDistance: 10
+  minimumDistance: 5
+  engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!212 &212249770216649292
 SpriteRenderer:
   m_ObjectHideFlags: 1

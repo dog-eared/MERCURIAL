@@ -19,14 +19,18 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4015032566276148}
-  - component: {fileID: 50408720625073984}
-  - component: {fileID: 114080463783923792}
-  - component: {fileID: 212808954168506934}
-  - component: {fileID: 82429243056384530}
-  - component: {fileID: 114374492421196404}
-  - component: {fileID: 114883823544540844}
-  - component: {fileID: 70419783147406004}
   - component: {fileID: 114393467243481540}
+  - component: {fileID: 50408720625073984}
+  - component: {fileID: 114883823544540844}
+  - component: {fileID: 82429243056384530}
+  - component: {fileID: 212808954168506934}
+  - component: {fileID: 114080463783923792}
+  - component: {fileID: 114859848050287194}
+  - component: {fileID: 70419783147406004}
+  - component: {fileID: 114140169715225062}
+  - component: {fileID: 114757271002604792}
+  - component: {fileID: 114599535940123468}
+  - component: {fileID: 114964013803848800}
   - component: {fileID: 114504418727740616}
   m_Layer: 13
   m_Name: terran_frigate
@@ -189,7 +193,8 @@ MonoBehaviour:
   invincibilityFramesTime: 0.1
   _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
---- !u!114 &114374492421196404
+  _ai: {fileID: 0}
+--- !u!114 &114140169715225062
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -197,7 +202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1188348088011180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6182db14527d649ae9f9b8594416472c, type: 3}
+  m_Script: {fileID: 11500000, guid: e063f8be02ce240e68ce26cb62e170f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetedShip: {fileID: 0}
@@ -209,11 +214,12 @@ MonoBehaviour:
   velocityMagnitude: 0
   eulerAngleToTarget: 0
   brakeAngleToTarget: 0
-  longDistance: 20
-  mediumDistance: 10
-  shortDistance: 8
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
   minimumDistance: 4
   engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!114 &114393467243481540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +245,68 @@ MonoBehaviour:
   direction: left
   defenseName: Defense
   buttonBeingHeld: 0
+--- !u!114 &114599535940123468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188348088011180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0131fe5a5f5c54888bb23a76d0743e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  color: 0
+  factionName: 
+  rateOfFire: 0.8
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 0}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
+--- !u!114 &114757271002604792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188348088011180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96da2bbd259740a3980e1fc618cd91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 30
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
+  minimumDistance: 4
+  engageMod: 0.35
+  targetAliveFlag: 0
+--- !u!114 &114859848050287194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188348088011180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a010abc5568bb448497ef14e47d95520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 50408720625073984}
+  normalAI: {fileID: 114140169715225062}
+  combatAI: {fileID: 114757271002604792}
+  specialAI: {fileID: 0}
+  _shipData: {fileID: 114080463783923792}
 --- !u!114 &114883823544540844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +329,26 @@ MonoBehaviour:
   shipWeapons: []
   shipDefenses: []
   reverseVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114964013803848800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188348088011180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0131fe5a5f5c54888bb23a76d0743e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  color: 0
+  factionName: 
+  rateOfFire: 1
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 0}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
 --- !u!212 &212808954168506934
 SpriteRenderer:
   m_ObjectHideFlags: 1

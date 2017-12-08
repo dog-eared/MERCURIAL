@@ -18,46 +18,65 @@ public class BaseAI : MonoBehaviour {
 
 	*/
 
+	AIState currentState;
+
 	public Rigidbody2D rb2d;
 	public AIState normalAI; //Normal state active when nothing is going on.
 	public AIState combatAI; //State used when threatened in combat.
 	public AIState specialAI; //Special circumstances AI.
 
+	public ShipData _shipData;
+
 	void Awake() {
 		rb2d.drag = 4f;
+
+		AllStatesOff();
+		SetAIState(normalAI);
+
+		_shipData = GetComponent<ShipData>();
+
+		_shipData._ai = this;
+		Debug.Log("Assigned ship data");
+
 	}
 
 
 	void SetAIState(AIState newState) {
 		AllStatesOff();
-		newState.gameObject.SetActive(true);
+		currentState = newState;
+		currentState.enabled = true;
 	}
 
 
 	void AllStatesOff() {
-		normalAI.gameObject.SetActive(false);
-		combatAI.gameObject.SetActive(false);
+		Debug.Log("All states off start");
+		normalAI.enabled = false;
+		combatAI.enabled = false;
 		if (specialAI != null) {
-			specialAI.gameObject.SetActive(false);
+			specialAI.enabled = false;
 		}
 	}
 
 
-	public void iWasHit(GameObject offender) {
-		combatAI.targetAliveFlag = true;
-		combatAI.targetedShip = offender;
-		SetAIState(combatAI);
-		//Action to take when hit.
+	public void IWasHit(GameObject offender) {
+		if (currentState != combatAI) {
+
+			combatAI.targetAliveFlag = true;
+			combatAI.targetedShip = offender;
+
+			SetAIState(combatAI);
+
+		}
 	}
 
 
-	public void allyWasHit() {
+	public void AllyWasHit() {
 		//Action to take when ally is hit
 
 	}
 
 
-	public void iShouldGoHere(Vector2 location) {
+	public void IShouldGoHere(Vector2 location) {
 		normalAI.targetLocation = location;
 	}
 

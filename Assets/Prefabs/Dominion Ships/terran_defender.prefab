@@ -19,18 +19,20 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4866044397509242}
+  - component: {fileID: 114295145816214780}
   - component: {fileID: 50452462424105468}
-  - component: {fileID: 114270007493195842}
+  - component: {fileID: 114010603913565538}
+  - component: {fileID: 82204903052377910}
   - component: {fileID: 212941995759927116}
   - component: {fileID: 61194376389402844}
-  - component: {fileID: 114010603913565538}
+  - component: {fileID: 114270007493195842}
+  - component: {fileID: 114709509887655196}
   - component: {fileID: 114223567675181536}
-  - component: {fileID: 82204903052377910}
-  - component: {fileID: 114435779064042000}
   - component: {fileID: 114734727147396284}
   - component: {fileID: 114821030355256468}
-  - component: {fileID: 114295145816214780}
   - component: {fileID: 114606438448391932}
+  - component: {fileID: 114488349507804932}
+  - component: {fileID: 114865381062420850}
   m_Layer: 13
   m_Name: terran_defender
   m_TagString: Ship
@@ -212,9 +214,9 @@ MonoBehaviour:
   weaponName: Ship Weapon
   color: 0
   factionName: 
-  rateOfFire: 1
+  rateOfFire: 0.8
   bulletLifespan: 3
-  bulletSpread: 0
+  bulletSpread: 10
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
@@ -244,6 +246,7 @@ MonoBehaviour:
   invincibilityFramesTime: 0.1
   _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
+  _ai: {fileID: 0}
 --- !u!114 &114295145816214780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114435779064042000
+--- !u!114 &114488349507804932
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -263,7 +266,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1430530111344576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6182db14527d649ae9f9b8594416472c, type: 3}
+  m_Script: {fileID: 11500000, guid: e063f8be02ce240e68ce26cb62e170f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetedShip: {fileID: 0}
@@ -280,6 +283,7 @@ MonoBehaviour:
   shortDistance: 6
   minimumDistance: 4
   engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!114 &114606438448391932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,6 +298,22 @@ MonoBehaviour:
   direction: left
   defenseName: Defense
   buttonBeingHeld: 0
+--- !u!114 &114709509887655196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a010abc5568bb448497ef14e47d95520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 50452462424105468}
+  normalAI: {fileID: 114488349507804932}
+  combatAI: {fileID: 114865381062420850}
+  specialAI: {fileID: 0}
+  _shipData: {fileID: 114270007493195842}
 --- !u!114 &114734727147396284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +330,7 @@ MonoBehaviour:
   factionName: 
   rateOfFire: 1
   bulletLifespan: 3
-  bulletSpread: 0
+  bulletSpread: 5
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
@@ -328,12 +348,38 @@ MonoBehaviour:
   weaponName: Ship Weapon
   color: 0
   factionName: 
-  rateOfFire: 1
+  rateOfFire: 1.5
   bulletLifespan: 3
-  bulletSpread: 0
+  bulletSpread: 7
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
+--- !u!114 &114865381062420850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430530111344576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96da2bbd259740a3980e1fc618cd91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 30
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
+  minimumDistance: 4
+  engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!212 &212941995759927116
 SpriteRenderer:
   m_ObjectHideFlags: 1

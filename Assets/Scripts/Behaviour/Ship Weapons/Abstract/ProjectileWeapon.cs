@@ -62,6 +62,7 @@ public abstract class ProjectileWeapon : ShipWeapon {
 			GameObject newBullet = Instantiate(projectile);
 			newBullet.SetActive(false);
 			newBullet.transform.parent = bulletPool.transform;
+			newBullet.GetComponent<BulletBehaviour>().owner = this.gameObject;
 			newBullet.tag = ownerTag;
 		}
 	}

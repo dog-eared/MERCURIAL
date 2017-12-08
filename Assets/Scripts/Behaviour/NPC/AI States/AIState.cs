@@ -52,9 +52,9 @@ public class AIState : MonoBehaviour {
 
 	[Space(10)]
 	[Header("Distances:")]
-	public float longDistance = 50f;
-	public float mediumDistance = 20f;
-	public float shortDistance = 10f;
+	public float longDistance = 12f;
+	public float mediumDistance = 8f;
+	public float shortDistance = 6f;
 	public float minimumDistance = 4f;
 
 	[Space(10)]

@@ -1070,7 +1070,7 @@ MonoBehaviour:
   factionName: 
   rateOfFire: 0.2
   bulletLifespan: 1
-  bulletSpread: 15
+  bulletSpread: 7
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
   bulletPoolPrefab: {fileID: 0}

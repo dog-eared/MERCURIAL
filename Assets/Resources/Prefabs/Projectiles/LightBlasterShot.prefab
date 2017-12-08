@@ -56,6 +56,8 @@ MonoBehaviour:
   passThrough: 0
   moveSpeed: 22
   timeTilDestroy: 1
+  fadeoutTime: 0.1
+  sprite: {fileID: 212741653887853012}
 --- !u!212 &212741653887853012
 SpriteRenderer:
   m_ObjectHideFlags: 1

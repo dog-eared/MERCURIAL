@@ -8,9 +8,16 @@ public class BulletBehaviour : MonoBehaviour {
 	public bool passThrough = false;
 	public float moveSpeed = 10f;
 	public float timeTilDestroy = 3f;
+	public float fadeoutTime = 0.4f;
+
+	public SpriteRenderer sprite;
 
 	Vector2 lastPosition;
 	Vector2 newPosition;
+
+	float initializationTime;
+	float alphaValue = 1f;
+	IEnumerator fade;
 
 	void FixedUpdate() {
 
@@ -56,18 +63,44 @@ public class BulletBehaviour : MonoBehaviour {
 		}
 	}
 
-	void OnEnable() {
-		//Setting newPosition/lastPosition here so they aren't null on instantiation
-		newPosition = lastPosition = transform.position;
-		Invoke("DestroySelf", timeTilDestroy);
+
+	IEnumerator FadeOut() {
+		float t = 0;
+
+		while (true) {
+			Debug.Log("fade!");
+			alphaValue = Mathf.Lerp(1.0f, 0.0f, t);
+			sprite.color = new Color(1, 1, 1, alphaValue);
+
+			t += fadeoutTime * Time.deltaTime;
+			yield return null;
+		}
+
 	}
 
+
 	void DestroySelf() {
+		StopCoroutine(fade);
 		gameObject.SetActive(false);
 	}
+
+
+	void OnEnable() {
+		//Setting newPosition/lastPosition here so they aren't null on instantiation
+		initializationTime = Time.time;
+		newPosition = lastPosition = transform.position;
+		fade = FadeOut();
+		StartCoroutine(fade);
+		Invoke("DestroySelf", timeTilDestroy);
+		alphaValue = 1f;
+	}
+
 
 	void OnDisable() {
 		CancelInvoke();
 	}
+
+
+
 
 }

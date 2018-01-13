@@ -20,13 +20,17 @@ GameObject:
   m_Component:
   - component: {fileID: 4251629530235920}
   - component: {fileID: 50663830932900558}
+  - component: {fileID: 114898274169495888}
   - component: {fileID: 114231064264004032}
   - component: {fileID: 212941772414839980}
   - component: {fileID: 61000461920300354}
   - component: {fileID: 114965565506742824}
   - component: {fileID: 82331685498475814}
   - component: {fileID: 114218951033620166}
-  - component: {fileID: 114529690198424702}
+  - component: {fileID: 114831271242993060}
+  - component: {fileID: 114072718715486640}
+  - component: {fileID: 114717540789069844}
+  - component: {fileID: 114196711622520954}
   m_Layer: 13
   m_Name: pirate_fighter
   m_TagString: Ship
@@ -42,7 +46,7 @@ Transform:
   m_GameObject: {fileID: 1677585611609424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -172,6 +176,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114072718715486640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677585611609424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e063f8be02ce240e68ce26cb62e170f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 30
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
+  minimumDistance: 4
+  engageMod: 0.35
+  targetAliveFlag: 0
+--- !u!114 &114196711622520954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677585611609424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f7717affffe47c3a739a6f6887acf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship Weapon
+  color: 0
+  factionName: 
+  rateOfFire: 1
+  bulletLifespan: 3
+  bulletSpread: 0
+  weaponClip: {fileID: 0}
+  projectile: {fileID: 0}
+  bulletPoolPrefab: {fileID: 0}
 --- !u!114 &114218951033620166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Ship Weapon
+  color: 0
   factionName: 
   rateOfFire: 1
   bulletLifespan: 3
@@ -215,8 +266,10 @@ MonoBehaviour:
     type: 2}
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1
+  _guiBehaviour: {fileID: 0}
   _guiManager: {fileID: 0}
---- !u!114 &114529690198424702
+  _ai: {fileID: 0}
+--- !u!114 &114717540789069844
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -224,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1677585611609424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6182db14527d649ae9f9b8594416472c, type: 3}
+  m_Script: {fileID: 11500000, guid: f96da2bbd259740a3980e1fc618cd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetedShip: {fileID: 0}
@@ -236,11 +289,39 @@ MonoBehaviour:
   velocityMagnitude: 0
   eulerAngleToTarget: 0
   brakeAngleToTarget: 0
-  longDistance: 50
-  mediumDistance: 20
-  shortDistance: 10
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
   minimumDistance: 4
   engageMod: 0.35
+  targetAliveFlag: 0
+--- !u!114 &114831271242993060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677585611609424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4513ab794f60a4c368f6efc956b688be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 50663830932900558}
+  normalAI: {fileID: 114072718715486640}
+  combatAI: {fileID: 114717540789069844}
+  specialAI: {fileID: 0}
+  _shipData: {fileID: 114231064264004032}
+--- !u!114 &114898274169495888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677585611609424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119842c39bae496faf73f170edc7eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114965565506742824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,7 +377,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2bb5b020402ab4812b861050a29862cf, type: 3}
-  m_Color: {r: 0.6911765, g: 0.59969723, b: 0.59969723, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.91724133, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

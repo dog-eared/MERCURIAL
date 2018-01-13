@@ -27,7 +27,7 @@ public class BaseAI : MonoBehaviour {
 
 	public ShipData _shipData;
 
-	void Awake() {
+	protected virtual void Awake() {
 		rb2d.drag = 4f;
 
 		AllStatesOff();
@@ -61,11 +61,7 @@ public class BaseAI : MonoBehaviour {
 	public void IWasHit(GameObject offender) {
 		if (currentState != combatAI) {
 
-			combatAI.targetAliveFlag = true;
-			combatAI.targetedShip = offender;
-
-			SetAIState(combatAI);
-
+			AggroTarget(offender);
 		}
 	}
 
@@ -80,7 +76,11 @@ public class BaseAI : MonoBehaviour {
 		normalAI.targetLocation = location;
 	}
 
-
+	public void AggroTarget(GameObject target) {
+		combatAI.targetAliveFlag = true;
+		combatAI.targetedShip = target;
+		SetAIState(combatAI);
+	}
 
 
 }

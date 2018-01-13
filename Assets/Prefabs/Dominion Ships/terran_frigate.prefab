@@ -187,7 +187,7 @@ MonoBehaviour:
   shipShieldMax: 50
   shieldRegenAmount: 2
   shieldRegenFrequency: 5
-  explosionAnimation: {fileID: 1306199820636774, guid: 05b2ef55e9cff4f429e2033d09050357,
+  explosionAnimation: {fileID: 1306199820636774, guid: 64188e6a0658042f4824a2f682c3dddf,
     type: 2}
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1

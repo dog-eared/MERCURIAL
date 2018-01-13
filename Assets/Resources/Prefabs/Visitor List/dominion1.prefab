@@ -74,5 +74,25 @@ MonoBehaviour:
     isUnique: 0
     appearanceFrequency: 30
     numberToInstantiate: 1
+  - visitorPrefab: {fileID: 1197764379088450, guid: c8ccc938d3cbb4e7eb713629c3a970a0,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 50
+    numberToInstantiate: 1
+  - visitorPrefab: {fileID: 1297726404458830, guid: 228fb9d3d957045b087ff5aa09d73dff,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 50
+    numberToInstantiate: 1
+  - visitorPrefab: {fileID: 1297726404458830, guid: db7e14c9b0c0e4e8092c9ed4d3c8178d,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 10
+    numberToInstantiate: 1
+  - visitorPrefab: {fileID: 1870983020579114, guid: 115d599a4d8644836a06968ed4570093,
+      type: 2}
+    isUnique: 0
+    appearanceFrequency: 30
+    numberToInstantiate: 1
   pirates: []
   chanceOfPirates: 0

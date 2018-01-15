@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 50164092586180348}
   normalAI: {fileID: 114891223304606072}
-  combatAI: {fileID: 0}
+  combatAI: {fileID: 114891223304606072}
   specialAI: {fileID: 0}
   _shipData: {fileID: 114826920364491946}
 --- !u!114 &114697881879252984

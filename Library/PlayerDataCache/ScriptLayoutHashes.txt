@@ -135,6 +135,7 @@ aba647c1ae5119523dcada89b3e5dda9 Assembly-CSharp.dll:.GUIManager
 7b69e6e0b1df33139320be798675f7a2 Assembly-CSharp.dll:.DockingBehaviour
 81289549ab4b3fa73ac68eb25c589ae7 Assembly-CSharp.dll:.AudioManager
 d2f3e34f5a2a8b1798faab2c18124501 Assembly-CSharp.dll:.MainMenuBehaviour
+02225c19d63080c5f954025c3b1e4859 Assembly-CSharp.dll:.AI_PirateRaider
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery

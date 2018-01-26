@@ -93,6 +93,7 @@ public class VisitorList : MonoBehaviour {
 				initialShips[x].transform.Rotate(new Vector3(0, 0, Random.Range(0, 359)));
 
 				initialShips[x].SetActive(true);
+				Debug.Log(initialShips[x].name + " has been placed");
 			}
 		}
 

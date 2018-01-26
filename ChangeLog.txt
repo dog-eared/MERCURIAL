@@ -1,0 +1,4 @@
+v0.011: 
+	- Bullet pools now despawn when ships destroyed or systems change
+	- Scourge now spawn with visitor list
+

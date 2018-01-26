@@ -2,10 +2,10 @@
   "systemName": "Sirius",
   "backdropMaterial": "Blue",
   "systemOwner":"Dominion of Earth",
-"visitorList": "none",
+"visitorList": "ufo1",
   "systemPopulated":true,
   "systemSize": 350,
-  "asteroidsToSpawn":0,
+  "asteroidsToSpawn":3,
   "chanceOfPirate":0,
 
   "planets":[]

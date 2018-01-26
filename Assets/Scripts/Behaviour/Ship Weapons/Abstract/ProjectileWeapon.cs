@@ -103,6 +103,15 @@ public abstract class ProjectileWeapon : ShipWeapon {
 		}
 	}
 
+	public void ClearBulletPool() {
+		Destroy(bulletPool);
+	}
+
+
+	void OnDestroy() {
+		ClearBulletPool();
+	}
+
 
 	override public void FireButtonReleased() {
 		//Debug.Log(weaponName + " released");

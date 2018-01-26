@@ -89,6 +89,7 @@ public class SystemManager : MonoBehaviour {
 		systemName = systemData.systemName;
 		backdropMaterial = Resources.Load("Visuals/Backdrops/" + systemData.backdropMaterial, typeof(Material)) as Material;
 		visitorList = Resources.Load("Prefabs/Visitor List/" + systemData.visitorList) as GameObject;
+		Debug.Log("Visitor list loading: " + visitorList.name + " ... " + visitorList);
 
 		_visitorList = visitorList.GetComponent<VisitorList>();
 

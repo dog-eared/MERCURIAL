@@ -276,29 +276,3 @@ public class AIState : MonoBehaviour {
 
 
 }
-
-
-public enum Objective {
-	Flee,
-	Pursue,
-	Engage,
-	Land,
-	Jump
-}
-
-
-class AITask {
-	string name;
-	GameObject target;
-	Vector3 targetLocation;
-	Objective objective;
-
-	public Vector3 ReturnLocationVector() {
-		if (target != null) {
-			return target.transform.position;
-		} else {
-			return targetLocation;
-		}
-	}
-
-}

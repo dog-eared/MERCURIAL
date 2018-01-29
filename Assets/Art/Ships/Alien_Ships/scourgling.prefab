@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 212778006694125086}
   - component: {fileID: 82695994058367550}
   - component: {fileID: 114459885388236742}
-  - component: {fileID: 114143185480677942}
   - component: {fileID: 114489293091655798}
+  - component: {fileID: 114279026055326946}
   - component: {fileID: 114718948787821732}
   - component: {fileID: 114835320026407688}
   - component: {fileID: 114680039727939884}
@@ -166,7 +166,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114143185480677942
+--- !u!114 &114279026055326946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701054356772004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4513ab794f60a4c368f6efc956b688be, type: 3}
+  m_Script: {fileID: 11500000, guid: 77aebdd865b594bd4be0545d1d780875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 50414109631315320}
@@ -182,6 +182,9 @@ MonoBehaviour:
   combatAI: {fileID: 114718948787821732}
   specialAI: {fileID: 0}
   _shipData: {fileID: 114438459685188716}
+  findTargetFrequency: 1.5
+  purgeListFrequency: 5
+  targets: []
 --- !u!114 &114438459685188716
 MonoBehaviour:
   m_ObjectHideFlags: 1

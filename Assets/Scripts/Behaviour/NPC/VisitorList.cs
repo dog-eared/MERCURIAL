@@ -15,12 +15,14 @@ public class VisitorList : MonoBehaviour {
 	[Header("Config:")]
 	public int neutralsOnEntry = 0;
 	public int maximumNeutrals = 10;
+	public float pirateEnterFrequency = 30f; //How often pirates should enter the system (if they exist)
 
 	[Header("Visitors:")]
 	public Visitor[] neutrals;
 	public Visitor[] pirates;
 
 	List<GameObject> initialShips;
+
 
 	[HideInInspector]
 	public float chanceOfPirates; //Set by SystemManager;
@@ -56,6 +58,34 @@ public class VisitorList : MonoBehaviour {
 		}
 		return initialShips;
 	}
+
+
+	public List<GameObject> SpawnPirates() {
+		instantiatedSoFar = 0;
+
+		List<GameObject> pirateShips = new List<GameObject>();
+
+		if (pirates.Length > 0) {
+
+			for (var x = 0; x < pirates.Length; x++) {
+
+				for (var y = 0; y < pirates[x].numberToInstantiate; y++) {
+
+
+						float randomCheck = Random.Range(0, 100);
+
+						if (randomCheck > neutrals[x].appearanceFrequency) {
+							Debug.Log("Instantiating a ship: " + pirates[x].visitorPrefab);
+							instantiatedSoFar++;
+							GameObject newShip = Instantiate(pirates[x].visitorPrefab);
+							pirateShips.Add(newShip);
+							newShip.SetActive(false);
+					}
+				}
+			}
+		}
+		return pirateShips;
+		}
 
 
 	public List<Vector3> GenerateSpawnLocations(List<Planet> planets, Vector3 playerLocation) {

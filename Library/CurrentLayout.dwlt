@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1056
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -106,8 +106,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 1006
-  m_MinSize: {x: 683, y: 342}
-  m_MaxSize: {x: 12008, y: 8042}
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
   controlID: 49
 --- !u!114 &6
@@ -130,8 +130,8 @@ MonoBehaviour:
     y: 0
     width: 1506
     height: 1006
-  m_MinSize: {x: 406, y: 342}
-  m_MaxSize: {x: 8006, y: 8042}
+  m_MinSize: {x: 406, y: 492}
+  m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 50
 --- !u!114 &7
@@ -230,15 +230,15 @@ MonoBehaviour:
     y: 723
     width: 1506
     height: 283
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 19}
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -368,9 +368,9 @@ MonoBehaviour:
     height: 702
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ccbefeff
-    m_LastClickedID: -82228
-    m_ExpandedIDs: 9af7feff84f8feff504fffffae89ffff5e9dffffc09effffe49fffff86a0ffff60a2ffffc8a3ffffeea4ffff8ea8ffff3ea9ffff3eaafffffee9ffff18fcffff00000000144700003c470000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 18fcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,19 +609,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Managers
+    - Assets/Resources/Prefabs/Visitor List
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Managers
+  - Assets/Resources/Prefabs/Visitor List
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /home/e_m/MERCURIAL
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 971}
-    m_SelectedIDs: f8270000
-    m_LastClickedID: 10232
-    m_ExpandedIDs: 000000006c26000070260000782600007a260000a0260000f22600000a2700000c2700001e2700005a270000ca270000cc270000e2270000e4270000f42700005e28000002290000162900001a2900002229000078290000d0290000c62e000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 799}
+    m_SelectedIDs: 42270000
+    m_LastClickedID: 10050
+    m_ExpandedIDs: 000000006e260000722600007a2600007c260000a2260000f42600000e27000010270000222700005e270000ce270000d0270000e6270000e8270000f827000062280000062900001a2900001e290000262900007e290000d6290000ce2e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -649,7 +649,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006c26000070260000782600007a260000a0260000f22600000a2700000c2700001e2700005a270000ca270000cc270000e2270000e4270000f42700005e28000002290000162900001a2900002229000078290000d0290000c62e0000
+    m_ExpandedIDs: 000000006e260000722600007a2600007c260000a2260000f42600000e27000010270000222700005e270000ce270000d0270000e6270000e8270000f827000062280000062900001a2900001e290000262900007e290000d6290000ce2e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -674,9 +674,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c46f0000
-    m_LastClickedInstanceID: 28612
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300006a2b0000b43d0000fc250000cc690000143f0000d02600001e3e000046470000e4280000442600002ad6feff32260000b42b000080310000462600000a2600002426000036260000de4a000062270000542600009628000086260000d6260000ae2600007228000084270000a886ffff8e27000078360000662800007a270000022800004841ffffb69c00004c010000b4260000c8270000602800006e26000076270000d0280000602900007226000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_PirateRaider : BaseAI {
+public class AI_Scourgeling : BaseAI {
 
-  /* AI - Pirate Raider
+  /* AI - Scourgling
 
-  Pirate Raider is used for very stupid pirates (and aliens);
+  Identical to pirate raider, but it attacks pirates rather than scourge;
     - They don't run away.
-    - They prioritize targets in the order: neutral, alliance, player, dominion, scourge
+    - They prioritize targets in the order: neutral, alliance, player, dominion, pirate
     - They change target to whoever attacked them as soon as they're hit.
 
   */
 
   bool hasTarget;
   public float findTargetFrequency = 1.5f;
+  public float purgeListFrequency = 5f;
+
+  float delaySearch = 3f;
 
   public List<GameObject> targets = new List<GameObject>();
 
@@ -22,6 +25,7 @@ public class AI_PirateRaider : BaseAI {
     base.Awake();
     Invoke("GetTargets", findTargetFrequency);
     Debug.Log("Getting targets:");
+    InvokeRepeating("CheckTargetDead", delaySearch, purgeListFrequency);
   }
 
   public void GetTargets() {
@@ -30,13 +34,13 @@ public class AI_PirateRaider : BaseAI {
     GameObject[] allianceTargets = GameObject.FindGameObjectsWithTag("Faction2Ship");
     GameObject[] neutralTargets = GameObject.FindGameObjectsWithTag("Faction7Ship");
     GameObject playerTarget = GameObject.FindGameObjectWithTag("PlayerShip");
-    GameObject[] scourgeTargets = GameObject.FindGameObjectsWithTag("Faction4Ship");
+    GameObject[] pirateTargets = GameObject.FindGameObjectsWithTag("Faction5Ship");
 
     AddTargetsToList(neutralTargets);
     AddTargetsToList(allianceTargets);
     targets.Add(playerTarget);
     AddTargetsToList(dominionTargets);
-    AddTargetsToList(scourgeTargets);
+    AddTargetsToList(pirateTargets);
 
 
   }
@@ -57,7 +61,5 @@ public class AI_PirateRaider : BaseAI {
       }
     }
   }
-
-
 
 }

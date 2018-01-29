@@ -54,9 +54,8 @@ public abstract class ProjectileWeapon : ShipWeapon {
 
 
 		bulletPool.name = this.name + " - W: " + weaponName + " bullet pool";
-		bulletPool.tag = ownerTag;
+		//bulletPool.tag = ownerTag;
 
-		//bulletPool.transform.parent = this.transform;
 
 		for (var x = 0; x < bulletPoolSize; x++) {
 			GameObject newBullet = Instantiate(projectile);

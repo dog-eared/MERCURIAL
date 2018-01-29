@@ -151,6 +151,9 @@ public class SystemManager : MonoBehaviour {
 		_localShipsManager.localShips = _visitorList.SpawnNeutrals();
 		Debug.Log("Planet list: " + planetList + " " + planetList.Count);
 
+
+
+
 		spawnLocations = _visitorList.GenerateSpawnLocations(planetList, new Vector3(0, 0, 1));
 		Debug.Log("Spawn locations:" + spawnLocations.Count);
 		_visitorList.PlaceVisitors(spawnLocations);

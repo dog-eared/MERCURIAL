@@ -1,4 +1,7 @@
 v0.011: 
+	- Flee State added, given to Courier and Freighter NPCs
 	- Bullet pools now despawn when ships destroyed or systems change
+	- Bullet pools no longer tagged as actual ships
 	- Scourge now spawn with visitor list
-
+	- Scourge (and in theory, pirates) now aggro on system entry
+	- Luna graphic added

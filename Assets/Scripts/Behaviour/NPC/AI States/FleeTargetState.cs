@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class FleeTargetState : AIState {
 
-	// Use this for initialization
-	void Start () {
 
+	protected override void LessThanMinimumDistance() {
+		ShortDistance();
 	}
 
-	// Update is called once per frame
-	void Update () {
-
+	protected override void MinimumDistance() {
+		ShortDistance();
 	}
+
+	protected override void ShortDistance() {
+		FleeTarget();
+	}
+
+	protected override void MediumDistance() {
+		//Do nothing;
+	}
+
+
+	protected override void LongDistance() {
+		SlowToEngage();
+	}
+
+
 }

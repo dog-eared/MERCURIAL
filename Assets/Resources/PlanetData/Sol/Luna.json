@@ -4,7 +4,7 @@
   "xLocation": 3.4,
   "yLocation": 3.2,
   "scale": 1,
-  "mapGraphic": "Planet6",
+  "mapGraphic": "Planet-Luna",
 	"landingGraphic": "luna.png",
 
 	"buttons": [false, false, false, false, false],

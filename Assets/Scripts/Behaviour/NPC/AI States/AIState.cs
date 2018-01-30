@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIState : MonoBehaviour {
+public abstract class AIState : MonoBehaviour {
 
 
 	/*AI State
@@ -74,27 +74,27 @@ public class AIState : MonoBehaviour {
 	void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
- 		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... pretty good approximation of normal rotation
+ 		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... this gives us pretty good approximation of player-controlled rotation
 		_rb2d = GetComponent<Rigidbody2D>();
 		engageSpeed = Mathf.Pow(_chassis.maximumSpeed, 2) * engageMod;
 		//InvokeRepeating("PeriodicUpdate", 0, periodicUpdateFrequency);
 	}
 
 
-	void LessThanMinimumDistance() {
+	protected virtual void LessThanMinimumDistance() {
 		//For distances less than minimumDistance
 		//Normal objective: basically hang out
 		MinimumDistance();
 	}
 
 
-	void MinimumDistance() {
+	protected virtual void MinimumDistance() {
 		//For distances greater than minimumDistance but less than shortDistance
 		RotateToTarget();
 	}
 
 
-	void ShortDistance() {
+	protected virtual void ShortDistance() {
 		//For distances greater than shortDistance but less than mediumDistance
 		if (slowingDown) {
 			SlowToEngage();
@@ -104,7 +104,7 @@ public class AIState : MonoBehaviour {
 	}
 
 
-	void MediumDistance() {
+	protected virtual void MediumDistance() {
 		//For distances greater than mediumDistance but less than longDistance
 
 		if (facingTarget) {
@@ -116,7 +116,7 @@ public class AIState : MonoBehaviour {
 
 	}
 
-	void LongDistance() {
+	protected virtual void LongDistance() {
 		//For distances greater than longDistance
 		MediumDistance();
 	}
@@ -139,6 +139,7 @@ public class AIState : MonoBehaviour {
 
 		vectorToTarget = (targetLocation - transform.position).normalized;
 		eulerAngleToTarget = GetAngleToTarget(targetLocation);
+		brakeAngleToTarget = 360 - eulerAngleToTarget;
 		distanceToTarget = (targetLocation - transform.position).magnitude;
 		velocityMagnitude = _rb2d.velocity.sqrMagnitude;
 
@@ -177,12 +178,22 @@ public class AIState : MonoBehaviour {
 	}
 
 
-	void ToggleSlowingDown() {
+	protected virtual void ToggleSlowingDown() {
 		slowingDown = !slowingDown;
 	}
 
 
-	void SlowToEngage() {
+	protected virtual void FleeTarget() {
+		if (!facingAway) {
+			RotateToAway();
+		} else {
+			_chassis.thrustersOn = true;
+		}
+
+	}
+
+
+	protected virtual void SlowToEngage() {
 		if (velocityMagnitude > (Mathf.Pow(_chassis.maximumSpeed, 2) * engageSpeed)) {
 			if (!facingTarget) {
 				RotateToAway();
@@ -195,21 +206,21 @@ public class AIState : MonoBehaviour {
 	}
 
 
-	void RotateToTarget() {
+	protected virtual void RotateToTarget() {
 		if (!facingTarget) {
 			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg
 														- 90 + Random.Range(-rotationTolerance, rotationTolerance)), Time.deltaTime * rotationSpeed);
 			}
 	}
 
-	void RotateToAway() {
+	protected virtual void RotateToAway() {
 		if (!facingAway) {
 			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg
 														+ 90 + Random.Range(-rotationTolerance, rotationTolerance)), Time.deltaTime * rotationSpeed);
 		}
 	}
 
-	void FireAllWeapons() {
+	protected virtual void FireAllWeapons() {
 		_chassis.shipWeapons[0].FireButtonPressed();
 		_chassis.shipWeapons[1].FireButtonPressed();
 		_chassis.shipWeapons[2].FireButtonPressed();

@@ -6,8 +6,6 @@ public class RelaxState : AIState {
 
 	/*
 
-	
-
 	Basically hangs out and tries to get to target. Default.
 
 	*/

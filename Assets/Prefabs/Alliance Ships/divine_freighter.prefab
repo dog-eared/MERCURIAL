@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 61451556370795868}
   - component: {fileID: 114891223304606072}
   - component: {fileID: 114697881879252984}
+  - component: {fileID: 114776584963865912}
   m_Layer: 13
   m_Name: divine_freighter
   m_TagString: Ship
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 50164092586180348}
   normalAI: {fileID: 114891223304606072}
-  combatAI: {fileID: 114891223304606072}
+  combatAI: {fileID: 114776584963865912}
   specialAI: {fileID: 0}
   _shipData: {fileID: 114826920364491946}
 --- !u!114 &114697881879252984
@@ -204,6 +205,32 @@ MonoBehaviour:
   direction: left
   defenseName: Defense
   buttonBeingHeld: 0
+--- !u!114 &114776584963865912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297726404458830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39088d92b176749e89747cba99722cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 65
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 20
+  mediumDistance: 12
+  shortDistance: 9
+  minimumDistance: 0
+  engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!114 &114826920364491946
 MonoBehaviour:
   m_ObjectHideFlags: 1

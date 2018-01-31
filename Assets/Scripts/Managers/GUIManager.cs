@@ -40,7 +40,7 @@ public class GUIManager : MonoBehaviour {
 	[Space(10)]
 	[Header("Configuration:")]
 	public float fadeSpeed = 10f;
-	public float idleFadeOutTime = 4f; 
+	public float idleFadeOutTime = 4f;
 
 	float textLogFade = 1;
 

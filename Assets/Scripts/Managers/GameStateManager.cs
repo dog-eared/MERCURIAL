@@ -32,6 +32,7 @@ public class GameStateManager : MonoBehaviour {
 	public SystemManager _systemManager;
 	public MinimapManager _minimapManager;
 
+
 	void Awake() {
 		if (targetSystem == null) {
 			targetSystem = "";

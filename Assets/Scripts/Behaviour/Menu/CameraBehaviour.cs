@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour {
 
+	/* CAMERA BEHAVIOUR
+
+	Handles controls for camera.
+
+	Also handles visual effects that affect the entire camera.
+
+	*/
+
 	Camera mainCam;
 
+	[Header("Config:")]
 	public float zoomIncrement = 0.05f;
 	public float zoomOut = 10f;
 	public float zoomIn = 1f;
 
-	public GameObject backdrop;
 	public GameObject playerShip;
+	public GameObject backdrop;
+	[Header("Effects:")]
 	public GameObject fadeWhite;
+	public GameObject hyperspaceEffect;
 
 	ForesightModule foresightModule;
 	Vector2 foresightLocation;
@@ -77,6 +88,8 @@ public class CameraBehaviour : MonoBehaviour {
 
 
 	public IEnumerator BackdropFadeOut() {
+		hyperspaceEffect.SetActive(true);
+
 		while (fadeLerp < 1) {
 			fadeLerp += 1f * Time.deltaTime;
 
@@ -97,6 +110,7 @@ public class CameraBehaviour : MonoBehaviour {
 
 			yield return null;
 		}
+		hyperspaceEffect.SetActive(false);
 	}
 
 

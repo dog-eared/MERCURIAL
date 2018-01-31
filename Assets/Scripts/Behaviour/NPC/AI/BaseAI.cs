@@ -66,13 +66,11 @@ public class BaseAI : MonoBehaviour {
 	}
 
 
-	public void AllyWasHit() {
-		//Action to take when ally is hit
-
+	public void AllyWasHit(GameObject offender) {
+		IWasHit(offender);
 	}
 
-
-	public void IShouldGoHere(Vector2 location) {
+	public void IShouldGoTo(Vector2 location) {
 		normalAI.targetLocation = location;
 	}
 

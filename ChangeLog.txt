@@ -4,4 +4,6 @@ v0.011:
 	- Bullet pools no longer tagged as actual ships
 	- Scourge now spawn with visitor list
 	- Scourge (and in theory, pirates) now aggro on system entry
+	- Pirates now prioritize the nearest target on their enemy list
+	- Hyperspace visual effect added
 	- Luna graphic added

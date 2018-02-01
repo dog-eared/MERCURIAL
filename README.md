@@ -1,6 +1,6 @@
 # MERCURIAL
 
-#### v.0.010
+#### v.0.011
 
 Mercurial is a topdown space adventure with roleplaying elements. The goal is to
 recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with modern gameplay that reflects the last 15 years since EV:Nova -- streamlined, opting for a faster, more immediate combat focus.
@@ -8,15 +8,17 @@ recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) wi
 The player is an agent of the Dominion of Earth assigned an experimental fighter ship. They perform missions for the government with options to serve the government, the cultists of the Divine Trade Alliance, squash (or serve!) the rebellion and explore the furthest reaches of the galaxy.
 
 ## CURRENT STATUS:
-Game is approaching playable, but is not really fun yet. Things to do before it really starts to work well.
+Game is approaching playable, but is not really fun yet. Things to do before it really starts to work well:
 
-1. Add pirate enemies. 
+1. Mission system.
 
-2. Things to do on a planet. 
+2. Customizing player ship load out.
 
-3. Customizing player ship load out and saving settings in an intelligent way. 
+3. Things to do on planets.
 
 4. Saving/loading player data from session to session.
+
+5. More weapons and upgrades!
 
 
 ### Credits:

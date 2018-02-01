@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipData : MonoBehaviour {
 
-
+	public int currentID; //Assigned by local ship manager.
 
 	public string shipModel; //Style of ship
 	public string shipName; //Name of ship
@@ -42,6 +42,11 @@ public class ShipData : MonoBehaviour {
 	//Has this reference so it can post messages on death, communications, etc!
 	public GUIBehaviour _guiBehaviour;
 
+	//This is for aggro AI purposes
+	public LocalShipsManager _localShipsManager;
+
+
+
 
 	/*
 	GUI manager is set by InputManager ONLY if it's supposed to be attached to the player.
@@ -67,6 +72,7 @@ public class ShipData : MonoBehaviour {
 		_chassis = GetComponent<ShipChassis>();
 		_renderer = GetComponent<Renderer>();
 		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").transform.GetChild(0).GetComponent<GUIBehaviour>();
+		_localShipsManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<LocalShipsManager>();
 
 		InvokeRepeating("ShieldsRegenerate", 6, shieldRegenFrequency);
 	}
@@ -103,10 +109,9 @@ public class ShipData : MonoBehaviour {
 		if (_ai != null) {
 			Debug.Log("I was hit!");
 			_ai.IWasHit(damageSource);
+			_localShipsManager.AllAggroTarget(damageSource, this.gameObject.tag);
+			}
 		}
-
-	}
-
 
 	void InvincibilityOn() {
 		invincibilityFramesOn = true;
@@ -142,6 +147,8 @@ public class ShipData : MonoBehaviour {
 		Instantiate(explosionAnimation, new Vector3(transform.position.x, transform.position.y, 2), Quaternion.identity);
 		Destroy(gameObject);
 	}
+
+
 
 
 	public string SetFactionString(FactionsList faction) {

@@ -19,16 +19,14 @@ public class AI_Scourgeling : BaseAI {
 
   float delaySearch = 3f;
 
-  public List<GameObject> targets = new List<GameObject>();
 
   protected override void Awake() {
     base.Awake();
     Invoke("GetTargets", findTargetFrequency);
-    Debug.Log("Getting targets:");
     InvokeRepeating("CheckTargetDead", delaySearch, purgeListFrequency);
   }
 
-  public void GetTargets() {
+  protected override void GetTargets() {
     //For now, we'll go thru all game objects
     GameObject[] dominionTargets = GameObject.FindGameObjectsWithTag("Faction1Ship");
     GameObject[] allianceTargets = GameObject.FindGameObjectsWithTag("Faction2Ship");
@@ -43,23 +41,6 @@ public class AI_Scourgeling : BaseAI {
     AddTargetsToList(pirateTargets);
 
 
-  }
-
-  public void CheckTargetDead() {
-    if (targets[0] == null) {
-      targets.Remove(targets[0]);
-    } else {
-      AggroTarget(targets[0]);
-    }
-  }
-
-
-  public void AddTargetsToList(GameObject[] targetsList) {
-    for (var x = 0; x < targetsList.Length; x++) {
-      if (targetsList[x] != null && targetsList[x].layer == 13) {
-        targets.Add(targetsList[x]);
-      }
-    }
   }
 
 }

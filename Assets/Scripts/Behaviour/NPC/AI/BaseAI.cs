@@ -27,6 +27,13 @@ public class BaseAI : MonoBehaviour {
 
 	public ShipData _shipData;
 
+	[Header("Attacked Config:")]
+	public float attackedMemory = 40f; //How long until they forget they were attacked.
+	public bool attackedRecently = false; //Instance of aggression since player encountered them
+	//Basically this exists to reduce expensive calls for aggression
+
+	public List<GameObject> targets = new List<GameObject>();
+
 	protected virtual void Awake() {
 		rb2d.drag = 4f;
 
@@ -67,7 +74,13 @@ public class BaseAI : MonoBehaviour {
 
 
 	public void AllyWasHit(GameObject offender) {
-		IWasHit(offender);
+		if (!attackedRecently) {
+			if (currentState != combatAI) {
+				AggroTarget(offender);
+				attackedRecently = true;
+				Invoke("ToggleOffAttacked", attackedMemory);
+			}
+		}
 	}
 
 	public void IShouldGoTo(Vector2 location) {
@@ -80,5 +93,60 @@ public class BaseAI : MonoBehaviour {
 		SetAIState(combatAI);
 	}
 
+	void ToggleOffAttacked() {
+		attackedRecently = false;
+	}
+
+	protected void CheckTargetDead() {
+    if (targets[0] == null) {
+      targets.Remove(targets[0]);
+    } else {
+      AggroTarget(targets[0]);
+    }
+  }
+
+
+  protected void AddTargetsToList(GameObject[] targetsList) {
+    for (var x = 0; x < targetsList.Length; x++) {
+      if (targetsList[x] != null && targetsList[x].layer == 13) {
+        targets.Add(targetsList[x]);
+      }
+    }
+  }
+
+
+  protected float CalculateDistanceToPoint(GameObject a, GameObject b) {
+    return Mathf.Abs(a.transform.position.y - b.transform.position.y) /
+            (a.transform.position.x - b.transform.position.x);
+  }
+
+
+	protected void GetNearestTarget() {
+		if (targets.Count != 0) {
+			float distance = CalculateDistanceToPoint(targets[0], this.gameObject);
+			int swapPlace = 0;
+			GameObject temp = targets[0];
+
+			for (int x = 0; x < targets.Count; x++) {
+				if (CalculateDistanceToPoint(targets[x], this.gameObject) < distance) {
+					swapPlace = x;
+				}
+			}
+
+			targets[0] = temp;
+			targets[0] = targets[swapPlace];
+			targets[swapPlace] = temp;
+
+			if (combatAI.enabled) {
+				AggroTarget(targets[0]);
+			}
+		}
+
+
+  }
+
+	protected virtual void GetTargets() {
+		//Dummy method. If they don't fight, they don't need this method!
+	}
 
 }

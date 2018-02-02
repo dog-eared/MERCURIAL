@@ -8,7 +8,7 @@ public class LocalShipsManager : MonoBehaviour {
 
 	public void AllAggroTarget(GameObject offender, string faction) {
 		for (int x = 0; x < localShips.Count; x++) {
-			if (localShips[x].tag == faction) {
+			if (localShips[x] != null && localShips[x].tag == faction) {
 				localShips[x].SendMessage("AllyWasHit", offender);
 			}
 		}

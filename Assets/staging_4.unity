@@ -802,10 +802,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff001e3f28563423f8521e68c12ca517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 300
-  acceleration: 200
+  rotateSpeed: 240
+  acceleration: 100
   deacceleration: 0.44
-  maximumSpeed: 9
+  maximumSpeed: 7
   thrustersOn: 0
   brakesOn: 0
   horizontalInput: 0
@@ -893,6 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541d84b054b77487a8c44ae5bad5b45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentID: 0
   shipModel: Mantis
   shipName: Sparrow
   faction: 0
@@ -907,6 +908,7 @@ MonoBehaviour:
   explosionSound: {fileID: 0}
   invincibilityFramesTime: 0.1
   _guiBehaviour: {fileID: 0}
+  _localShipsManager: {fileID: 0}
   _guiManager: {fileID: 0}
   _ai: {fileID: 0}
 --- !u!50 &409322471

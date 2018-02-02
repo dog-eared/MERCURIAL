@@ -19,15 +19,14 @@ public class StatsMenuBehaviour : MonoBehaviour {
 	public GameObject pilotName;
 	Text pilotNameText;
 
-	public GameObject skillsValues;
-	Text skillsValuesText;
+	public GameObject reputationValues;
+	Text reputationValuesText;
 
 	public GameObject callsign;
 	Text callsignText;
 
-	public GameObject experiences;
-	List<string> experiencesList;
-
+	public GameObject credits;
+	Text creditsText;
 
 	[Header("Data Sources:")]
 	public PilotData playerPilotData;
@@ -35,12 +34,14 @@ public class StatsMenuBehaviour : MonoBehaviour {
 
 	GameObject gameController;
 	GameObject playerObject;
-	MenuManager menuManager;
+	MenuManager _menuManager;
+	MissionManager _missionManager;
 
 	void Awake() {
-		skillsValuesText = skillsValues.GetComponent<Text>();
+		reputationValuesText = reputationValues.GetComponent<Text>();
 		pilotNameText = pilotName.GetComponent<Text>();
 		callsignText = callsign.GetComponent<Text>();
+		creditsText = credits.GetComponent<Text>();
 		SetPlayerPilotData();
 		//UpdatePlayerPilotData();
 		Debug.Log("Complete");
@@ -58,7 +59,7 @@ public class StatsMenuBehaviour : MonoBehaviour {
 		if (playerPilotData == null) {
 			gameController = GameObject.FindGameObjectWithTag("GameController");
 			playerObject = GameObject.FindGameObjectWithTag("PlayerObject");
-			menuManager = gameController.GetComponent<MenuManager>();
+			_menuManager = gameController.GetComponent<MenuManager>();
 			playerPilotData = playerObject.GetComponent<PilotData>();
 			shipData = playerObject.transform.GetChild(0).GetComponent<ShipData>();
 		}
@@ -67,34 +68,18 @@ public class StatsMenuBehaviour : MonoBehaviour {
 
 	public void UpdatePlayerPilotData() {
 		if (playerPilotData != null && shipData != null) {
-			skillsValuesText.text =  playerPilotData.combatSkill
-											+ "\n" + playerPilotData.diplomacySkill
-											+ "\n" + playerPilotData.intimidationSkill
-											+ "\n" + playerPilotData.mechanicsSkill
-											+ "\n" + playerPilotData.thriftSkill;
+
+			creditsText.text = playerPilotData.credits + " credits.";
+
+			reputationValuesText.text =  playerPilotData.dominionReputation
+											+ "\n" + playerPilotData.allianceReputation
+											+ "\n" + playerPilotData.rebelReputation
+											+ "\n" + playerPilotData.combatRating
+											+ "\n" + playerPilotData.karma;
 
 			pilotNameText.text = "PILOT: " + playerPilotData.firstName + " " + playerPilotData.lastName;
 
 			callsignText.text = playerPilotData.callsign + ", Captain of the " + shipData.shipName;
-
-			experiencesList = playerPilotData.pilotExperiences;
-
-			/*
-			TO FIX: This is a bit heavy, destroying/recreating the tag list each time.
-			Later, we can refactor so this doesn't happen every time you open/close
-			the menu. For now, performance isn't a big enough issue to worry.
-
-			Even when done, a character probably won't ever have 20+ tags so maybe its
-			fine
-			*/
-			foreach (Transform experience in experiences.transform) {
-				GameObject.Destroy(experience.gameObject);
-			}
-
-			for (var x = 0; x < experiencesList.Count; x++) {
-				GameObject experiencePrefab = Resources.Load("MenuPrefabs/IndividualElements/" + experiencesList[x]) as GameObject;
-				Instantiate(experiencePrefab, new Vector3(0, 0, 0), Quaternion.identity, experiences.transform);
-			}
 
 		} else {
 			Debug.Log("Player pilot data could not be loaded!");
@@ -106,12 +91,12 @@ public class StatsMenuBehaviour : MonoBehaviour {
 
 
 	public void AcceptButton() {
-		menuManager.CloseTopMenu();
+		_menuManager.CloseTopMenu();
 	}
 
 
 	public void CancelButton() {
-		menuManager.CloseTopMenu();
+		_menuManager.CloseTopMenu();
 	}
 
 

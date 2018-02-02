@@ -1,3 +1,9 @@
+v0.012:
+	- Ships now remove themselves from Local Ship Managers on death.
+	- Stats menu modified to show mission data.
+	- Mission, objectives classes added (as well as objectiveType + rewards enums)
+
+
 v0.011: 
 	- Small refactor of Base AI and derived classes: Dominion Defender, Pirate Raider 
 	and Scourgling all should work now.

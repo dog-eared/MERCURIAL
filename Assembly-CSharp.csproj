@@ -106,6 +106,7 @@
      <Compile Include="Assets\Scripts\Managers\LocalShipsManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MinimapManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\MissionManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlanetManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
      <Compile Include="Assets\Scripts\Visual\DecalSelfDestroy.cs" />

@@ -101,6 +101,7 @@ public class ShipData : MonoBehaviour {
 
 			if (shipHullCurrent <= 0) {
 				_guiBehaviour.ReceiveMessage(this.name + " has been destroyed.", true);
+				_localShipsManager.ShipWasKilled(this.gameObject, damageSource);
 				Death();
 			}
 

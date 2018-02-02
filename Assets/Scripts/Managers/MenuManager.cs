@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour {
 
 
 	TODO: Let's refactor using an enum or switch condition so we can cut down the
-	number of functions now that we don't instantiate new menus!
+	number of functions now that we don't instantiate new menus.
 
 	BETTER TODO: Let's do an enormous refactor of the whole thing
 
@@ -47,7 +47,7 @@ public class MenuManager : MonoBehaviour {
 		_gameStateManager = GetComponent<GameStateManager>();
 		_dockingBehaviour = GetComponent<InputManager>().playerShip.GetComponent<DockingBehaviour>();
 		openMenus.Add("Gameplay"); //Saving a headache by having our list always contain minimum count of 1
-				//If we lose this string, the list will return a count of null, not 0 :|
+				//If we lose this string, the list will return a count of null, not 0
 	}
 
 

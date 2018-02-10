@@ -109,6 +109,7 @@
      <Compile Include="Assets\Scripts\Managers\MissionManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlanetManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
+     <Compile Include="Assets\Scripts\Mission.cs" />
      <Compile Include="Assets\Scripts\Visual\DecalSelfDestroy.cs" />
      <Compile Include="Assets\Scripts\Visual\TriggeredVisualEffect.cs" />
  <Reference Include="UnityEngine.UI">

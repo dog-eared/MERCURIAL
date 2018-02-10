@@ -55,21 +55,22 @@ public class InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (_gameStateManager.currentMode != GameMode.menu) {
+		if ( _gameStateManager.currentMode != GameMode.Menu && _gameStateManager.currentMode != GameMode.Hyperspace ) {
 
-			if (Input.GetButtonDown("Jump") && _gameStateManager.currentMode == GameMode.hyperspace) {
+			if (Input.GetButtonDown("Jump")) {
 				//Cancel hyperspace jump.
 			}
 
-			if (_gameStateManager.currentMode != GameMode.menu && _gameStateManager.currentMode != GameMode.hyperspace) {
+			if (_gameStateManager.currentMode != GameMode.Menu && _gameStateManager.currentMode != GameMode.Hyperspace) {
 
 					/* Hyperspace Jump */
 					if (Input.GetButtonDown("Jump")
-					&& _gameStateManager.currentMode != GameMode.hyperspace
+					&& _gameStateManager.currentMode != GameMode.Hyperspace
 					&& (Mathf.Abs(playerShip.transform.position.x) + Mathf.Abs(playerShip.transform.position.y) > validJumpDistance))
 					{
 						if (_gameStateManager.targetSystem != null) {
-							_gameStateManager.currentMode = GameMode.hyperspace;
+							_gameStateManager.currentMode = GameMode.Hyperspace;
+							//shipState.AddState("Hyperspace Jump", 3f);
 							_gameStateManager.Invoke("HyperspaceJump", 1.8f);
 							_cameraBehaviour.StartCoroutine("BackdropFadeOut");
 						} else {

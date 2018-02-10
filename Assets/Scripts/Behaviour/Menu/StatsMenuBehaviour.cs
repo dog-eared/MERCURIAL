@@ -73,7 +73,7 @@ public class StatsMenuBehaviour : MonoBehaviour {
 
 			reputationValuesText.text =  playerPilotData.dominionReputation
 											+ "\n" + playerPilotData.allianceReputation
-											+ "\n" + playerPilotData.rebelReputation
+											+ "\n" + playerPilotData.rebellionReputation
 											+ "\n" + playerPilotData.combatRating
 											+ "\n" + playerPilotData.karma;
 

@@ -1,0 +1,43 @@
+{[  {
+      "objectiveType":0,
+      "description":"Accumulate 20 credits.",
+      "targetQuantity": 20,
+
+      "rewardValues":[0, 5, 0, 0, 1]
+    },
+
+    {
+      "objectiveType":1,
+      "description":"Enter the Sirius system.",
+      "targetQuantity": 1,
+
+      "rewardValues":[10, 0, 0, 0, 1]
+    },
+
+    {
+      "objectiveType":2,
+      "description":"Land on Chapel in Groombridge.",
+      "targetQuantity": 1,
+
+      "rewardValues":[0, 1, 0, 0, 0]
+    },
+
+    {
+      "objectiveType":3,
+      "description":"Kill 3 scourglings.",
+      "targetQuantity": 3,
+
+      "rewardValues":[60, 5, 1, 1, 3]
+    },
+
+    {
+      "objectiveType":4,
+      "description":"Kill a Dominion heavy fighter.",
+      "targetQuantity": 1,
+
+      "rewardValues":[50, -1, 1, 5, -1]
+    },
+
+
+  ]
+}

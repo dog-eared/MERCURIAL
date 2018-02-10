@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class LocalShipsManager : MonoBehaviour {
 
+	public GameObject playerShip;
+
 	public List<GameObject> localShips;
+
+	public MissionManager _missionManager;
+
+
+	void Awake() {
+		playerShip = GameObject.FindGameObjectWithTag("PlayerShip");
+	}
+
 
 	public void AllAggroTarget(GameObject offender, string faction) {
 		for (int x = 0; x < localShips.Count; x++) {
@@ -17,8 +27,11 @@ public class LocalShipsManager : MonoBehaviour {
 
 	public void ShipWasKilled(GameObject ship, GameObject killer) {
 		//If killer is player, sendMessage to mission control
+		if (killer == playerShip) {
+			_missionManager.CheckShipKilled(ship.GetComponent<ShipData>().shipModel);
+			Debug.Log("Player killed a ship " + ship.name);
+		}
 
-	
 		RemoveShip(ship);
 	}
 

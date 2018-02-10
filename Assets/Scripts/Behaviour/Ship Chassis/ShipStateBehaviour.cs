@@ -13,6 +13,23 @@ public class ShipStateBehaviour : MonoBehaviour {
 		GenerateCurrentState();
 	}
 
+	void Update() {
+
+		if (Input.GetKeyDown("]")) {
+
+				Debug.Log("Base state:" + shipStateList[0].stateName);
+				Debug.Log(shipStateList[0].canMove);
+				Debug.Log(shipStateList[0].canRotate);
+				Debug.Log(shipStateList[0].canShoot);
+
+				Debug.Log("Top state:" + GetTopState().stateName);
+				Debug.Log(GetTopState().canMove);
+				Debug.Log(GetTopState().canRotate);
+				Debug.Log(GetTopState().canShoot);
+
+			}
+	}
+
 
 	public ShipState GetTopState() {
 		return shipStateList[top];
@@ -37,6 +54,9 @@ public class ShipStateBehaviour : MonoBehaviour {
 				break;
 			case "Rolling":
 				stateToAdd = Rolling(duration);
+				break;
+			case "Hyperspace Jump":
+				stateToAdd = HyperspaceJump(duration);
 				break;
 			default:
 				stateToAdd = new ShipState();
@@ -143,6 +163,16 @@ public class ShipStateBehaviour : MonoBehaviour {
 		rolling.canDefend = false;
 		rolling.timeTilRemoval = duration;
 		return rolling;
+	}
+
+	ShipState HyperspaceJump(float duration) {
+		var hyperspaceJumping = new ShipState();
+		hyperspaceJumping.stateName = "Hyperspace Jumping";
+		hyperspaceJumping.canRotate = false;
+		hyperspaceJumping.canDefend = false;
+		hyperspaceJumping.canShoot = false;
+		hyperspaceJumping.timeTilRemoval = duration;
+		return hyperspaceJumping;
 	}
 
 }

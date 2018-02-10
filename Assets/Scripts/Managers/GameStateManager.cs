@@ -16,6 +16,7 @@ public class GameStateManager : MonoBehaviour {
 
 
 	public GameMode currentMode;
+	public string lastGameMode = "Normal";
 
 	public float combatGameSpeed = 0.8f;
 	public float normalGameSpeed = 1f;
@@ -44,6 +45,12 @@ public class GameStateManager : MonoBehaviour {
 		_systemManager.systemData = _systemManager.LoadSystemData(targetSystem);
 		_minimapManager.Invoke("GenerateSystemMap", 0.2f); //Gives a moment for json data to load
 		StartFadeIn();
+
+		Invoke("EndHyperspace", 2.5f);
+	}
+
+	void EndHyperspace() {
+		SetGameMode("Normal");
 	}
 
 
@@ -55,14 +62,18 @@ public class GameStateManager : MonoBehaviour {
 			speedMultiplier = 1;
 		}
 
-		if (mode == "Menu" || mode == "Hyperspace") {
-			currentMode = GameMode.menu;
+		if (mode == "Menu") {
+			lastGameMode = currentMode.ToString();
+			currentMode = GameMode.Menu;
 			Time.timeScale = 0f;
+		}	else if (mode == "Hyperspace") {
+			currentMode = GameMode.Hyperspace;
+			Time.timeScale = normalGameSpeed * speedMultiplier;
 		} else if (mode == "Normal") {
-			currentMode = GameMode.normal;
+			currentMode = GameMode.Normal;
 			Time.timeScale = normalGameSpeed * speedMultiplier;
 		} else if (mode == "Combat") {
-			currentMode = GameMode.combat;
+			currentMode = GameMode.Combat;
 			Time.timeScale = combatGameSpeed * speedMultiplier;
 		}
 		Debug.Log(Time.timeScale);
@@ -80,8 +91,8 @@ public class GameStateManager : MonoBehaviour {
 
 
 public enum GameMode {
-	menu,
-	normal,
-	combat,
-	hyperspace
+	Menu,
+	Normal,
+	Combat,
+	Hyperspace
 }

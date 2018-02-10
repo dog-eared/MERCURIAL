@@ -40,6 +40,8 @@ public class MenuManager : MonoBehaviour {
 
 	bool settingsOpenedThisFrame = false;
 
+
+
 	List<string> openMenus = new List<string>();
 
 	void Awake() {
@@ -128,7 +130,7 @@ public class MenuManager : MonoBehaviour {
 			openMenus.RemoveAt((openMenus.Count - 1));
 
 			if (openMenus.Count == 1) {
-				_gameStateManager.SetGameMode("Normal");
+				_gameStateManager.SetGameMode(_gameStateManager.lastGameMode);
 				guiStorage.SetActive(true);
 			}
 		} else {

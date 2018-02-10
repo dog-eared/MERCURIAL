@@ -64,7 +64,7 @@ public class GUIManager : MonoBehaviour {
 	}
 
 
-	public void PostMessage(string message, bool combatLog) {
+	public void PostMessage(string message, bool combatLog = false) {
 		KillCurrentFades();
 
 		//Expand later to log more data

@@ -68,7 +68,7 @@ public class LandingMenuBehaviour : MonoBehaviour {
 								"Reputation: " + _playerPilotData.allianceReputation;
 			case "Rebellion":
 				return "Faction: Rebellion \n" +
-				 				"Reputation: " + _playerPilotData.rebelReputation;
+				 				"Reputation: " + _playerPilotData.rebellionReputation;
 			default:
 				return "";
 		}

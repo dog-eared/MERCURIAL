@@ -27,12 +27,21 @@ public class PilotData : MonoBehaviour {
 	[Header("Reputations:")]
 	public int dominionReputation = 0;
 	public int allianceReputation = 0;
-	public int rebelReputation = 0;
+	public int rebellionReputation = 0;
 	public int combatRating = 0;
 	public int karma = 0;
 
 	[Space(10)]
 	[Header("Other Data:")]
 	public int credits = 1000;
+
+
+	public void GiveRewards(int[] rewards) {
+		credits += rewards[0];
+		dominionReputation += rewards[1];
+		allianceReputation += rewards[2];
+		rebellionReputation += rewards[3];
+		karma += rewards[4];
+	}
 
 }

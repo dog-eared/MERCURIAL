@@ -35,6 +35,7 @@ public class SystemManager : MonoBehaviour {
 	public GUIBehaviour _guiBehaviour;
 	public MinimapManager _minimapManager;
 	public LocalShipsManager _localShipsManager;
+	public MissionManager _missionManager;
 
 	public GameObject systemBoundary;
 	public GameObject systemBoundaryContainer;
@@ -66,7 +67,7 @@ public class SystemManager : MonoBehaviour {
 		SetSystemManager(data);
 
 		for (var x = 0; x < data.planets.Count; x++) {
-			//Debug.Log("PlanetData/" + data.systemName + "/" +  data.planets[x]);
+
 			TextAsset newPlanetText = Resources.Load<TextAsset>("PlanetData/" + data.systemName + "/" +  data.planets[x]);
 			Planet newPlanet = JsonUtility.FromJson<Planet>(newPlanetText.text);
 			planetList.Add(newPlanet);
@@ -77,6 +78,8 @@ public class SystemManager : MonoBehaviour {
 
 		_guiBehaviour.ReceiveMessage("Entered system: " + systemName, false);
 		_guiBehaviour.ReceiveMessage("System owner: " + systemOwner, false);
+
+		_missionManager.CheckNewArea(systemName);
 
 		return data;
 
@@ -89,7 +92,6 @@ public class SystemManager : MonoBehaviour {
 		systemName = systemData.systemName;
 		backdropMaterial = Resources.Load("Visuals/Backdrops/" + systemData.backdropMaterial, typeof(Material)) as Material;
 		visitorList = Resources.Load("Prefabs/Visitor List/" + systemData.visitorList) as GameObject;
-		Debug.Log("Visitor list loading: " + visitorList.name + " ... " + visitorList);
 
 		_visitorList = visitorList.GetComponent<VisitorList>();
 
@@ -115,7 +117,7 @@ public class SystemManager : MonoBehaviour {
 
 
 	void WipeCurrentSystem() {
-		//Debug.Log("wiped current system!");
+
 		GameObject[] toWipe = GameObject.FindGameObjectsWithTag("Asteroid");
 		WipeObjects(toWipe);
 		toWipe = GameObject.FindGameObjectsWithTag("Planet");
@@ -149,13 +151,9 @@ public class SystemManager : MonoBehaviour {
 
 	void InitializeOtherShips() {
 		_localShipsManager.localShips = _visitorList.SpawnNeutrals();
-		Debug.Log("Planet list: " + planetList + " " + planetList.Count);
-
-
-
 
 		spawnLocations = _visitorList.GenerateSpawnLocations(planetList, new Vector3(0, 0, 1));
-		Debug.Log("Spawn locations:" + spawnLocations.Count);
+
 		_visitorList.PlaceVisitors(spawnLocations);
 	}
 

@@ -1075,7 +1075,7 @@ MonoBehaviour:
   weaponName: Ship Weapon
   color: 2
   factionName: 
-  rateOfFire: 0.2
+  rateOfFire: 0.05
   bulletLifespan: 1
   bulletSpread: 7
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
@@ -1947,6 +1947,7 @@ GameObject:
   - component: {fileID: 1192814999}
   - component: {fileID: 1192814990}
   - component: {fileID: 1192815000}
+  - component: {fileID: 1192815001}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -1986,6 +1987,7 @@ MonoBehaviour:
   _guiBehaviour: {fileID: 786956437}
   _minimapManager: {fileID: 1192814990}
   _localShipsManager: {fileID: 1192815000}
+  _missionManager: {fileID: 1192815001}
   systemBoundary: {fileID: 1651210849243686, guid: c50f831a5fc8645cdb50f5695c6ba898,
     type: 2}
   systemBoundaryContainer: {fileID: 1518132995851042, guid: 730ce40e9d5be4518ac0f6531a63fbb1,
@@ -2045,7 +2047,7 @@ MonoBehaviour:
   shipState: {fileID: 0}
   _guiManager: {fileID: 1192814999}
   _guiBehaviour: {fileID: 786956437}
-  validJumpDistance: 50
+  validJumpDistance: 0
 --- !u!114 &1192814992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2136,6 +2138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMode: 1
+  lastGameMode: 
   combatGameSpeed: 0.8
   normalGameSpeed: 1
   fastGameSpeed: 0.25
@@ -2174,6 +2177,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localShips: []
+  _missionManager: {fileID: 1192815001}
+--- !u!114 &1192815001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192814987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2484ca7ffbd674fa5b744ed7888b3114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guiBehaviour: {fileID: 786956437}
+  newMission: {fileID: 0}
+  missions: []
 --- !u!1001 &1303507637
 Prefab:
   m_ObjectHideFlags: 0
@@ -2498,17 +2516,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710566bc146b749b2bb22992456c6520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstName: Tom
+  firstName: Bom
   lastName: Cruise
   callsign: Maverick
   possessive: his
   singular: he
-  dominionReputation: 40
-  allianceReputation: 50
-  rebelReputation: 60
+  dominionReputation: 10
+  allianceReputation: 0
+  rebellionReputation: 0
   combatRating: 0
   karma: 0
-  credits: 1000
+  credits: 500
 --- !u!1 &1691525356
 GameObject:
   m_ObjectHideFlags: 0

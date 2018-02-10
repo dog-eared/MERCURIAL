@@ -35,7 +35,7 @@ public class GUIBehaviour : MonoBehaviour {
 	}
 
 
-	public void ReceiveMessage(string message, bool combatLog) {
+	public void ReceiveMessage(string message, bool combatLog = false) {
 		_guiManager.PostMessage(message, combatLog);
 
 		if (combatLog) {

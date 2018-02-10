@@ -1,3 +1,8 @@
+v0.013:
+	- Missions added as scriptable objecs. Currently working: go to Sirius, kill heavy fighter.
+	- Position now locked on hyperspace jump. To do: gentle fade out of all visible objects.
+	- Mission completion checks: entry to system, kill specific ship model.
+
 v0.012:
 	- Ships now remove themselves from Local Ship Managers on death.
 	- Stats menu modified to show mission data.

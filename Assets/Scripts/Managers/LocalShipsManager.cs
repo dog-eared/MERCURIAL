@@ -7,6 +7,7 @@ public class LocalShipsManager : MonoBehaviour {
 	public GameObject playerShip;
 
 	public List<GameObject> localShips;
+	public ShipData _shipData;
 
 	public MissionManager _missionManager;
 

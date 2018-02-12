@@ -1076,7 +1076,7 @@ MonoBehaviour:
   color: 2
   factionName: 
   rateOfFire: 0.05
-  bulletLifespan: 1
+  bulletLifespan: 0.3
   bulletSpread: 7
   weaponClip: {fileID: 8300000, guid: 5c8cd79b765304af09503673d53a2777, type: 3}
   projectile: {fileID: 1451988642418232, guid: 91a906ef6232b4f1bbfcfc82bd6a7345, type: 2}
@@ -2176,6 +2176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d78ab4eb46e49d689b3839923d7af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerShip: {fileID: 0}
   localShips: []
   _missionManager: {fileID: 1192815001}
 --- !u!114 &1192815001

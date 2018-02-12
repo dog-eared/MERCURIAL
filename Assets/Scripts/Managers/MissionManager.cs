@@ -16,6 +16,7 @@ public class MissionManager : MonoBehaviour {
 	void Awake() {
 		_playerPilotData = GameObject.FindGameObjectWithTag("PlayerObject").GetComponent<PilotData>();
 
+		//Debug values.
 		AddMission("Missions/Visit Mars");
 		AddMission("Missions/Kill Heavy Fighter");
 		AddMission("Missions/Go to Sirius");
@@ -42,26 +43,30 @@ public class MissionManager : MonoBehaviour {
 						//Check if shipname is right for this objectiveType
 						//Also, check that we're killing a specific ship
 						//If yes, objective complete
-				if (missions[x].objectives[y].targetNameMatches(shipName)
-				&& missions[x].objectives[y].objectiveType == ObjectiveType.KillSpecificShip) {
+				if (missions[x].objectives[y].targetNameMatches(shipName)) {
+					if (missions[x].objectives[y].objectiveType == ObjectiveType.KillSpecificShip) {
 							missions[x].objectives[y].completed = true;
-				} else { //if not, we're killing many ships. Decrement target and check if we're done
+					} else if (missions[x].objectives[y].objectiveType == ObjectiveType.KillXShip) {
+						//Decrement target
 						missions[x].objectives[y].targetQuantity -= 1;
 						if (missions[x].objectives[y].targetQuantity == 0) {
+							_guiBehaviour.ReceiveMessage("COMPLETE: " + missions[x].objectives[y].description, true);
 							missions[x].objectives[y].completed = true;
 						}
 					}
 				}
 			}
 		}
+	}
 
 
 	public void CheckNewArea(string areaName) {
 		for (int x = 0; x < missions.Count; x++) {
 			for (int y = 0; y < missions[x].objectives.Count; y++) {
-				if (missions[x].objectives[y].targetNameMatches(areaName)) {
+				if (missions[x].objectives[y].targetNameMatches(areaName)
+						&& missions[x].objectives[y].completed != true) {
 					missions[x].objectives[y].completed = true;
-					_guiBehaviour.ReceiveMessage("Objective complete.", true);
+					_guiBehaviour.ReceiveMessage("COMPLETE: " + missions[x].objectives[y].description, true);
 
 					CheckMissionFinished(missions[x]);
 				}

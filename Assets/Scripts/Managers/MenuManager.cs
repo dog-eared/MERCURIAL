@@ -130,6 +130,7 @@ public class MenuManager : MonoBehaviour {
 			openMenus.RemoveAt((openMenus.Count - 1));
 
 			if (openMenus.Count == 1) {
+
 				_gameStateManager.SetGameMode(_gameStateManager.lastGameMode);
 				guiStorage.SetActive(true);
 			}

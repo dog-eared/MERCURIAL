@@ -62,7 +62,7 @@ public class GameStateManager : MonoBehaviour {
 			speedMultiplier = 1;
 		}
 
-		if (mode == "Menu") {
+		if (mode == "Menu" && currentMode != GameMode.Menu) {
 			lastGameMode = currentMode.ToString();
 			currentMode = GameMode.Menu;
 			Time.timeScale = 0f;

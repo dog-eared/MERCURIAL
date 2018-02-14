@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Mission : ScriptableObject {
 
+	public string missionName = "Untitled Mission";
+
+	public Sprite icon;
+
 	public string description = "Long description of mission.";
 	public List<MissionObjective> objectives = new List<MissionObjective>();
 	public Rewards rewards = new Rewards();
@@ -12,8 +16,9 @@ public class Mission : ScriptableObject {
 	public bool stepsInOrder = false;
 	public int currentStep = -1;
 
+
 	public int[] GetRewards() {
-		
+
 		int[] rewardsArray = new int[5];
 
 		rewardsArray[0] = rewards.credits;

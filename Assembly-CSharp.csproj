@@ -52,13 +52,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviour\Menu\CameraBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Behaviour\Menu\ExperienceTagBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\GalaxyMapDragBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\GalaxyMapMenu.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\GUIBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\LandingMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\MainMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\MinimapBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\Menu\MissionEntryBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Menu\StatsMenuBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\AIState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\FleeTargetState.cs" />
@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\ProjectileWeapons\LightBlaster.cs" />
      <Compile Include="Assets\Scripts\Behaviour\Ship Weapons\ProjectileWeapons\PrecisionBlaster.cs" />
      <Compile Include="Assets\Scripts\CommunicationPanel.cs" />
+     <Compile Include="Assets\Scripts\Data\Mission.cs" />
      <Compile Include="Assets\Scripts\Data\PersistentGameData.cs" />
      <Compile Include="Assets\Scripts\Data\PilotData.cs" />
      <Compile Include="Assets\Scripts\Data\PlanetData.cs" />
@@ -109,7 +110,6 @@
      <Compile Include="Assets\Scripts\Managers\MissionManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlanetManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
-     <Compile Include="Assets\Scripts\Mission.cs" />
      <Compile Include="Assets\Scripts\Visual\DecalSelfDestroy.cs" />
      <Compile Include="Assets\Scripts\Visual\TriggeredVisualEffect.cs" />
  <Reference Include="UnityEngine.UI">

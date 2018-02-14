@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/staging_4.unity
+- path: Assets/MissionPlayerInfo.unity
   isLoaded: 1
   isActive: 1

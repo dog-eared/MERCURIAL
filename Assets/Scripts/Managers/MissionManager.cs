@@ -35,6 +35,10 @@ public class MissionManager : MonoBehaviour {
 	}
 
 
+	
+
+
+
 	public void CheckShipKilled(string shipName) {
 		//Loop through each objective of each mission
 		for (int x = 0; x < missions.Count; x++) {

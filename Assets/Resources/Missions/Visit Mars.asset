@@ -11,10 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721aa97b89a2741eb821b8d657765058, type: 3}
   m_Name: Visit Mars
   m_EditorClassIdentifier: 
+  missionName: Visit Mars
+  icon: {fileID: 21300000, guid: e778fbbf4c4574ecdb65fd42ab4b52c8, type: 3}
   description: Land on Mars
   objectives:
   - objectiveType: 2
-    description: Go to the Sol system and land on Mars.
+    description: Land on Mars in Sol system
     completed: 0
     currentQuantity: 0
     targetQuantity: 1

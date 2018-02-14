@@ -11,10 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721aa97b89a2741eb821b8d657765058, type: 3}
   m_Name: Kill Heavy Fighter
   m_EditorClassIdentifier: 
-  description: Kill Heavy Fighter
+  missionName: Kill Heavy Fighter
+  description: Kill a Dominion Heavy Fighter.
   objectives:
   - objectiveType: 3
-    description: Destroy a Dominion Paladin-class Heavy Fighter.
+    description: Kill a Dominion Heavy Fighter.
     completed: 0
     currentQuantity: 0
     targetQuantity: 1

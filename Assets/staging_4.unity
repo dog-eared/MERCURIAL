@@ -2178,6 +2178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShip: {fileID: 0}
   localShips: []
+  _shipData: {fileID: 0}
   _missionManager: {fileID: 1192815001}
 --- !u!114 &1192815001
 MonoBehaviour:
@@ -2191,8 +2192,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guiBehaviour: {fileID: 786956437}
-  newMission: {fileID: 0}
+  newMission: {fileID: 11400000, guid: 0f1e50d987f594e89818480a67b7fb0c, type: 2}
   missions: []
+  _statsMenu: {fileID: 1264570911}
+--- !u!114 &1264570911 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114447567355834344, guid: 1a078f9d38b38454bbaee4904247cf67,
+    type: 2}
+  m_PrefabInternal: {fileID: 1303507637}
+  m_Script: {fileID: 11500000, guid: 17e0efdd0eefe4087877dbc22a3b657d, type: 3}
 --- !u!1001 &1303507637
 Prefab:
   m_ObjectHideFlags: 0
@@ -2288,6 +2296,31 @@ Prefab:
     - target: {fileID: 224509159894944604, guid: 1a078f9d38b38454bbaee4904247cf67,
         type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114447567355834344, guid: 1a078f9d38b38454bbaee4904247cf67,
+        type: 2}
+      propertyPath: _missionManager
+      value: 
+      objectReference: {fileID: 1192815001}
+    - target: {fileID: 114509312615863172, guid: 1a078f9d38b38454bbaee4904247cf67,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509312615863172, guid: 1a078f9d38b38454bbaee4904247cf67,
+        type: 2}
+      propertyPath: m_Direction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224111240943996560, guid: 1a078f9d38b38454bbaee4904247cf67,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114509312615863172, guid: 1a078f9d38b38454bbaee4904247cf67,
+        type: 2}
+      propertyPath: m_NumberOfSteps
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

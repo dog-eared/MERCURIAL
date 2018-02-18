@@ -79,11 +79,12 @@ public class SystemManager : MonoBehaviour {
 		_guiBehaviour.ReceiveMessage("Entered system: " + systemName, false);
 		_guiBehaviour.ReceiveMessage("System owner: " + systemOwner, false);
 
-		_missionManager.CheckNewArea(systemName);
+		Invoke("CheckArea", 0.75f);
 
 		return data;
 
 	}
+
 
 	public void SetSystemManager(SystemData systemData) {
 
@@ -155,6 +156,11 @@ public class SystemManager : MonoBehaviour {
 		spawnLocations = _visitorList.GenerateSpawnLocations(planetList, new Vector3(0, 0, 1));
 
 		_visitorList.PlaceVisitors(spawnLocations);
+	}
+
+
+	void CheckArea() {
+		_missionManager.CheckNewArea(systemName);
 	}
 
 

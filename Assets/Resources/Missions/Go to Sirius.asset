@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: Go to Sirius
   m_EditorClassIdentifier: 
   missionName: 'Go to Sirius '
+  fileName: EnterSirius
+  isPrimaryMission: 1
   icon: {fileID: 21300000, guid: e778fbbf4c4574ecdb65fd42ab4b52c8, type: 3}
   description: Hyperspace jump to Sirius system.
   objectives:
@@ -28,5 +30,6 @@ MonoBehaviour:
     allianceReputation: 10
     rebellionReputation: 10
     karma: 10
+  longDescription: Visit the Sirius star system, located near the Sol system.
   stepsInOrder: 0
   currentStep: 0

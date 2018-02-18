@@ -108,7 +108,6 @@ public class ShipData : MonoBehaviour {
 		}
 
 		if (_ai != null) {
-			Debug.Log("I was hit!");
 			_ai.IWasHit(damageSource);
 			_localShipsManager.AllAggroTarget(damageSource, this.gameObject.tag);
 			}

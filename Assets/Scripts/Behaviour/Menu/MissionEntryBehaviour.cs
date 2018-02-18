@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.EventSystems;
 
 public class MissionEntryBehaviour : MonoBehaviour {
 
@@ -9,9 +10,19 @@ public class MissionEntryBehaviour : MonoBehaviour {
 	public Text missionName;
 	public Text missionDescription;
 
+	public Mission missionData;
+
+	public string rewardsText;
+
+
 	void Awake() {
-		SetMissionData(Resources.Load("Missions/Visit Mars") as Mission);
 	}
+
+
+	void OnEnable() {
+		SetMissionData(missionData);
+	}
+
 
 	public void SetMissionData(Mission mission) {
 
@@ -19,9 +30,16 @@ public class MissionEntryBehaviour : MonoBehaviour {
 
 		this.icon.sprite = mission.icon;
 
-		this.missionDescription.text = "NEXT: " + mission.description + "\n"
-																 + GetNextObjective(mission.objectives);
+		this.missionDescription.text = mission.description + "\n"
+																 + "NEXT: " + GetNextObjective(mission.objectives);
 
+    this.rewardsText = mission.GetRewardsAsString();
+
+		if (mission.isPrimaryMission) {
+			this.gameObject.tag = "Mission_Primary";
+		}
+
+		//missionData = mission; //Debug
 
 	}
 
@@ -34,6 +52,11 @@ public class MissionEntryBehaviour : MonoBehaviour {
 			}
 		}
 		return "";
+	}
+
+
+	public void OnClick() {
+		SendMessageUpwards("SelectMission", missionData);
 	}
 
 

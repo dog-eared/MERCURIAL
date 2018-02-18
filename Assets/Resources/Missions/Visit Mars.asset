@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: Visit Mars
   m_EditorClassIdentifier: 
   missionName: Visit Mars
+  fileName: VisitMars
+  isPrimaryMission: 0
   icon: {fileID: 21300000, guid: e778fbbf4c4574ecdb65fd42ab4b52c8, type: 3}
   description: Land on Mars
   objectives:
@@ -23,10 +25,11 @@ MonoBehaviour:
     shipTarget: 
     areaTarget: Mars
   rewards:
-    credits: 100
+    credits: 75
     dominionReputation: 0
     allianceReputation: 0
     rebellionReputation: 0
     karma: 0
+  longDescription: Long description used in mission manager.
   stepsInOrder: 0
   currentStep: -1

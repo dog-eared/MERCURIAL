@@ -76,7 +76,6 @@ public class GameStateManager : MonoBehaviour {
 			currentMode = GameMode.Combat;
 			Time.timeScale = combatGameSpeed * speedMultiplier;
 		}
-		Debug.Log(Time.timeScale);
 	}
 
 

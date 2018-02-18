@@ -27,6 +27,8 @@ TagManager:
   - Ship
   - MInimapObject
   - GalaxyMapObject
+  - Mission_Primary
+  - Mission_Secondary
   layers:
   - Default
   - TransparentFX

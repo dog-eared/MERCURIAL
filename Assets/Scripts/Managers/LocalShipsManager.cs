@@ -30,7 +30,6 @@ public class LocalShipsManager : MonoBehaviour {
 		//If killer is player, sendMessage to mission control
 		if (killer == playerShip) {
 			_missionManager.CheckShipKilled(ship.GetComponent<ShipData>().shipModel);
-			Debug.Log("Player killed a ship " + ship.name);
 		}
 
 		RemoveShip(ship);

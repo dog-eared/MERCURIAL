@@ -6,12 +6,19 @@ using UnityEngine;
 public class Mission : ScriptableObject {
 
 	public string missionName = "Untitled Mission";
+	public string fileName = "Mission Entry";
+
+
+	public bool isPrimaryMission = false;
 
 	public Sprite icon;
 
-	public string description = "Long description of mission.";
+	public string description = "Overall description of mission.";
 	public List<MissionObjective> objectives = new List<MissionObjective>();
 	public Rewards rewards = new Rewards();
+
+ 	[TextArea(5,15)]
+	public string longDescription = "Long description used in mission manager.";
 
 	public bool stepsInOrder = false;
 	public int currentStep = -1;
@@ -29,6 +36,24 @@ public class Mission : ScriptableObject {
 
 		return rewardsArray;
 
+	}
+
+	public string GetRewardsAsString() {
+
+		int[] rewardsArray = GetRewards();
+
+		//Init a string and an array with the labels for each reward
+		string returnString = "\nREWARD:\n";
+		string[] labels = new string[] {"Credits", "Dominion Rep", "Alliance Rep", "Rebellion Rep", "Karma"};
+
+		//Loop thru rewards -- if it's any value but 0, add a label and value to the returned string
+		for (int i = 0; i < rewardsArray.Length; i++) {
+			if (rewardsArray[i] != 0) {
+				returnString = returnString + labels[i] + ": " + rewardsArray[i] + "\n";
+			}
+		}
+
+		return returnString;
 	}
 
 }

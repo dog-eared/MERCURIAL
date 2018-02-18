@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: Kill Heavy Fighter
   m_EditorClassIdentifier: 
   missionName: Kill Heavy Fighter
+  fileName: KillHeavyFighter
+  isPrimaryMission: 0
+  icon: {fileID: 0}
   description: Kill a Dominion Heavy Fighter.
   objectives:
   - objectiveType: 3
@@ -22,10 +25,11 @@ MonoBehaviour:
     shipTarget: Paladin
     areaTarget: 
   rewards:
-    credits: 50
+    credits: 100
     dominionReputation: -5
     allianceReputation: 0
     rebellionReputation: 5
     karma: 0
+  longDescription: Long description used in mission manager.
   stepsInOrder: 0
   currentStep: -1

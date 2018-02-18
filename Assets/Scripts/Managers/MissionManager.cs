@@ -8,6 +8,7 @@ public class MissionManager : MonoBehaviour {
 
 	public Mission newMission; //Debug data
 	public List<Mission> missions = new List<Mission>();
+	public StatsMenuBehaviour _statsMenu;
 
 
 	PilotData _playerPilotData;
@@ -28,18 +29,18 @@ public class MissionManager : MonoBehaviour {
 		newMission = Instantiate(loadedMission);
 
 		missions.Add(newMission);
-
-
 		_guiBehaviour.ReceiveMessage("MISSION: " + newMission.description, true);
 
 	}
 
 
-	
-
-
+	public List<Mission> GetMissions() {
+		return missions;
+	}
 
 	public void CheckShipKilled(string shipName) {
+		//NOTE: Needs huge refactor.
+
 		//Loop through each objective of each mission
 		for (int x = 0; x < missions.Count; x++) {
 			for (int y = 0; y < missions[x].objectives.Count; y++) {
@@ -49,13 +50,19 @@ public class MissionManager : MonoBehaviour {
 						//If yes, objective complete
 				if (missions[x].objectives[y].targetNameMatches(shipName)) {
 					if (missions[x].objectives[y].objectiveType == ObjectiveType.KillSpecificShip) {
-							missions[x].objectives[y].completed = true;
+						_statsMenu.MissionListChanged();
+						missions[x].objectives[y].completed = true;
+						CheckMissionFinished(missions[x]);
 					} else if (missions[x].objectives[y].objectiveType == ObjectiveType.KillXShip) {
 						//Decrement target
 						missions[x].objectives[y].targetQuantity -= 1;
+						_statsMenu.MissionListChanged();
+						CheckMissionFinished(missions[x]);
 						if (missions[x].objectives[y].targetQuantity == 0) {
 							_guiBehaviour.ReceiveMessage("COMPLETE: " + missions[x].objectives[y].description, true);
+							_statsMenu.MissionListChanged();
 							missions[x].objectives[y].completed = true;
+							CheckMissionFinished(missions[x]);
 						}
 					}
 				}
@@ -66,12 +73,16 @@ public class MissionManager : MonoBehaviour {
 
 	public void CheckNewArea(string areaName) {
 		for (int x = 0; x < missions.Count; x++) {
+			Debug.Log(missions[x].missionName);
+			Debug.Log(missions[x].objectives.Count);
 			for (int y = 0; y < missions[x].objectives.Count; y++) {
+				Debug.Log(missions[x].objectives[y].objectiveType);
 				if (missions[x].objectives[y].targetNameMatches(areaName)
-						&& missions[x].objectives[y].completed != true) {
-					missions[x].objectives[y].completed = true;
-					_guiBehaviour.ReceiveMessage("COMPLETE: " + missions[x].objectives[y].description, true);
+						&& !missions[x].objectives[y].completed) {
 
+							_guiBehaviour.ReceiveMessage("COMPLETE: " + missions[x].objectives[y].description, true);
+					_statsMenu.MissionListChanged();
+					missions[x].objectives[y].completed = true;
 					CheckMissionFinished(missions[x]);
 				}
 			}
@@ -79,7 +90,7 @@ public class MissionManager : MonoBehaviour {
 	}
 
 
-	bool CheckMissionFinished(Mission mission) {
+	void CheckMissionFinished(Mission mission) {
 		//Starts with mission as
 		bool missionComplete = true;
 
@@ -91,9 +102,9 @@ public class MissionManager : MonoBehaviour {
 
 		if (missionComplete) {
 			_playerPilotData.GiveRewards(mission.GetRewards());
+			newMission = mission;
+			missions.Remove(mission);
 		}
-
-		return missionComplete;
 	}
 
 

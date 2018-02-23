@@ -8,7 +8,7 @@ public class ShipData : MonoBehaviour {
 
 	public string shipModel; //Style of ship
 	public string shipName; //Name of ship
-	ShipChassis _chassis;
+	//ShipChassis _chassis; NOTE Feb 23: May not need this. If no use found, clear by March
 
 	[Space(10)]
 
@@ -69,7 +69,6 @@ public class ShipData : MonoBehaviour {
 	void Awake() {
 		this.name = shipName;
 		this.tag = SetFactionString(faction) + "Ship";
-		_chassis = GetComponent<ShipChassis>();
 		_renderer = GetComponent<Renderer>();
 		_guiBehaviour = GameObject.FindGameObjectWithTag("GUI_Listener").transform.GetChild(0).GetComponent<GUIBehaviour>();
 		_localShipsManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<LocalShipsManager>();

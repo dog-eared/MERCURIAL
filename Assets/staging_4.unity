@@ -757,6 +757,7 @@ GameObject:
   - component: {fileID: 409322475}
   - component: {fileID: 409322476}
   - component: {fileID: 409322477}
+  - component: {fileID: 409322478}
   m_Layer: 13
   m_Name: player_fighter
   m_TagString: Untagged
@@ -895,7 +896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentID: 0
   shipModel: Mantis
-  shipName: Sparrow
+  shipName: Player
   faction: 0
   shipHullCurrent: 15
   shipHullMax: 15
@@ -1101,6 +1102,32 @@ MonoBehaviour:
   weaponClip: {fileID: 0}
   projectile: {fileID: 0}
   bulletPoolPrefab: {fileID: 0}
+--- !u!114 &409322478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409322464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d8c5828556a4e4e8ce0899228f65b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedShip: {fileID: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  facingTarget: 0
+  facingAway: 0
+  rotationTolerance: 6
+  distanceToTarget: 0
+  velocityMagnitude: 0
+  eulerAngleToTarget: 0
+  brakeAngleToTarget: 0
+  longDistance: 12
+  mediumDistance: 8
+  shortDistance: 6
+  minimumDistance: 4
+  engageMod: 0.35
+  targetAliveFlag: 0
 --- !u!224 &487605321 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224038386274833548, guid: c66132d715d6a4bc68fc2a594b9cb75e,
@@ -1948,6 +1975,7 @@ GameObject:
   - component: {fileID: 1192814990}
   - component: {fileID: 1192815000}
   - component: {fileID: 1192815001}
+  - component: {fileID: 1192815002}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -2195,6 +2223,19 @@ MonoBehaviour:
   newMission: {fileID: 11400000, guid: 0f1e50d987f594e89818480a67b7fb0c, type: 2}
   missions: []
   _statsMenu: {fileID: 1264570911}
+--- !u!114 &1192815002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192814987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565635289ac8e4bb381a67f4de4e91e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchAI: {fileID: 409322478}
+  touchEnabled: 0
 --- !u!114 &1264570911 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114447567355834344, guid: 1a078f9d38b38454bbaee4904247cf67,
@@ -3254,6 +3295,21 @@ Prefab:
     - target: {fileID: 1550091983161960, guid: 99abcf043c26d4b3db5adbd55e9b1986, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198960217051411970, guid: 99abcf043c26d4b3db5adbd55e9b1986,
+        type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 198960217051411970, guid: 99abcf043c26d4b3db5adbd55e9b1986,
+        type: 2}
+      propertyPath: lengthInSec
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198960217051411970, guid: 99abcf043c26d4b3db5adbd55e9b1986,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 77
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99abcf043c26d4b3db5adbd55e9b1986, type: 2}

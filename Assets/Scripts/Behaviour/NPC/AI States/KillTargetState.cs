@@ -5,7 +5,7 @@ using UnityEngine;
 public class KillTargetState : AIState {
 
 	void OnEnable() {
-		Debug.Log("Enabled kill target!");
+		//Debug.Log("Enabled kill target!");
 	}
 
 }

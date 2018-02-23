@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\FleeTargetState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\KillTargetState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\RelaxState.cs" />
+     <Compile Include="Assets\Scripts\Behaviour\NPC\AI States\TouchState.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AI_DominionDefender.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AI_PirateRaider.cs" />
      <Compile Include="Assets\Scripts\Behaviour\NPC\AI\AI_Scourgeling.cs" />
@@ -110,6 +111,7 @@
      <Compile Include="Assets\Scripts\Managers\MissionManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlanetManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SystemManager.cs" />
+     <Compile Include="Assets\Scripts\ShipTouchControls.cs" />
      <Compile Include="Assets\Scripts\Visual\DecalSelfDestroy.cs" />
      <Compile Include="Assets\Scripts\Visual\TriggeredVisualEffect.cs" />
  <Reference Include="UnityEngine.UI">

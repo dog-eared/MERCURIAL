@@ -16,12 +16,6 @@ public abstract class AIState : MonoBehaviour {
 	methods I have to create.
 
 
-	All tasks should be split into and called by either Update or Periodic Update.
-	Update should handle things that are analogous to player input -- turning,
-	accelerating, shooting, etc. Periodic Update handles tracking the location of
-	our target, setting new targets, etc.
-
-
 	*/
 
 	BaseAI _parentBaseAI;
@@ -71,7 +65,7 @@ public abstract class AIState : MonoBehaviour {
 	[HideInInspector]
 	public bool targetAliveFlag; //This is set to true when we get a target. Then, if it's true and we have no target, it becomes false.
 
-	void Awake() {
+	protected void Awake() {
 		_parentBaseAI = GetComponent<BaseAI>();
 		_chassis = GetComponent<ShipChassis>();
  		rotationSpeed = _chassis.rotateSpeed / 150; //Magic number of 150... this gives us pretty good approximation of player-controlled rotation
@@ -284,6 +278,4 @@ public abstract class AIState : MonoBehaviour {
 	Vector3 GetTargetVelocity(Rigidbody2D rb2d) {
 		return rb2d.velocity;
 	}
-
-
 }

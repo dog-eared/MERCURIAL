@@ -44,7 +44,9 @@ public class MissionManager : MonoBehaviour {
 		//Loop through each objective of each mission
 		for (int x = 0; x < missions.Count; x++) {
 			for (int y = 0; y < missions[x].objectives.Count; y++) {
+				ObjectiveProgressed(missions[x], missions[x].objectives[y], shipName);
 
+				/*
 						//Check if shipname is right for this objectiveType
 						//Also, check that we're killing a specific ship
 						//If yes, objective complete
@@ -59,14 +61,36 @@ public class MissionManager : MonoBehaviour {
 						_statsMenu.MissionListChanged();
 						CheckMissionFinished(missions[x]);
 						if (missions[x].objectives[y].targetQuantity == 0) {
-							_guiBehaviour.ReceiveMessage("COMPLETE: " + missions[x].objectives[y].description, true);
+
 							_statsMenu.MissionListChanged();
 							missions[x].objectives[y].completed = true;
 							CheckMissionFinished(missions[x]);
 						}
 					}
 				}
+
+				*/
 			}
+		}
+	}
+
+
+	void ObjectiveProgressed(Mission mission, MissionObjective objective, string target = "") {
+		/*	To be called when an enemy has been killed or objective otherwise completed.
+		Target is given default parameter of "" incase we're not checking an objective
+		with a target string.
+		*/
+		if (objective.objectiveType == ObjectiveType.KillXShip) {
+			objective.targetQuantity--;
+		} else {
+			objective.completed = true;
+		}
+
+		if (objective.targetQuantity == 0 || objective.targetNameMatches(target) ) {
+			_guiBehaviour.ReceiveMessage("COMPLETE: " + objective.description, true);
+			_statsMenu.MissionListChanged();
+			objective.completed = true;
+			CheckMissionFinished(mission);
 		}
 	}
 

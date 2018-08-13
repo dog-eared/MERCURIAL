@@ -1,8 +1,9 @@
-# MERCURIAL
+# MERCURIA
+(Formerly MERCURIAL.)
 
 #### v.0.011
 
-Mercurial is a topdown space adventure with roleplaying elements. The goal is to
+Mercuria is a topdown space adventure with roleplaying elements. The goal is to
 recreate the classic Mac game _[Escape Velocity]_ (http://www.ambrosiasw.com) with modern gameplay that reflects the last 15 years since EV:Nova -- streamlined, opting for a faster, more immediate combat focus.
 
 The player is an agent of the Dominion of Earth assigned an experimental fighter ship. They perform missions for the government with options to serve the government, the cultists of the Divine Trade Alliance, squash (or serve!) the rebellion and explore the furthest reaches of the galaxy.
